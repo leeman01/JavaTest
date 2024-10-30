@@ -1,0 +1,15 @@
+package service;
+
+import vo.Product;
+
+public interface CosmeticServiceItml {
+	
+	public boolean insert(Product product);
+	
+	public boolean update(Product product);
+	public boolean delete(); // 여기서 입력받는 것은 texture,또는 type color이다
+	public Product selectOne();
+	public Product [] SelectAll();
+	public int getCount();
+
+}

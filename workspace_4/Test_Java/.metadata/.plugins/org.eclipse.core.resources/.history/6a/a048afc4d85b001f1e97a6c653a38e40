@@ -1,0 +1,31 @@
+/*
+ * 문제 설명[없는 숫자더하기]
+0부터 9까지의 숫자 중 일부가 들어있는 정수 배열 numbers가 매개변수로 주어집니다. 
+numbers에서 찾을 수 없는 0부터 9까지의 숫자를 모두 찾아 
+더한 수를 return 하도록 solution 함수를 완성해주세요.
+ */
+package month7;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+public class Num_15 {
+
+	public static void main(String[] args) {
+		int[] numbers = {1,2,3,4,6,7,8,0};
+		// TODO Auto-generated method stub
+		System.out.println(solution(numbers));
+
+	}
+	private static List solution(int[] numbers) {
+		int[] count= {0,1,2,3,4,5,6,7,8,9};
+		List a = Arrays.asList(count) ;
+		for(int i=0 ; i < count.length ; ++i) {
+			if(a.contains(numbers[i])) {
+				a.remove(numbers[i]);
+			}
+		}
+		return a ;
+	}
+}

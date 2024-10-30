@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
+		<item key="wrap" value="true"/>
+		<item key="casesensitive" value="false"/>
+		<item key="wholeword" value="false"/>
+		<item key="incremental" value="false"/>
+		<item key="isRegEx" value="false"/>
+		<item key="selection" value="&#x0D;&#x0A;&#x09;&#x09;System.out.println(ftmp);&#x0D;&#x0A;&#x09;&#x09;&#x0D;&#x0A;&#x09;&#x09;System.out.println(&quot;========================&quot;);&#x0D;&#x0A;&#x09;&#x09;String ftmp1 =ftmp.name();  // 문자열로 변환 name , tostring 모두 문자열로 반환한다 &lt;= 모두 enum에서 상속받아 사용됨&#x0D;&#x0A;&#x09;&#x09;System.out.println(ftmp1);&#x0D;&#x0A;&#x09;&#x09;String ftmp2 = ftmp.toString();&#x0D;&#x0A;&#x09;&#x09;System.out.println(ftmp2);&#x0D;&#x0A;&#x09;&#x09;&#x0D;&#x0A;&#x09;&#x09;&#x0D;&#x0A;&#x09;&#x09;System.out.println(&quot;========================&quot;);&#x0D;&#x0A;&#x09;&#x09;System.out.println(ftmp1.equals(ftmp2)); // 둘다 문자열이므로 true&#x0D;&#x0A;&#x09;&#x09;&#x0D;&#x0A;&#x09;&#x09;System.out.println(&quot;========================&quot;);&#x0D;&#x0A;&#x09;&#x09;"/>
+		<list key="findhistory">
+			<item value="fruit3"/>
+			<item value="birth"/>
+			<item value="list"/>
+			<item value="return"/>
+			<item value="insert"/>
+			<item value="min"/>
+			<item value="median"/>
+			<item value="max"/>
+			<item value="(&quot;팩토리얼 값은 %d입니다&quot;,m);"/>
+		</list>
+		<list key="replacehistory">
+			<item value="data[2]"/>
+			<item value="data[1]"/>
+			<item value="data[0]"/>
+		</list>
+	</section>
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
+		<item key="DIALOG_X_ORIGIN" value="1383"/>
+		<item key="DIALOG_Y_ORIGIN" value="-9434"/>
+		<item key="DIALOG_WIDTH" value="369"/>
+		<item key="DIALOG_HEIGHT" value="454"/>
+		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>
+	</section>
+</section>
