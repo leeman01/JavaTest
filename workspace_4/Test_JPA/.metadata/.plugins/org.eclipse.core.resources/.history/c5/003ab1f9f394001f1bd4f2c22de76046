@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{base}" layout:fragment="content">
+
+<head>
+    <title>promotionpage</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<body>
+    <div class="container_promotion text-center">
+        <h1 class="mt-5 mb-4">상품 홍보 플랫폼</h1>
+
+        <div class="search-bar d-flex justify-content-center align-items-center mb-5">
+
+            <!-- 검색창 -->
+            <input type="text" placeholder="상품명 검색" name="searchQuery" class="form-control-custom w-50 me-2">
+
+            <!-- 검색 버튼 -->
+            <button type="submit" class="btn-custom btn-primary me-2">검색</button>
+
+            <!-- 정렬 옵션 -->
+            <select id="sortSelect" name="sortOrder" class="form-select-custom w-auto me-2" onchange="sortProducts()">
+                <option value="latest" th:selected="${sortOrder == 'latest'}">최신순</option>
+                <option value="views" th:selected="${sortOrder == 'views'}">조회순</option>
+            </select>
+
+            <!-- 상품 등록 버튼 -->
+            <div class="text-center">
+                <a th:href="@{/product/prodInsert}" class="btn btn-primary">상품 등록</a>
+            </div>
+        </div>
+
+
+        <!-- 상품 리스트 -->
+        <div class="container product-list" style="max-width: 1200px; padding-left: 20px; padding-right: 20px;">
+            <div th:each="product : ${products}" class="product-item mb-4">
+                <div class="card">
+                    <div class="row g-0">
+                        <!-- 이미지 영역 -->
+                        <div class="col-md-3">
+                            <a th:href="@{/product/detail/{productId}(productId=${product.id})}">
+                                <img th:src="@{/product/download(id=${product.id})}" alt="상품 이미지"
+                                    class="img-fluid fixed-image">
+                            </a>
+                        </div>
+                        <!-- 정보 영역 -->
+                        <div class="col-md-9">
+                            <div class="card-body">
+                                <a th:href="@{/product/detail/{productId}(productId=${product.id})}">
+                                    <h5 class="card-title fw-medium" th:text="${product.productName}"></h5>
+                                </a>
+                                <p class="card-text" th:text="'가격: ' + ${product.productPrice} + '원'"></p>
+                                <p class="card-text text-truncate" th:text="'설명: ' + ${product.productDescription}"></p>
+                                <p class="card-text"
+                                    th:text="'작성일: ' + ${#temporals.format(product.productDate, 'yyyy-MM-dd')}"></p>
+                                <p class="card-text" th:text="'조회수: ' + ${product.totalViews}"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- 페이지네이션 및 상품 등록 버튼 -->
+        <div class="pagination-and-button mt-5">
+            <div class="pagination d-flex justify-content-center">
+                <a th:if="${currentPage > 0}"
+                    th:href="@{/product/promotion(page=${currentPage - 1}, sortOrder=${sortOrder})}">&laquo; 이전</a>
+                <span th:each="i : ${#numbers.sequence(0, totalPages - 1)}">
+                    <a th:href="@{/product/promotion(page=${i}, sortOrder=${sortOrder})}" th:text="${i + 1}"
+                        th:classappend="${i == currentPage} ? 'active'"></a>
+                </span>
+                <a th:if="${currentPage < totalPages - 1}"
+                    th:href="@{/product/promotion(page=${currentPage + 1}, sortOrder=${sortOrder})}">다음 &raquo;</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 추천 상품 -->
+    <div class="featured-products mt-5">
+        <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+            <h2>추천 상품</h2>
+        </div>
+
+        <div class="d-flex justify-content-around flex-wrap">
+            <!-- 각 상품에 기존 카드 스타일 및 hover-zoom 클래스 적용 -->
+            <div class="service-item mb-4 card" style="width: 30%; border-radius: 15px; overflow: hidden;">
+                <div class="featured-product">
+                    <a th:href="@{/product/detail/applejuice}">
+                        <img class="img-fluid hover-zoom card-img-top fixed-size"
+                            src="/src/main/resources/static/images/applejuice.png" alt="애플깡패">
+                    </a>
+                    <div class="card-body text-center">
+                        <h4 class="fw-medium text-center" style="margin-top: 10px;" th:text="'리얼사과주스'"></h4>
+                    </div>
+                </div>
+            </div>s
+
+            <div class="service-item mb-4 card" style="width: 30%; border-radius: 15px; overflow: hidden;">
+                <div class="featured-product">
+                    <a th:href="@{/product/detail/chestnut}">
+                        <img class="img-fluid hover-zoom card-img-top fixed-size"
+                            src="/src/main/resources/static/images/chestnut.jpg" alt="맛밤">
+                    </a>
+                    <div class="card-body text-center">
+                        <h4 class="fw-medium text-center" style="margin-top: 10px;" th:text="'맛있는 밤간식 빠밤!'"></h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function sortProducts() {
+            const sortOrder = document.getElementById('sortSelect').value;
+            const currentPage = [[${currentPage}]] // 현재 페이지 번호, 기본값 0
+            window.location.href = `/product/promotion?page=${currentPage}&sortOrder=${sortOrder}`;
+        }
+    </script>
+
+</body>
+
+</html>

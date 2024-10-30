@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <a th:href="@{/}">첫화면으로이동</a>
+    <form th:action="@{/updateOne}" method="post" id="insert" name="insert">
+        <input type="hidden" name="seq" th:value="${fitness.seq}">
+        <label for="name">키 입력: </label>
+        <input type="text" id="height" name="height" placeholder="키 입력"><br>
+        <label for="name">몸무게 입력: </label>
+        <input type="text" id="weight" name="weight" placeholder="몸무게 입력"><br>
+
+        <div>
+            <input type="submit" value="저장">
+            <input type="reset" value="초기화">
+        </div>
+    </form>
+
+</body>
+
+</html>

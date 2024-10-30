@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Map with Sea Route</title>
+
+    <style>
+        #googleMap {
+            width: 100%;
+            height: 700px;
+            position: relative;
+        }
+
+        #overlayImage {
+            position: absolute;
+            top: 50px;
+            /* 이미지의 Y축 위치 */
+            left: 50px;
+            /* 이미지의 X축 위치 */
+            width: 200px;
+            /* 이미지 너비 */
+            height: 150px;
+            /* 이미지 높이 */
+            z-index: 10;
+            /* 구글맵 위에 표시되도록 설정 */
+            opacity: 0.8;
+            /* 약간의 투명도를 줌 */
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <a th:href="@{/fortune}">여기를 클릭</a>
+    </div>
+    <div>
+        <p>
+            *당신의 화물은 여기서 출발하여 미국 LA항에 도착 예정입니다*
+        </p>
+        <a th:href="@{/email}">이메일 자동 작성</a>
+    </div>
+
+    <div id="googleMap">
+        <div id="overlayImage">
+            <img src="https://i.namu.wiki/i/WqGBu4lR_NS13Sz3siZfj-Fg_csO3w94423-e2fJ_V0eFzFPj7jXKBsLwf-2PsaQn_YcVBf3E09wPR5_Gd61zg.webp"
+                alt="Overlay Image" style="width: 100%; height: 100%;">
+        </div>
+    </div>
+
+    <script>
+        function myMap() {
+            // 지도 옵션 설정 (부산항을 중심으로 시작)
+            var mapOptions = {
+                center: new google.maps.LatLng(35.101951, 129.040273),
+                zoom: 3 // 넓게 보여서 두 항구가 보이게 하기 위해 낮은 줌 레벨 설정
+            };
+
+            // 지도 생성
+            var map = new google.maps.Map(document.getElementById("googleMap"), mapOptions);
+
+            // 부산항 마커 설정
+            var busanMarker = new google.maps.Marker({
+                position: new google.maps.LatLng(35.101951, 129.040273),
+                map: map,
+                title: "Busan Port"
+            });
+
+            // LA 항구 마커 설정
+            var laMarker = new google.maps.Marker({
+                position: new google.maps.LatLng(33.736061, -118.251221), // LA 항구의 좌표
+                map: map,
+                title: "Los Angeles Port"
+            });
+
+            // 배의 현재 위치 마커 설정
+            var shipMarker = new google.maps.Marker({
+                position: new google.maps.LatLng(36.664590, 132.131872), // 태평양 중간에 있는 배의 위치
+                map: map,
+                title: "Ship Location"
+            });
+
+            // InfoWindow 설정 (부산항 마커 클릭 시 메시지)
+            var busanInfoWindow = new google.maps.InfoWindow({
+                content: "<h3>출발예정시간 : 2024-06-06 14:00</h3>"
+            });
+
+            // 부산항 마커 클릭 이벤트 추가
+            busanMarker.addListener('click', function () {
+                busanInfoWindow.open(map, busanMarker);
+            });
+
+            // InfoWindow 설정 (LA 항구 마커 클릭 시 메시지)
+            var laInfoWindow = new google.maps.InfoWindow({
+                content: "<h3>도착예정시간 : 2024-09-06 14:00</h3>"
+            });
+
+            // LA 항구 마커 클릭 이벤트 추가
+            laMarker.addListener('click', function () {
+                laInfoWindow.open(map, laMarker);
+            });
+
+            // InfoWindow 설정 (배 위치 마커 클릭 시 메시지)
+            var shipInfoWindow = new google.maps.InfoWindow({
+                content: "<h3>출발시간: 2024-06-06 14:00<br>예상 도착시간: 2024-09-06 14:00</h3>"
+            });
+
+            // 배 위치 마커 클릭 이벤트 추가
+            shipMarker.addListener('click', function () {
+                shipInfoWindow.open(map, shipMarker);
+            });
+
+            // 부산항에서 LA 항구까지의 해양 경로를 선으로 그리기
+            var seaRouteCoordinates = [
+                { lat: 35.101951, lng: 129.040273 }, // 부산항
+                { lat: 36.664590, lng: 132.131872 },           // 일본 남쪽 해안 근처
+                { lat: 41.718567, lng: 136.768102 },           // 일본 서쪽 해안 근처
+                { lat: 46.039422, lng: 140.986852 },           // 태평양 중간 경로
+                { lat: 45.626066, lng: 143.689489 },
+                { lat: 47.854199, lng: 157.576208 },    // 배의 현재 위치 포함
+                { lat: 33.736061, lng: -118.251221 } // LA 항구
+            ];
+
+            var seaRoute = new google.maps.Polyline({
+                path: seaRouteCoordinates,
+                geodesic: true,
+                strokeColor: "#0000FF",
+                strokeOpacity: 1.0,
+                strokeWeight: 2
+            });
+
+            seaRoute.setMap(map);
+        }
+    </script>
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZpG4SkL7SL0cY6iXlzIoUHT1-M3a5oA4&callback=myMap"></script>
+</body>
+
+</html>

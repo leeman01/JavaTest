@@ -1,0 +1,54 @@
+spring:
+  application:
+    name: TeamProject
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/firepunch
+    # jdbc:mysql://[IP]:[포트번호]/[DB이름]?useSSL=false&useUnicode=true&serverTimezone=Asia/Seoul
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: root
+    hikari:
+      connection-timeout: 20000
+      minimum-idle: 10
+      maximum-pool-size: 10
+      idle-timeout: 300000
+      max-lifetime: 1800000
+
+  jpa:
+    properties:
+      hibernate:
+        format_sql: true
+    show-sql: true
+
+  thymeleaf:
+    cache: false
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: leerexman01@gmail.com
+    password: lumm srte xkut ajum
+    properties:
+      mail.smtp.debug: true
+      mail.smtp.connectiontimeout: 1000  # 1초
+      mail.starttls.enable: true
+      mail.smtp.auth: true
+
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+      location: c:/uploadPath  # 윈도우의 경우
+      # location: /Users/사용자명/uploadPath  # 리눅스의 경우-맥북 포함
+
+server:
+  port: 9600
+
+logging:
+  level:
+    root: info
+
+# PyAPI 서버 설정
+pyapi:
+  server: http://127.0.0.1:8000

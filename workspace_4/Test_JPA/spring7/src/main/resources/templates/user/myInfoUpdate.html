@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>개인정보수정</title>
+    <!-- CSS설정-->
+    <link rel="stylesheet" th:href="@{/css/user.css}">
+    <script src="https://kit.fontawesome.com/def97ee41b.js" crossorigin="anonymous"></script>
+    <!--검증설정-->
+    <script th:src="@{/script/jquery-3.7.1.min.js}"></script>
+    <script th:src="@{/jscode/update.js}"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="logo">
+            <a th:href="@{/}">
+                <img th:src="@{/images/logo.png}" alt="logo">
+            </a>
+            <h2>개인정보 수정</h2>
+        </div>
+    </div> <!--end .container-->
+    <div class="content">
+        <form th:action="@{/user/update}" method="POST" id="updateForm">
+            <div class="section">
+                <div class="article">
+                    <ul>
+                        <li>
+                            <i class="fa-solid fa-fingerprint"></i>
+                            <input type="text" name="userId" id="userId" th:value="${userDTO.userId}" readonly>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-key"></i>
+                            <input type="password" name="userPwd" id="userPwd" placeholder="password 입력">
+                            <div id="confirmPwd" style="font-size: 0.8em;"></div>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-shield"></i>
+                            <input type="text" id="userPwdCheck" placeholder="password 확인">
+
+
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-users"></i>
+                            <input type="text" name="userName" id="userName" th:value="${userDTO.userName}">
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-envelope"></i>
+                            <input type="email" name="email" id="email" placeholder="이메일입력">
+                            <div id="emailCheck" style="font-size: 0.8em;"></div>
+                        </li>
+                    </ul>
+                    <div class="btns">
+                        <input type="button" id="submitBtn" value="정보수정" class="btn btn-primary">
+                        <input type="reset" id="resettBtn" value="초기화" class="btn btn-light">
+                    </div>
+                </div> <!-- end article -->
+            </div> <!-- end section pointColor-->
+        </form>
+
+    </div>
+</body>
+
+</html>

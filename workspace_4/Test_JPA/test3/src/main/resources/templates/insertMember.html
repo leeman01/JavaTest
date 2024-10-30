@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <a th:href="@{/}">첫화면으로이동</a>
+    <form th:action="@{/insertMember}" method="post" id="insert" name="insert">
+        <label for="name">이름을 입력: </label>
+        <input type="text" id="name" name="name" placeholder="이름을 입력"><br>
+        <label for="name">키 입력: </label>
+        <input type="text" id="height" name="height" placeholder="키 입력"><br>
+        <label for="name">몸무게 입력: </label>
+        <input type="text" id="weight" name="weight" placeholder="몸무게 입력"><br>
+        <label for="name">성별을 입력:
+            <input type="radio" name="gender" id="gender" value="0">여
+            <input type="radio" name="gender" id="gender" value="1">남
+        </label><br>
+        <input type="submit" id="submit" name="submit" value="전송">
+
+    </form>
+
+</body>
+
+</html>

@@ -1,0 +1,82 @@
+package com.example.demo.service;
+
+import java.time.format.DateTimeFormatter;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
+import org.springframework.stereotype.Service;
+
+import com.example.demo.entity.AuthUserEntity;
+import com.example.demo.entity.ExportingExportEntity;
+import com.example.demo.repository.AuthUserRepository;
+import com.example.demo.repository.ExportingExportRepository;
+import com.example.demo.entity.ExportingExportEntity;
+import com.example.demo.repository.ExportingProductRepository;
+import com.example.demo.vo.MyexportDetailVO;
+import com.example.demo.vo.MyexportVO;
+
+import lombok.RequiredArgsConstructor;
+
+@Service
+@RequiredArgsConstructor
+public class MypageService {
+    
+    private final AuthUserRepository authUserRepository;
+    private final ExportingExportRepository exportingExportRepository;
+    private final ExportingProductRepository exportingProdcutRepository;
+
+
+    enum ProgressStatus {
+        수출신고(0), 운송계약(1), 수출국운송(2), 선측운반(3), 선적완료(4), 해상운송(5), 양하(6), 수입국운송(7), 수출이행완료(99);
+
+        private final int value;
+
+        ProgressStatus(int value) {
+            this.value = value;
+        }
+
+        private static final Map<Integer, ProgressStatus> map = Map.of(
+                0, 수출신고,
+                1, 운송계약,
+                2, 수출국운송,
+                3, 선측운반,
+                4, 선적완료,
+                5, 해상운송,
+                6, 양하,
+                7, 수입국운송,
+                99, 수출이행완료
+        );
+
+        public static ProgressStatus of(int value) {
+            return map.getOrDefault(value, null);
+        }
+    }
+
+    public List<MyexportVO> getMyexportList(int userId){
+        Optional<AuthUserEntity> user = authUserRepository.findById(userId);
+		List<ExportingExportEntity> exportingExportEntities = exportingExportRepository.findByuserId(user);
+        List<ExportingExportEntity> sortedEntities = exportingExportEntities.stream().sorted(Comparator.comparing(ExportingExportEntity::getProcess)).collect(Collectors.toList());
+        return sortedEntities.stream()
+                .map(entity -> new MyexportVO(
+                    entity.getId(), // Handle potential Long to int conversion issue
+                    entity.getBuyerCompanyName(),
+                        // Handle potential missing progressName field in dto
+                        ProgressStatus.of(entity.getProcess()).name(),
+                        entity.getIncoterm(),
+                        // Format deadline to a String if necessary (adjust based on your needs)
+                        entity.getDeadlineDate().format(DateTimeFormatter.ofPattern("yyyy. MM. dd")),
+                        exportingProdcutRepository.findByexportId(entity)
+                ))
+                .collect(Collectors.toList());
+    };
+
+    public MyexportDetailVO getMyexportDetail(Long exportId){
+        Optional<ExportingExportEntity> exportingExportEntity = exportingExportRepository.findById(exportId);
+        ExportingExportEntity entity = exportingExportEntity.get();
+        MyexportDetailVO myexportDetailVO = new MyexportDetailVO(entity,ProgressStatus.of(entity.getProcess()).name());
+        return myexportDetailVO;
+    }
+}

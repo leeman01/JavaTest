@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>오늘의 기록</title>
+	<link rel="stylesheet" href="css/main.css">
+
+	<script src="script/jquery-3.7.1.min.js"></script>
+	<script th:src="@{/script/write.js}"></script>
+
+</head>
+
+<body>
+	<div class="wrapper">
+		<h1>[ 오늘의 기록 ]</h1>
+		<div class="top">
+			오늘도 화이팅이다
+		</div>
+		<form id="diarywrite" method="POST" action="">
+
+			<!-- 입력을 위한 테이블 -->
+			<table border="1">
+				<tr>
+					<th>아이디(이름)</th>
+					<td>[[${name}]]</td>
+				</tr>
+				<tr>
+					<th>오늘의 날짜</th>
+					<td> <input type="datetime" name="regdate" id="date" th:value="${regdate}"></td>
+				</tr>
+
+				<tr>
+					<th>오늘의 기분</th>
+					<td>
+						<div id="feeling">
+							<label><input type="radio" name="feeling" id="feel1" value="smile.png" checked><img
+									th:src="@{/images/smile.png}" alt="">(보통)</label>
+							<label><input type="radio" name="feeling" id="feel2" value="bored.png"><img
+									th:src="@{/images/bored.png}" alt="">(지루)</label>
+							<label><input type="radio" name="feeling" id="feel3" value="happy.png"><img
+									th:src="@{/images/happy.png}" alt="">(행복)</label>
+							<label><input type="radio" name="feeling" id="feel4" value="sad.png"><img
+									th:src="@{/images/sad.png}" alt="">(슬픔)</label>
+							<label><input type="radio" name="feeling" id="feel5" value="sick.png"><img
+									th:src="@{/images/sick.png}" alt="">(아픔)</label>
+							<label><input type="radio" name="feeling" id="feel6" value="angry.png"><img
+									th:src="@{/images/angry.png}" alt="">(화남)</label>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<th>제목</th>
+					<td><input type="text" name="title" id="title"></td>
+				</tr>
+				<tr>
+					<th>오늘의일기</th>
+					<td>
+						<textarea name="content" id="content"></textarea>
+					</td>
+
+				</tr>
+				<tr>
+					<th>버튼들</th>
+					<td>
+						<input type="button" value="일기쓰기" id="button1">
+						<input type="reset" value="다시쓰기">
+					</td>
+
+				</tr>
+
+
+			</table>
+		</form><br>
+
+		<!-- diary 출력 위치 -->
+		<div id="contents"></div>
+
+	</div>
+</body>
+
+</html>

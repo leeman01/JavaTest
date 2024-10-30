@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <a th:href="@{/}">첫화면으로이동</a>
+    <ul>
+
+        <li th:text="${fitness.name}"></li>
+        <li th:text="${fitness.gender}? 남 : 여"></li>
+        <li th:text="${fitness.weight}"></li>
+        <li th:text="${fitness.height}"></li>
+        <li th:text="${fitness.joinDate}"></li>
+        <li th:text="${fitness.stdWeight}"></li>
+        <li th:text="${fitness.bmi}"></li>
+        <li th:text="${fitness.bmiResult}"></li>
+
+
+    </ul>
+
+</body>
+
+</html>

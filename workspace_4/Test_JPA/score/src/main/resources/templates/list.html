@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+
+
+<head>
+    <meta charset="UTF-8">
+    <title>전체 목록</title>
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid black;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <h2>[ 전체 학생 조회 ]</h2>
+    <input type="button" value="전체조회하기" id="button1">
+    <table border="1">
+        <tr>
+            <th>번호</th>
+            <th>학번</th>
+            <th>이름</th>
+            <th>국어</th>
+            <th>영어</th>
+            <th>수학</th>
+            <th>총점</th>
+            <th>버튼</th>
+            <th>버튼</th>
+        </tr>
+        <tr th:each="student,status:${list}">
+            <td>[[${status.count}]]</td>
+            <td th:text="${student.stId}"></td>
+            <td th:text="${student.stName}">이름</td>
+            <td th:text="${student.korean}">국어</td>
+            <td th:text="${student.english}"></td>
+            <td th:text="${student.math}">수학</td>
+            <td th:text="${student.math+student.korean+student.english}">수학</td>
+            <td><a th:href="@{/delete(stId=${student.stId})}">삭제버튼이랄까</a></td>
+
+            <td><a href=""> 수정버튼이랄까</a></td>
+        </tr>
+    </table>
+    <!-- 여기에 정보꽃기 -->
+    <div id="contents"></div>
+</body>
+
+</html>

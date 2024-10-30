@@ -1,0 +1,78 @@
+package com.example.demo.controller;
+
+import java.util.List;
+
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.example.demo.dto.ProductDTO;
+import com.example.demo.service.ProductService;
+
+import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.example.demo.service.MypageService;
+import com.example.demo.vo.MyexportDetailVO;
+import com.example.demo.vo.MyexportVO;
+
+@Controller
+@RequestMapping("/mypage")
+@RequiredArgsConstructor
+
+public class MypageController {
+
+    @Autowired
+    private final MypageService mypageService;
+    final ProductService productService;
+
+    @GetMapping("/intro")
+    public String mypageIntro() {
+        return "mypage/mypageIntro.html";
+    }
+    @GetMapping("/myexport/detail/return")
+    public String returnDetail() {
+    	return "mypage/myexporIntro";
+    }
+
+    @GetMapping("/mymarketing/list")
+    public String mymarketingList(Model model) {
+        List<ProductDTO> products = productService.getAllProducts(); // 모든 상품 정보 가져오기
+        model.addAttribute("products", products); // mymarketingList.html에 전달
+        return "mypage/mymarketingList.html";
+    }
+
+    // @GetMapping("/mymarketing/detail")
+    // public String mymarketingDetail() {
+    // return "mypage/mymarketingDetail.html";
+    // }
+
+    @GetMapping("/mymarketing/detail/{id}")
+    public String mymarketingDetail(@PathVariable("id") Long id, Model model) {
+        ProductDTO product = productService.selectOne(id);
+        model.addAttribute("product", product);
+        return "mypage/mymarketingDetail.html";
+    }
+
+    @GetMapping("/myexport/list")
+    public String myexportList(
+            @RequestParam(value = "userId", defaultValue = "1") int userId,
+            Model model) {
+        List<MyexportVO> myexportList = mypageService.getMyexportList(userId);
+        model.addAttribute("myexportList", myexportList);
+        return "mypage/myexportList.html";
+    }
+
+    @GetMapping("/myexport/detail")
+    public String myexportDetail(
+            @RequestParam(value = "exportId", defaultValue="1") Long exportId,
+            Model model) {
+        MyexportDetailVO myexportDetailVO = mypageService.getMyexportDetail(exportId);
+        model.addAttribute("myexportDetail", myexportDetailVO);
+        return "mypage/myexportDetailFOB.html";
+    }
+}

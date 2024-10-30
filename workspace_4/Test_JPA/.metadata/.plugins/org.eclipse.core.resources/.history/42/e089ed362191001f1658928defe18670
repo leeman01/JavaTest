@@ -1,0 +1,66 @@
+package com.example.demo.entity;
+
+import java.time.LocalDateTime;
+
+import com.example.demo.dto.UserDto;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Entity
+@NoArgsConstructor
+@AllArgsConstructor
+@lombok.Builder
+@Setter
+@Getter
+@Table(name="auth_user2")
+public class UserEntity {
+	@Id
+	@Column(name="username")
+	private String username;
+	@Column(name="password")
+	private String password;
+	@Column(name="first_name")
+	private String fisrtName;
+	@Column(name="last_name")
+	private String lastName;
+	@Column(name="email")
+	private String email;
+	@Column(name="date_joined")
+	private LocalDateTime dateJoined;
+	@Column(name="last_login")
+	private LocalDateTime lastLogin;
+	@Column(name="register_company_name")
+	private String registerCompanyName;
+	@Column(name="register_company_id")
+	private String registerCompanyId;
+	@Column(name="file_path")
+	private String filePath;
+	@Column(name="roles")
+	private String roles;
+	@Column(name="enabled")
+	private String enabled;
+	
+	public static UserEntity ToEntity(UserDto dto) {
+		return UserEntity.builder()
+				.username(dto.getUsername())
+				.password(dto.getPassword())
+				.fisrtName(dto.getFisrtName())
+				.lastName(dto.getLastName())
+				.email(dto.getEmail())
+				.dateJoined(dto.getDateJoined())
+				.lastLogin(dto.getLastLogin())
+				.registerCompanyName(dto.getRegisterCompanyName())
+				.registerCompanyId(dto.getRegisterCompanyId())
+				.filePath(dto.getFilePath())
+				.roles(dto.getRoles())
+				.enabled(dto.getEnabled())
+				.build();
+	}
+
+}

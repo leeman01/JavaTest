@@ -1,0 +1,942 @@
+/********** Template CSS **********/
+:root {
+    --primary: #FF3E41;
+    --secondary: #51CFED;
+    --light: #F8F2F0;
+    --dark: #060315;
+}
+
+.fw-medium {
+    font-weight: 600 !important;
+}
+
+.back-to-top {
+    position: fixed;
+    display: none;
+    right: 45px;
+    bottom: 45px;
+    z-index: 99;
+}
+
+
+/*** Spinner ***/
+#spinner {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .5s ease-out, visibility 0s linear .5s;
+    z-index: 99999;
+}
+
+#spinner.show {
+    transition: opacity .5s ease-out, visibility 0s linear 0s;
+    visibility: visible;
+    opacity: 1;
+}
+
+
+/*** Button ***/
+.btn {
+    font-weight: 600;
+    transition: .5s;
+}
+
+.btn.btn-primary,
+.btn.btn-secondary {
+    color: #FFFFFF;
+}
+
+.btn-square {
+    width: 38px;
+    height: 38px;
+}
+
+.btn-sm-square {
+    width: 32px;
+    height: 32px;
+}
+
+.btn-lg-square {
+    width: 48px;
+    height: 48px;
+}
+
+.btn-square,
+.btn-sm-square,
+.btn-lg-square {
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: normal;
+}
+
+/*** Navbar ***/
+.navbar .dropdown-toggle::after {
+    border: none;
+    content: "\f107";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    vertical-align: middle;
+    margin-left: 8px;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    position: relative;
+    margin-right: 30px;
+    padding: 25px 0;
+    color: #FFFFFF;
+    font-size: 15px;
+    text-transform: uppercase;
+    outline: none;
+}
+
+.navbar-light .navbar-nav .nav-link:hover,
+.navbar-light .navbar-nav .nav-link.active {
+    color: var(--primary);
+}
+
+@media (max-width: 991.98px) {
+    .navbar-light .navbar-nav .nav-link {
+        margin-right: 0;
+        padding: 10px 0;
+    }
+
+    .navbar-light .navbar-nav {
+        border-top: 1px solid #EEEEEE;
+    }
+}
+
+.navbar-light .navbar-brand,
+.navbar-light a.btn {
+    height: 75px;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: var(--dark);
+    font-weight: 500;
+}
+
+.navbar-light.sticky-top {
+    top: -100px;
+    transition: .5s;
+}
+
+@media (min-width: 992px) {
+    .navbar-light .navbar-nav .nav-link::before {
+        position: absolute;
+        content: "";
+        width: 0;
+        height: 5px;
+        top: -6px;
+        left: 50%;
+        background: #FFFFFF;
+        transition: .5s;
+    }
+
+    .navbar-light .navbar-nav .nav-link:hover::before,
+    .navbar-light .navbar-nav .nav-link.active::before {
+        width: 100%;
+        left: 0;
+    }
+
+    .navbar-light .navbar-nav .nav-link.nav-contact::before {
+        display: none;
+    }
+
+    .navbar .nav-item .dropdown-menu {
+        display: block;
+        border: none;
+        margin-top: 0;
+        top: 150%;
+        opacity: 0;
+        visibility: hidden;
+        transition: .5s;
+    }
+
+    .navbar .nav-item:hover .dropdown-menu {
+        top: 100%;
+        visibility: visible;
+        transition: .5s;
+        opacity: 1;
+    }
+}
+
+
+/*** Header ***/
+@media (max-width: 768px) {
+    .header-carousel .owl-carousel-item {
+        position: relative;
+        min-height: 500px;
+    }
+
+    .header-carousel .owl-carousel-item img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .header-carousel .owl-carousel-item h5,
+    .header-carousel .owl-carousel-item p {
+        font-size: 14px !important;
+        font-weight: 400 !important;
+    }
+
+    .header-carousel .owl-carousel-item h1 {
+        font-size: 30px;
+        font-weight: 600;
+    }
+}
+
+.header-carousel .owl-nav {
+    position: absolute;
+    top: 50%;
+    right: 8%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+}
+
+.header-carousel .owl-nav .owl-prev,
+.header-carousel .owl-nav .owl-next {
+    margin: 7px 0;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+    background: transparent;
+    border: 1px solid #FFFFFF;
+    border-radius: 45px;
+    font-size: 22px;
+    transition: .5s;
+}
+
+.header-carousel .owl-nav .owl-prev:hover,
+.header-carousel .owl-nav .owl-next:hover {
+    background: var(--primary);
+    border-color: var(--primary);
+}
+
+.page-header {
+    background: linear-gradient(rgba(6, 3, 21, .5), rgba(6, 3, 21, .5)), url(../img/carousel-1.jpg) center center no-repeat;
+    background-size: cover;
+}
+
+.breadcrumb-item+.breadcrumb-item::before {
+    color: var(--light);
+}
+
+
+/*** About ***/
+@media (min-width: 992px) {
+    .container.about {
+        max-width: 100% !important;
+    }
+
+    .about-text {
+        padding-right: calc(((100% - 960px) / 2) + .75rem);
+    }
+}
+
+@media (min-width: 1200px) {
+    .about-text {
+        padding-right: calc(((100% - 1140px) / 2) + .75rem);
+    }
+}
+
+@media (min-width: 1400px) {
+    .about-text {
+        padding-right: calc(((100% - 1320px) / 2) + .75rem);
+    }
+}
+
+
+/*** Feature ***/
+@media (min-width: 992px) {
+    .container.feature {
+        max-width: 100% !important;
+    }
+
+    .feature-text {
+        padding-left: calc(((100% - 960px) / 2) + .75rem);
+    }
+}
+
+@media (min-width: 1200px) {
+    .feature-text {
+        padding-left: calc(((100% - 1140px) / 2) + .75rem);
+    }
+}
+
+@media (min-width: 1400px) {
+    .feature-text {
+        padding-left: calc(((100% - 1320px) / 2) + .75rem);
+    }
+}
+
+
+/*** Service, Price & Team ***/
+.service-item,
+.price-item,
+.team-item {
+    box-shadow: 0 0 45px rgba(0, 0, 0, .07);
+}
+
+.service-item img,
+.team-item img {
+    transition: .5s;
+}
+
+.service-item:hover img,
+.team-item:hover img {
+    transform: scale(1.1);
+}
+
+.service-item a.btn-slide,
+.price-item a.btn-slide,
+.team-item div.btn-slide {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    font-size: 0;
+}
+
+.service-item a.btn-slide i,
+.service-item a.btn-slide span,
+.price-item a.btn-slide i,
+.price-item a.btn-slide span,
+.team-item div.btn-slide i,
+.team-item div.btn-slide span {
+    position: relative;
+    height: 40px;
+    padding: 0 15px;
+    display: inline-flex;
+    align-items: center;
+    font-size: 16px;
+    color: #FFFFFF;
+    background: var(--primary);
+    border-radius: 0 35px 35px 0;
+    transition: .5s;
+    z-index: 2;
+}
+
+.team-item div.btn-slide span a i {
+    padding: 0 10px;
+}
+
+.team-item div.btn-slide span a:hover i {
+    background: var(--secondary);
+}
+
+.service-item a.btn-slide span,
+.price-item a.btn-slide span,
+.team-item div.btn-slide span {
+    padding-left: 0;
+    left: -100%;
+    z-index: 1;
+}
+
+.service-item:hover a.btn-slide i,
+.price-item:hover a.btn-slide i,
+.team-item:hover div.btn-slide i {
+    border-radius: 0;
+}
+
+.service-item:hover a.btn-slide span,
+.price-item:hover a.btn-slide span,
+.team-item:hover div.btn-slide span {
+    left: 0;
+}
+
+.service-item a.btn-slide:hover i,
+.service-item a.btn-slide:hover span,
+.price-item a.btn-slide:hover i,
+.price-item a.btn-slide:hover span {
+    background: var(--secondary);
+}
+
+
+/*** Testimonial ***/
+.testimonial-carousel .owl-item .testimonial-item {
+    position: relative;
+    transition: .5s;
+}
+
+.testimonial-carousel .owl-item.center .testimonial-item {
+    box-shadow: 0 0 45px rgba(0, 0, 0, .08);
+    animation: pulse 1s ease-out .5s;
+}
+
+.testimonial-carousel .owl-dots {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.testimonial-carousel .owl-dot {
+    position: relative;
+    display: inline-block;
+    margin: 0 5px;
+    width: 15px;
+    height: 15px;
+    background: var(--primary);
+    border: 5px solid var(--light);
+    border-radius: 15px;
+    transition: .5s;
+}
+
+.testimonial-carousel .owl-dot.active {
+    background: var(--light);
+    border-color: var(--primary);
+}
+
+
+/*** Contact ***/
+@media (min-width: 992px) {
+    .container.contact-page {
+        max-width: 100% !important;
+    }
+
+    .contact-page .contact-form {
+        padding-left: calc(((100% - 960px) / 2) + .75rem);
+    }
+}
+
+@media (min-width: 1200px) {
+    .contact-page .contact-form {
+        padding-left: calc(((100% - 1140px) / 2) + .75rem);
+    }
+}
+
+@media (min-width: 1400px) {
+    .contact-page .contact-form {
+        padding-left: calc(((100% - 1320px) / 2) + .75rem);
+    }
+}
+
+
+/*** Footer ***/
+.footer {
+    background: linear-gradient(rgba(6, 3, 21, .5), rgba(6, 3, 21, .5)), url(../img/map.png) center center no-repeat;
+    background-size: cover;
+}
+
+.footer .btn.btn-social {
+    margin-right: 5px;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--light);
+    border: 1px solid #FFFFFF;
+    border-radius: 35px;
+    transition: .3s;
+}
+
+.footer .btn.btn-social:hover {
+    color: var(--primary);
+}
+
+.footer .btn.btn-link {
+    display: block;
+    margin-bottom: 5px;
+    padding: 0;
+    text-align: left;
+    color: #FFFFFF;
+    font-size: 15px;
+    font-weight: normal;
+    text-transform: capitalize;
+    transition: .3s;
+}
+
+.footer .btn.btn-link::before {
+    position: relative;
+    content: "\f105";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    margin-right: 10px;
+}
+
+.footer .btn.btn-link:hover {
+    letter-spacing: 1px;
+    box-shadow: none;
+}
+
+.footer .copyright {
+    padding: 25px 0;
+    font-size: 15px;
+    border-top: 1px solid rgba(256, 256, 256, .1);
+}
+
+.footer .copyright a {
+    color: var(--light);
+}
+
+.hover-zoom {
+    transition: transform 0.3s ease;
+}
+
+.hover-zoom:hover {
+    transform: scale(1.1);
+    /* 마우스 오버 시 1.1배 확대 */
+}
+
+/* 추천 상품 이미지 hover 시 확대 효과 */
+.featured-product img {
+    transition: transform 0.3s ease;
+    z-index: 1;
+}
+
+.featured-product img:hover {
+    transform: scale(1.1);
+    /* 마우스 오버 시 이미지 확대 */
+}
+
+/* 상품명 스타일, 이미지 위에 표시되도록 z-index 적용 */
+.featured-product h4 {
+    position: relative;
+    z-index: 2;
+    background: rgba(255, 255, 255, 0.7);
+    /* 반투명한 배경으로 텍스트 가독성 높임 */
+    padding: 5px;
+    border-radius: 5px;
+}
+
+/* 상품 설명 입력란 크기 조정 */
+#description {
+    width: 100%;
+    height: 150px;
+    resize: none;
+}
+
+/* 이미지 첨부 버튼 크기 조정 */
+#imageInput {
+    width: 100%;
+}
+
+.small-product-image {
+    width: auto;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.pagination {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.pagination a {
+    color: #007BFF;
+    margin: 0 5px;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+.pagination a.active {
+    background-color: #007BFF;
+    color: white;
+}
+
+.pagination a:hover {
+    background-color: #0056b3;
+    color: white;
+}
+
+.product-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* 회사 정보와 제품 세부 정보 레이아웃 조정 */
+.product-details {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    margin-top: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.company-info h3,
+.product-details h3 {
+    margin-top: 20px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #333;
+}
+
+.company-info p,
+.product-details p {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.product-description {
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.product-date {
+    font-size: 0.9rem;
+    color: #999;
+    margin-bottom: 20px;
+}
+
+.product-views {
+    margin-top: 20px;
+    text-align: left;
+    padding: 0;
+    border: none;
+}
+
+.product-views p {
+    margin-bottom: 8px;
+}
+
+.product-views span {
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+/* 상품 상세 페이지의 이미지 크기 고정 설정 */
+.product-image {
+    width: 400px;
+    /* 고정 너비 */
+    height: 400px;
+    /* 고정 높이 */
+    object-fit: cover;
+    /* 이미지 비율 유지하며 고정 크기에 맞게 설정 */
+    margin-bottom: 20px;
+    /* 아래쪽 간격 */
+    border-radius: 10px;
+    /* 선택 사항: 이미지 테두리 둥글게 */
+}
+
+/* 모든 상품 이미지 스타일 */
+.product-image {
+    display: block;
+    max-width: 100%;
+    /* 부모 요소 너비에 맞춤 */
+    max-height: 500px;
+    /* 화면에서 너무 크지 않게 높이 제한 */
+    width: auto;
+    height: auto;
+    /* 원본 비율 유지 */
+    margin-bottom: 20px;
+    /* 아래쪽 간격 */
+    object-fit: contain;
+    /* 원본 비율을 유지하면서 이미지 크기 맞춤 */
+}
+
+div.image-container {
+    /* width: 600px;
+    height: 600px; */
+    flex: 1;
+    max-width: 50%;
+    /* 이미지 컨테이너 너비를 절반으로 설정 */
+    padding-right: 20px;
+    /* 이미지와 상품 정보 사이에 여백 추가 */
+}
+
+/* 대표 이미지 크기 조정 */
+.product-main-image {
+    max-width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+/* 제품 정보 관련 스타일 */
+.product-views p,
+.company-info p {
+    margin: 0.5em 0;
+}
+
+.company-info {
+    /* border-top: 1px solid #ccc;
+    margin-top: 1.5em;
+    padding-top: 1.5em; */
+    margin-top: 30px;
+    padding-top: 15px;
+    border-top: 1px solid #ddd;
+}
+
+/* 세부 이미지 스타일 */
+.additional-images .additional-image {
+    max-width: 150px;
+    margin-right: 15px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+
+/* 페이지네이션 스타일 추가 */
+.pagination {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.pagination a {
+    color: #007BFF;
+    margin: 0 5px;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+.pagination a.active {
+    background-color: #007BFF;
+    color: white;
+}
+
+.pagination a:hover {
+    background-color: #0056b3;
+    color: white;
+}
+
+/* 게시글 설명 부분 CSS */
+p.description {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    /* 최대 3줄까지만 표시 */
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    /* 넘치는 부분은 ...으로 표시 */
+    max-height: 4.5em;
+    /* 라인의 최대 높이를 설정 (1줄 당 약 1.5em) */
+    line-height: 1.5em;
+    /* 줄 간격 설정 */
+    height: 50px;
+}
+
+/* 상품 상세 페이지 스타일 */
+#product-detail {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+.product-info {
+    /* padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1;
+    max-width: 45%;
+    상품 정보 섹션 너비 설정
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    상품 정보는 위에서 아래로 정렬 */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 20px;
+}
+
+.product-info h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.product-price {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #e74c3c;
+    margin-bottom: 10px;
+}
+
+.product-date,
+.product-views {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.company-info h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.company-info p {
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+    color: #555;
+}
+
+.product-details,
+.company-info {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    margin-top: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* prodMain.css 삭제하고 만듦 */
+.container_promotion {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.product-list {
+    max-width: 1200px;
+    margin: 0 auto;
+    /* 가운데 정렬 */
+    padding-left: 20px;
+    /* 왼쪽 여백 */
+    padding-right: 20px;
+    /* 오른쪽 여백 */
+}
+
+.product-item {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+.product-card {
+    max-width: 100%;
+    width: 300px;
+}
+
+.card {
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    transition: transform 0.3s;
+    overflow: hidden;
+    /* 이미지가 카드 밖으로 넘어가지 않도록 설정 */
+}
+
+.fixed-image {
+    width: 100%;
+    /* 이미지가 컨테이너에 맞게 */
+    height: 200px;
+    /* 고정된 높이 */
+    object-fit: cover;
+    /* 비율 유지하며 이미지 자르기 */
+    border-radius: 8px;
+    /* 이미지 테두리 둥글게 */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    /* 그림자 효과 */
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-body {
+    padding: 15px;
+}
+
+.text-danger {
+    color: #e74c3c;
+}
+
+/* 이미지 크기 고정 */
+.fixed-size {
+    width: 100%;
+    height: 200px;
+    /* 원하는 크기로 설정 */
+    object-fit: cover;
+    /* 이미지가 고정된 크기 내에서 꽉 차게 함 */
+    border-radius: 15px;
+    /* 이미지도 둥글게 */
+    transition: transform 0.3s ease;
+    /* hover 시 부드러운 애니메이션 */
+}
+
+/* hover 시 부드럽게 확대 */
+.fixed-size:hover {
+    transform: scale(1.05);
+    /* hover 시 약간 확대 */
+}
+
+/* 상품명 중앙 정렬 및 간격 */
+.card-body h4 {
+    font-size: 1.2rem;
+    /* 상품명 크기 적당히 조정 */
+    margin: 0;
+    /* 기본 margin 제거 */
+    line-height: 1.5;
+    /* 상품명 텍스트 간격 조정 */
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .product-price {
+        font-size: 1.5rem;
+    }
+
+    .product-date {
+        font-size: 0.8rem;
+    }
+
+    .product-date,
+    .product-views {
+        font-size: 0.9rem;
+    }
+
+    .company-info h3 {
+        font-size: 1.3rem;
+    }
+
+    .company-info p {
+        font-size: 1rem;
+    }
+
+    .product-main-image {
+        max-width: 100%;
+        height: auto;
+        object-fit: contain;
+    }
+
+    .product-details,
+    .company-info {
+        padding: 15px;
+    }
+
+    .product-info {
+        padding: 10px;
+    }
+
+    .product-info h1 {
+        font-size: 2rem;
+    }
+
+    .product-description {
+        font-size: 1rem;
+    }
+
+    #product-detail {
+        padding: 15px;
+    }
+}

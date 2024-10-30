@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    <script th:src="@{/jquery-3.7.1.min.js}"></script>
+    <script>
+        $(function () {
+            $('#req1').on('click', req1);
+            $('#req2').on('click', req2);
+            $('#req2').on('click', req3);
+            // 첫번째 요청
+            function req1() {
+                // alert("req1")
+                // console.log("잘인식?")
+                $.ajax({
+                    url: 'ajaxReq1',
+                    method: 'GET',
+                    success: function (resp) {
+                        console.log("req1의 응답데이터");
+                        console.log(resp);  // This line will log the response data
+                    }
+                });
+            }
+            function req2() {
+                let name = $('#name').val();
+                let phone = $('#phone').val();
+                // 보낼데이터를 JSON으로 만듦
+                let snedData = { "name": name, "phone": phone };
+
+                $.ajax({
+                    url: 'ajaxReq2'
+                    , method: 'GET'
+                    , data: snedData // let resp={"name":"홍길동님","전화번호":0100000}
+                    , success: function (resp) {
+                        $('#req2result').text(JSON.stringify(resp));// 전체받은 데이터를 문자열로 바꿈
+                        let name = resp["name"];
+                        let phone = resp["phone"];
+                        let data = `이름:${name}<br>
+                         전화번호:${phone}`;
+                        $('#req2result').html(data);
+                    }
+                })
+            }
+            // 3번쩨 요청(송신데이터는 없고 수신데이터가 여러개)
+            function req3() {
+                $.ajax({
+                    url: 'ajaxReq3'
+                    , method: 'GET'
+                    , success: function (resp) {
+                        // 화면에 출력하는 코드
+
+                        let a = '정답:';
+                        $.each(resp, function (index, item) {
+                            let data = resp[index];
+                            a += data;
+                        })
+                        $('#req3result').html(a);
+
+                    }
+                })
+            }
+        });
+
+    </script>
+</head>
+
+<body>
+    <h2>AJAX를 이용한 데이터 송수신</h2>
+    <ul>
+        <li><input type="button" value="1_AJAX로 서버 요청 보내기" id="req1">
+            <span>응답의결과는 콘솔창에서 확인 할 것.</span>
+        </li>
+        <li>
+            <label for="">이름: <input type="text" id="name"></label><br>
+            <label for="">번호: <input type="text" id="phone"></label><br>
+            <input type="button" value="2_데이터를 ajax로 송신" id="req2">
+            <p id="req2result" style="color: red;"></p>
+        </li>
+        <li>
+            <br>
+            <input type="button" id="req3" value="3_문자열 리스트 요청">
+            <p id="req3result" style="color: orange;"></p>
+        </li>
+    </ul>
+    <p>
+        <a th:href="@{/secondPage}">다음페이지</a><br><br>
+        <a th:href="@{/guestbookpage}">방명록 페이지</a>
+    </p>
+</body>
+
+</html>

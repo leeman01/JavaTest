@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{base}" layout:fragment="content">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Commercial Invoice</title>
+</head>
+
+
+<body>
+    <!-- Page Header Start -->
+    <div class="container-fluid page-header py-5"
+        style="margin-bottom: 6rem; background-image: url('http://localhost:9600/images/doc.jpg'); background-size: cover;background-position: center;height: 35vh;">
+        <div class="container py-5">
+            <h1 class="display-3 text-black mb-3 animated slideInDown">Document</h1>
+            <nav aria-label="breadcrumb animated slideInDown">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a class="text-black" href="#" style="color: black;">Home</a></li>
+                    <li class="breadcrumb-item"><a class="text-black" href="#" style="color: black;">My Page</a></li>
+                    <li class="breadcrumb-item"><a class="text-black" href="#" style="color: black;">Process</a></li>
+                    <li class="breadcrumb-item text-black active" aria-current="page" style="color: black;">Document
+                    </li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    </div>
+    <!-- Page Header End -->
+    <div class="col-lg-5 wow fadeInUp sticky-header" data-wow-delay="0.1s">
+        <h6 class="text-secondary text-uppercase mb-3 export-header">Commercial Invoice</h6>
+        <h1 class="export-title">작성된 상업송장의 내용을 확인하세요<br></h1>
+        <p class="export-paragraph">추가사항이 있다면 기입해 주시기 바랍니다</p>
+    </div>
+    <div class="container-xxl py-5">
+        <div class="container py-5">
+            <div class="row g-5 align-items-center">
+                <div class="col-lg-8">
+                    <div class="bg-light text-center p-5 wow fadeIn" data-wow-delay="0.5s">
+                        <form id="ciForm" action="/generateInvoice" method="post">
+                            <div class="row g-3">
+                                <h2 class="mt-5" style="position: relative; top: -20px;">상업송장 미리보기</h2>
+                                <div class="col-12">
+                                    <label for="name" class="form-label">수출자 상호명</label>
+                                    <input type="text" class="form-control border-0" id="name" name="name"
+                                        th:value="${commercialInvoice.shipperName}" required style="height: 55px;">
+                                </div>
+                                <div class="col-12">
+                                    <label for="address" class="form-label">수출자 주소</label>
+                                    <input type="text" class="form-control border-0" id="address" name="address"
+                                        th:value="${commercialInvoice.shipperAddress}" required style="height: 55px;">
+                                </div>
+                                <div class="col-12">
+                                    <label for="buyerCompanyName" class="form-label">수하인 상호명</label>
+                                    <input type="text" class="form-control border-0" id="buyerCompanyName"
+                                        name="buyerCompanyName" th:value="${commercialInvoice.consigneeName}" required
+                                        style="height: 55px;">
+                                </div>
+                                <div class="col-12">
+                                    <label for="buyerCompanyAddress" class="form-label">수하인 주소</label>
+                                    <input type="text" class="form-control border-0" id="buyerCompanyAddress"
+                                        name="buyerCompanyAddress" th:value="${commercialInvoice.consigneeAddress}"
+                                        required style="height: 55px;">
+                                </div>
+                                <div class="col-12">
+                                    <label for="expectedShippingDate" class="form-label">예상출발일자</label>
+                                    <input type="text" class="form-control border-0" id="expectedShippingDate"
+                                        name="expectedShippingDate" th:value="${commercialInvoice.expectedShippingDate}"
+                                        required style="height: 55px;">
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <label for="shippingPortCountry" class="form-label">선적지 국가</label>
+                                    <input type="text" class="form-control border-0" id="shippingPortCountry"
+                                        name="shippingPortCountry" value="Republic of Korea" required
+                                        style="height: 55px;">
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <label for="placeOfLoading" class="form-label">선적지 항구</label>
+                                    <input type="text" class="form-control border-0" id="placeOfLoading"
+                                        name="placeOfLoading" th:value="${commercialInvoice.loadingPort}" required
+                                        style="height: 55px;">
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <label for="buyerCountry" class="form-label">양하지 국가</label>
+                                    <input type="text" class="form-control border-0" id="buyerCountry"
+                                        name="buyerCountry" th:value="${commercialInvoice.buyerCountry}" required
+                                        style="height: 55px;">
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <label for="placeOfUnloading" class="form-label">양하지 항구</label>
+                                    <input type="text" class="form-control border-0" id="placeOfUnloading"
+                                        name="placeOfUnloading" th:value="${commercialInvoice.unloadingPort}" required
+                                        style="height: 55px;">
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <label for="invoiceNo" class="form-label">상업송장 인보이스 번호</label>
+                                    <input type="text" class="form-control border-0" id="invoiceNo" name="invoiceNo"
+                                        th:value="${commercialInvoice.invoiceNo}" required style="height: 55px;">
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <label for="invoiceDate" class="form-label">상업송장 발행일자</label>
+                                    <input type="text" class="form-control border-0" id="invoiceDate" name="invoiceDate"
+                                        th:value="${commercialInvoice.invoiceDate}" required style="height: 55px;">
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <label for="LCno" class="form-label">신용장 번호</label>
+                                    <input type="text" class="form-control border-0" id="LCno" name="LCno"
+                                        style="height: 55px;">
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <label for="LCdate" class="form-label">신용장 발행일자</label>
+                                    <input type="text" class="form-control border-0" id="LCdate" name="LCdate"
+                                        style="height: 55px;">
+                                </div>
+                                <div class="col-12">
+                                    <label for="buyerCompanyName" class="form-label">수입자 상호명</label>
+                                    <input type="text" class="form-control border-0" id="buyerCompanyName2"
+                                        name="buyerCompanyName" th:value="${commercialInvoice.consigneeName}" required
+                                        style="height: 55px;">
+                                </div>
+                                <div class="col-12">
+                                    <label for="buyerCompanyAddress" class="form-label">수입자 주소</label>
+                                    <input type="text" class="form-control border-0" id="buyerCompanyAddress2"
+                                        name="buyerCompanyAddress" th:value="${commercialInvoice.consigneeAddress}"
+                                        required style="height: 55px;">
+                                </div>
+                                <div class="col-12">
+                                    <label for="References" class="form-label">기타사항</label>
+                                    <input type="text" class="form-control border-0" id="References" name="References"
+                                        style="height: 55px;">
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <label for="incoterm" class="form-label">운송조건</label>
+                                    <input type="text" class="form-control border-0" id="incoterm" name="incoterm"
+                                        th:value="${commercialInvoice.incoterm}" required style="height: 55px;">
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <label for="placeOfLoading" class="form-label">선적항구</label>
+                                    <input type="text" class="form-control border-0" id="placeOfLoading"
+                                        name="placeOfLoading" th:value="${commercialInvoice.loadingPort}" required
+                                        style="height: 55px;">
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <label for="payment_method" class="form-label">지급조건</label>
+                                    <input type="text" class="form-control border-0" id="payment_method"
+                                        name="payment_method" th:value="${commercialInvoice.paymentMethod}" required
+                                        style="height: 55px;">
+                                </div>
+                                <div class="col-sm-6">
+                                    <label for="shippingMarks" class="form-label">화물표기(shipping marks)</label>
+                                    <input type="text" class="form-control border-0" id="shippingMarks"
+                                        name="shippingMarks" style="height: 55px;">
+                                </div>
+                                <div class="col-12">
+                                    <label for="description" class="form-label">물품명세</label>
+                                    <input type="text" class="form-control border-0" id="description" name="description"
+                                        th:value="${commercialInvoice.productDescription}" required
+                                        style="height: 55px;">
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <label for="quantity" class="form-label">물품수량</label>
+                                    <input type="text" class="form-control border-0" id="quantity" name="quantity"
+                                        th:value="${commercialInvoice.productQuantity}" required style="height: 55px;">
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <label for="price_per_unit" class="form-label">물품단가</label>
+                                    <input type="text" class="form-control border-0" id="price_per_unit"
+                                        name="price_per_unit" th:value="${commercialInvoice.unitPrice}" required
+                                        style="height: 55px;">
+                                </div>
+                                <div class="col-12">
+                                    <label for="Amount" class="form-label">물품총액</label>
+                                    <input type="text" class="form-control border-0" id="Amount" name="Amount"
+                                        th:value="${commercialInvoice.totalAmount}" required style="height: 55px;">
+                                </div>
+                                <div class="col-12">
+                                    <label for="signature" class="form-label">서명:</label>
+                                    <img id="signature"
+                                        th:src="@{|/export/invoice/${commercialInvoice.invoiceNo}/signature|}"
+                                        alt="Signature Image" class="img-fluid">
+                                </div>
+                                <div class="col-12">
+                                    <input type="submit" class="btn btn-primary w-100 py-3" value="이대로 서류생성하기">
+                                </div>
+                            </div>
+                        </form>
+                        <div id="downloadSection" class="mt-3" style="display: none;">
+                            <button id="downloadButton" class="btn btn-primary">상업송장 다운로드</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
