@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script defer src="./스크립트/a18_Classlist.js"></script>
+    <style>
+        .info {
+            font-size: 1.5em;
+        }
+
+        .red {
+            color: red;
+        }
+
+        .green {
+            color: green;
+        }
+
+        .blue {
+            color: blue;
+        }
+
+        .visible {
+            visibility: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>js로 classlist조작하기</h2>
+    <div class="btngroup">
+
+        <input type="button" id="get" value="클래스명 가져오기">
+        <input type="button" id="add" value="클래스명 추가하기">
+        <input type="button" id="remove" value="클래스 삭제하기">
+        <input type="button" id="replace" value="클래스명 교체하기">
+        <input type="button" id="toggle" value="클래스 스위칭">
+        <input type="button" id="contains" value="클래스 서칭">
+    </div>
+    <br>
+    <div id="content" class="red">
+        자바스크립트 classList 연습
+    </div>
+    <p id="target"></p>
+</body>
+
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>선택자</title>
+</head>
+
+<body>
+    <h2> CSS 선택자</h2>
+    <p>
+        요소에 서식을 적용하기 위해서는 요소를 정확히 선택하는 것이 매우 중요! <br>
+        선택자(selector)는 요소를 다양하게 선택하도록 제공하는 방법
+    </p>
+    <ul>
+        <li>단순 선택자
+            <ul>
+                <li>전체선책자:*(특이값:0) </li>
+                <li>요소선택자: 태그명 그 자체</li>
+                <li>그룹선택자: ,(콤마)</li>
+                <li>클래스선택자: class속성을 주고 여러요소를 선택</li>
+                <li>아이디 선택자: id속성을 주고(#아이디명) 하나의 요소를 선택</li>
+                <li><a href="./simpleselector.html"> 단순선택자의 사용</a></li>
+            </ul>
+
+        </li>
+        <li>가상(Pseudo) 클래스 선택자
+        <li>(참고) <a href="https://www.w3schools.com/css/css_pseudo_classes.asp"> w3scools </a></li>
+        <li>가상클래스는 특정요소의 상태에 따라 선택하는 방법</li>
+        <li>"요소명:상태" - 주로 a태그의 상태를 나눠서 가상클래스를 적용하지만</li>
+        <li><a href="./pselector.html"> 가상선택자의 사용</a></li>
+        <li></li>
+        </li>
+        <li> 가상요소 선택자
+            <ui>
+        <li><a href="https://www.w3schools.com/css/css_pseudo_elements.element"> w3scools </a></li>
+        <li>가상요소란? 태그의 지정된 부분에 스타일을 적용할 때 사용</li>
+        <li>콜론2개(::)를 붙여서 요소의 특정부분에 스타일을 적용</li>
+        <li><a href="./html/pelement.html"> 가상요소 선택자의 사용</a></li>
+        <li>(연습)<a href="./html/tablePselector.html"> 테이블에 가상클래스 선택지 사용하기</a></li>
+        </ui>
+        </li>
+        <li>속성선택자
+            <ul>
+                <li>html 요소 중에서 특정속성(attribute)을 가진 요소를 선택</li>
+                <li><a href="https://www.w3schools.com/css/css_attribute_selectors.asp">참고 </a></li>
+                <li>
+                    [속성]: 요소가 지정된 속성이 있을 때<br>
+                    [속성=값]:요소의 속성이 지정된 값을 가지고 있을때 <br>
+                    [속성 ~ =값]: 요소의 속성이 지정된 값을 포함하고있을때(하나의단어로)<br>
+                    [속성^=값]: 특정값으로 시작<br>
+                    [속성$=값]: 지정된 값으로 끝날때<br>
+                    [속성|=값]: 단어가 완전히 끊어져야함<br>
+                    [속성*=값]: 클래스명에 특정 단어가 포함되어있는 지여부로 , -를 기준으로 띄어져잇어야함 띄워쓰기 허용 x<br>
+                </li>
+                <li>예<a href="./attributeSelevtor.html"></a></li>
+                <li></li>
+            </ul>
+        </li>
+        <li>종속 선택자
+            <ul>
+                <li>둘 이상의 선택자를 조합해서 사용(족보)</li>
+                <li>공백(후손선택자): 하위 항목 전부</li>
+                <li>&gt ; (자식선택자) : 인접하게 바로 포함된 항목을 선택</li>
+                <li> + (형제선택자) : 상위클래스가같으면서 연달아 있는 요소 항목을 선택</li>
+                <li>~ (일반형제 선택자) : 같은 상위 클래스를 가진 항목을 선택</li>
+                <li>예<a href="./siblingSelevtor.html">종속선택자의사용</a></li>
+            </ul>
+        </li>
+        <li>기타 선택자
+            <ul>
+                <li>not(선택자): 괄호안에 지정한 선택자가 아닌 요소를 선택</li>
+                <li>nth - child(수식) : 수식에 맞는 요소를 선택 </li>
+                <li>예<a href="./etcSelevtor.html">기타선택자의사용</a></li>
+            </ul>
+        </li>
+
+    </ul>
+</body>
+
+</html>

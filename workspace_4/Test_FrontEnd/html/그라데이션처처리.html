@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>그라데이션처리</title>
+    <style>
+        div {
+            width: 150px;
+            height: 150px;
+            border: 1px solid black;
+        }
+
+        div.one {
+            background-color: blue;
+            background: linear-gradient(to right bottom, blue, white);
+        }
+
+        div.two {
+            background-color: red;
+            background: linear-gradient(45deg, #f00, #fff);
+        }
+
+        div.three {
+            background-color: #06f;
+            background: linear-gradient(to bottom, #06f, #fff, 50%, #06f);
+        }
+
+        div.four {
+            background: red;
+            background: radial-gradient(white, yellow, red);
+        }
+
+        div.five {
+            background: darkgreen;
+            background: radial-gradient(circle at 10% 10%, white, yellow, darkgreen);
+        }
+    </style>
+
+</head>
+
+<body>
+    <h2>선형 그라데이션(일반)</h2>
+    <div class="one"></div>
+    <br>
+    <h2>선형 그라데이션(각도)</h2>
+    <div class="two"></div>
+    <h2>선형그라데이션(color-stop)</h2>
+    <div class="three"></div>
+    <br>
+    <h2>원형그라데이션(일반)</h2>
+    <div class="four"></div>
+    <br>
+    <h2>원형그라데이션(중심점 변경)</h2>
+    <div class="five"></div>
+
+</body>
+
+</html>

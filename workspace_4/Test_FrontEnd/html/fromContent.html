@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>폼요소의 사용</title>
+</head>
+
+<body>
+    <h3> 폼요소</h3>
+    <div>
+        <a href="index.html">
+            <img src="./Images/cat.png" alt="첫번째 페이지로 이동">
+        </a>
+    </div>
+    <p> 사용자의 입력을 받아그 내용을 서버로 전송하기 위해 사용되는 태그<br>
+        폼요소는 대부분 인라인 요소<br>
+        회원가입 , 로그인, 비밀번호 변경 , 게시글 입력 , 댓글 입력 등에서 사용<br>
+        <br><br>
+        input , textarea , select ,label , 등이 있다 <br>
+        name 속성 : 서버쪽 변수명의 역할 <br><br>
+        form 태그의 속성 중 <br>
+        1) method = "get" :생략 가능 , 주소표시줄에 노출됨 , 다른 화면을 달라는 요청 , 주소표시줄에 쓸수잇는 문자개수가 정해져 잇어 많은 데이터<br>
+        를 보낼때는 get방식은 지양해야한다<br>
+        2) method = "post" : 생략불가 , 주소표시줄에 노출되지않음 , 처리요청 , 많은 양의 데이터를 처리할때 사용 , 파일첨부시에는 post방식
+
+        <hr>
+    <form action="" method="post">
+
+        <div class="article">
+            <h3>input 태그</h3>
+            <fieldset>
+                <legend> input 태그의 다양한 type</legend>
+                <label for="userid">한 줄 글상자: </label>
+                <input type="text" id="userid" maxlength="15" name="userid" placeholder="아이디를 입력하시오"><br>
+                <label for="password"> 비밀번호: </label>
+                <input type="password" id="password" name="userpwd" placeholder="비밀번호입력"><br>
+
+                <input type="hidden" name="hiddenData" vlaue="서버로존송되는 값">
+
+                <label for="picture"> 사진첨부</label>
+                <input type="file" id="picture" name="picture">
+            </fieldset>
+        </div><br><br>
+        <div class="article">
+            <h3> 여러개에서 선택: radio, checkbox,select</h3>
+            <fieldset>
+                <legend>여러항목 선택(지역)</legend>
+                <!-- 그룹핑을 하지 않으면 선택상자에서 모두 복수선택이 가능해져 name값을 동일하게 설정해 그룹핑을 한다-->
+                <label> 지역:
+                    <!-- 모든값에 checked를 설정한다고 전부다 체크가ㅣ 되는건아니다 모두 다 선택하면 맨 마지막 체크박스만 고정체킹되어있다-->
+                    <input type="radio" name="location" checked> 서울
+                    <input type="radio" name="location" id=""> 부산
+                    <input type="radio" name="location" id=""> 인천
+                    <input type="radio" name="location" id=""> 광주
+                </label>
+
+
+            </fieldset><br><br>
+            <fieldset>
+                <legend>여러항목 선택(지역,취미)</legend>
+                <!-- 그룹핑을 하지 않으면 선택상자에서 모두 복수선택이 가능해져 name값을 동일하게 설정해 그룹핑을 한다-->
+                <label> 지역:
+                    <!-- 모든값에 checked를 설정한다고 전부다 체크가ㅣ 되는건아니다 모두 다 선택하면 맨 마지막 체크박스만 고정체킹되어있다-->
+                    <input type="radio" name="location" value="seoul" checked> 서울
+                    <input type="radio" name="location" value="busan" id=""> 부산
+                    <input type="radio" name="location" value="Incheon" id=""> 인천
+                    <input type="radio" name="location" value="kwanju" id=""> 광주
+                </label><br><br>
+
+                <label> 취미:
+                    <input type="checkbox" name="hobby" value="축구"> 축구
+                    <input type="checkbox" name="hobby" value="야구"> 야구
+                    <input type="checkbox" name="hobby" value="테니구"> 테니구
+                    <input type="checkbox" name="hobby" value="농구"> 농구
+                </label><br><br>
+
+                <label for="school">고등학교: </label>
+                <select name="school" id="school">
+                    <optgroup>
+                        <option value="서울고등학교">서울고등학교</option>
+                        <option value="부산고등학교">부산고등학교</option>
+                        <option value="인천고등학교">인천고등학교</option>
+                        <option value="양주고등학교">양주고등학교</option>
+                        <option value="덕정고등학교">덕정고등학교</option>
+                    </optgroup>
+                </select><br><br>
+
+                <label for="color">색상 1: </label>
+                <select name="color" id="color">
+                    <optgroup>
+                        <option value="빨강">빨강</option>
+                        <option value="주황">주황</option>
+                        <option value="노랑">노랑</option>
+                        <option value="초록">초록</option>
+                        <option value="파랑">파랑</option>
+                    </optgroup>
+                </select>
+            </fieldset>
+        </div><br><br>
+
+
+        <div class="article"><br><br>
+            <h3>여러 줄 글 상자</h3>
+            <label for="reason">여러 줄 글 상자</label>
+            <textarea name="" id="reason" cols="100" rows="10"></textarea> <!--textarea는 enter 사용하면 안됨-->
+        </div><br><br>
+
+
+
+        <div class="article">
+            <label> 버튼들
+                <input type="button" value="첫번쨰">
+                <input type="submit" value="전송"> <!-- 서버로 데이터를 또는 폼전체의 내용을  보낼때 사용한다-->
+                <input type="reset" value="취소"> <!-- 폼 태그로 감싼 내용을 초기화-->
+                <button>두 번째</button>
+            </label>
+        </div>
+    </form>
+</body>
+
+</html>

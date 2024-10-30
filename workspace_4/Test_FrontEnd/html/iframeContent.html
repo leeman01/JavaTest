@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iframe 요소</title>
+    <style>
+        iframe.content {
+            width: 80%;
+            height: 480px;
+        }
+    </style>
+</head>
+
+<body>
+    <h3> iframe 요소</h3>
+    <p>
+        문서내에 다른 문서를 포함시킬수 있도록 해주는 요소 <br>
+        다른 웹페이지는 보안 문제로 인하여 iframe으로 포함시킬 수 없다
+    </p>
+    <p>
+        <a href="./textContent.html" target="win">1. 콘텐츠를 작성하는 기본태그 </a> &nbsp;
+        <a href="./listContent.html" target="win"> 2. 목록작성 기본태그</a> &nbsp;
+        <a href="./table.html" target="win"> 3. 표를 작성하는 기본태그</a>
+    </p>
+    <p>
+        <iframe class="content" name="win" src="./textContent.html" frameborder="0"></iframe>
+    </p>
+
+</body>
+
+</html>

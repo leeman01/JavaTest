@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입</title>
+    <link rel="stylesheet" href="from.css">
+    <script defer src="../자바/스크립트/a16_validation.js"></script>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <h2>회원가입_회원정보 입력</h2>
+        <div>
+            홈 &gt; 회원 &gt; 회원가입
+        </div>
+        <div>회원정보 입력</div>
+        <p>
+            <span class="important">*</span>
+            표시된 항목은 <span class="important">필수입력</span> 항목입니다.
+        </p>
+
+    </div>
+
+    <form action="">
+        <table>
+            <tbody>
+                <tr>
+                    <th>이름</th>
+                    <td><input type="text" id="username"></td>
+
+                </tr>
+                <tr>
+                    <th><span class="important">*</span> 아이디</th>
+                    <td>
+                        <input type="text" id="userid">
+                        <!-- <button>중복확인</button><br> -->
+                        <span id="idcheck"></span>
+                        <br>
+                        <span>영문소문자, 숫자 5 ~ 12자</span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <th><span class="important">*</span> 비밀번호</th>
+                    <td>
+                        <input type="password" id="userpwd">
+                        <span>영문, 숫자, 특수문자 중 2가지 이상 혼합하여 10~15자로 입력하세요.<br>
+                            ※ 특수문자는 "~@#*()...|만 사용가능합니다.</span>
+                    </td>
+                </tr>
+            </tbody>
+            <tr>
+                <th><span class="important">*</span> 비밀번호 확인</th>
+                <td>
+                    <input type="password" id="userpwdcheck">
+                </td>
+            </tr>
+            <tr>
+                <th><span class="important">*</span> 연락처</th>
+                <td>
+                    <span>※ 유선전화와 휴대 전화중 한 가지는 입력하여 주시기 바랍니다.</span><br>
+                    <label for="">전화번호</label>
+                    <select name="" id="phone1">
+                        <option value="02">02</option>
+                        <option value="031">031</option>
+                        <option value="032">032</option>
+                        <option value="051">051</option>
+                    </select> -
+                    <input type="text" id="phone2"> -
+                    <input type="text" id="phone3">
+                </td>
+            </tr>
+            <tr>
+                <th><span class="important">*</span> 이메일</th>
+                <td>
+                    <input type="text" id="email1"> @
+                    <select name="" id="email2">
+                        <option value="">직접입력</option>
+                        <option value="naver.com">naver.com</option>
+                        <option value="daum.net">daum.net</option>
+                        <option value="gmail.com">gmail.com</option>
+                    </select>
+                    <input type="text" id="email3">
+
+                </td>
+            </tr>
+            <tr>
+                <th><span class="important">*</span> 주소</th>
+                <td>
+                    <select name="" id="addr1">
+
+                        <option value="강남구">강남구</option>
+                        <option value="송파구">송파구</option>
+                        <option value="동작구">동작구</option>
+                        <option value="강서구">강서구</option>
+                        <option value="서초구">서초구</option>
+                    </select>
+                    <input type="text" id="addr2">
+                </td>
+            </tr>
+            <tr>
+                <th><span class="important">*</span> 사이트를 알게된 경로</th>
+                <td>
+
+                    <input type="checkbox" name="path" class="path" value="지인의추천" checked>지인의 추천
+                    <input type="checkbox" name="path" class="path" value="검색을통해">검색을 통해
+                    <input type="checkbox" name="path" class="path" value="Tv">Tv
+                    <input type="checkbox" name="path" class="path" value="인터넷">인터넷
+
+                </td>
+            </tr>
+            <tr>
+                <th><span class="important">*</span> 정보수신 동의</th>
+                <td>
+
+                    <label for="">이메일 수신
+                        <input type="radio" name="receive" class="receive" value="예" checked>예
+                        <input type="radio" name="receive" class="receive" value="아니오">아니오
+                    </label>
+                    <hr>
+                    <label for="">카카오톡 수신
+                        <input type="checkbox" name="kakaotalk" checked>카카오톡 맞춤정보 사용 동의
+                    </label>
+                </td>
+            </tr>
+        </table>
+
+        <div class="buttons">
+            <input type="button" value="가입하기" id="join"> &nbsp;
+            <input type="reset" value="취소">
+        </div>
+        <div id="final"></div>
+    </form>
+</body>
+
+</html>

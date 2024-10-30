@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>공지창</title>
+</head>
+
+<body>
+    <h2>Fronted 시험공지</h2>
+    <p>
+        Fronted 시험(HTML,CSS,Javascript)이 8월 19일 오후 2시에서 ~ 5:50분까지 치를 예정
+    </p>
+    <p>
+        추가적으로 시험이외에 과제도 나갑니다<br>
+        과제문제는 사용자가 입력한 데이터를 validation 하는 코드를 작성하는 문제입니다
+    </p>
+    <div>
+        <input type="button" id="close_w" value="창닫기">
+        <input type="button" id="print_w" value="출력">
+    </div>
+    <script>
+        document.getElementById("close_w").addEventListener('click', function () {
+            window.close();
+        });
+        document.getElementById("print_w").addEventListener('click', function () {
+            window.print();
+        })
+    </script>
+</body>
+
+</html>

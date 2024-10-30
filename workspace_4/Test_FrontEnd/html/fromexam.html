@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>내가만든거</title>
+</head>
+
+<body>
+    <h1> 회원가입_회원정보입력</h1><br>
+    <h4> ■ 회원정보입력<br>
+        * 표시된 항목은<strong> 필수입력</strong> 항목입니다</h4><br>
+
+    <table border="1">
+        <form action="class" method="post">
+
+            <fieldset>
+                <label for="'username">이름</label>
+                <input type="text" name="idname" id="username" maxlength="3" minlength="1">
+            </fieldset>
+
+            <fieldset>
+                <label for="userid">*아이디</label>
+                <input type="text" name="id" id="userid" maxlength="12" minlength="5">
+
+                <label>중복확인</label>
+                <input type="button" value="중복확인"><br>
+                <h6> 영문소문자, 숫자 5~12자</h6>
+            </fieldset>
+
+            <fieldset>
+
+                <label for="userpassword">비밀번호</label>
+                <input type="text" name="password" id="userpassword" maxlength="15" minlength="10">
+                <h6> 영문,숫자 ,특수문자중 2가지 이상만 혼합하여 10~15자로 입력하세요.</h6>
+                <h6> ※ 특수문자는 "~!@#*()~|." 만 사용이 가능합니다.</h6>
+            </fieldset>
+            <fieldset>
+
+                <label for="passwordcheck">*비밀번호확인</label>
+                <input type="text" name="passcheck" id="passwordcheck" maxlength="15" minlength="10">
+            </fieldset>
+
+            <fieldset>
+                <h6>※유선전화와 휴대전화중 한가지는 입력하여 주시기 바랍니다</h6>
+                <label for="callnum">*연락처</label><br>
+                <label for="callnum">전화번호</label>
+                <select name="callnum" id="callnum">
+                    <optgroup>
+                        <option value="02">02</option>
+                        <option value="031">031</option>
+                        <option value="070">070</option>
+                    </optgroup>
+                </select>
+                <label for="callnum">-</label>
+                <input type="text" name="callnum" id="callnum">
+                <label for="callnum">-</label>
+                <input type="text" name="callnum" id="callnum"><br>
+
+                <label for="phonelnum">휴대전화</label>
+                <select name="phonelnum" id="phonelnum">
+                    <optgroup>
+                        <option value="02">010</option>
+
+                    </optgroup>
+                </select>
+                <label for="phonelnum">-</label>
+                <input type="text" name="phonelnum" id="phonelnum">
+                <label for="callnum">-</label>
+                <input type="text" name="phonelnum" id="phonelnum">
+
+            </fieldset>
+
+            <fieldset>
+                <label>*이메일</label>
+                <input type="email" name="email">
+                <label for="Email">@</label>
+                <select name="Email" id="Email">
+                    <optgroup>
+                        <option value="naver.com">naver.com</option>
+                        <option value="google.com">google.com</option>
+                        <option value="직접입력">
+                            <label for="Email">직접입력</label>
+                            <input type="text" name="Email" id="Email">
+                        </option>
+                    </optgroup>
+                </select>
+            </fieldset>
+
+            <fieldset>
+                <label for="address">*주소</label>
+                <select name="address" id="address">
+                    <optgroup>
+                        <option value="검색">검색</option>
+                        <option value="직접입력">직접입력</option>
+
+                    </optgroup>
+                </select>
+            </fieldset>
+            <fieldset>
+                <label>이메일수신</label>
+                <input type="radio" name="agree"> 동의
+                <input type="radio" name="agree" checked> 비동의 <br>
+
+                <label> SMS 수신</label>
+                <input type="radio" name="agree2"> 예
+                <input type="radio" name="agree3" checked> 아니오<br>
+
+                <label>카카오톡수신여부</label>
+                <input type="radio" name="agree4"> 카카오톡 맞춤 정보 사용 동의<br>
+
+        </form>
+
+    </table>
+
+
+
+</body>
+
+</html>

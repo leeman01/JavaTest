@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이미지요소</title>
+    <style>
+        body {
+            background-color: aqua;
+        }
+
+        /* id의경우 # // class의 경우 .dmf qnxdlsek */
+        img.animal {
+            width: 80%
+                /* 이미지 크기 줄이기 */
+
+        }
+    </style>
+</head>
+
+<body>
+    <h3> 이미지요소 처리하기</h3>
+    <div>
+        <!-- 상대경로-->
+        <img src="./Images/KakaoTalk_20240618_172828610.jpg" alt="고양이 그림">
+        <img src="./Images/cat.png" alt="고양이 그림">
+
+    </div>
+    <div>
+        <img class="animal" src="./Images/ai-generated-8593968_1280.png" alt="고래 그림">
+        /* 여기서 id값은 고유한것이다 */
+        /* class는 id와는 반대로 공통된것을 사용할 때 주로 사용한다 */
+    </div>
+    <div>
+        <!-- 절대경로-->
+        <img class="animal" src="https://i.pinimg.com/736x/6f/7d/a3/6f7da37d29f909db5dc90033bfb172c0.jpg" alt="찐빵">
+    </div>
+</body>
+
+</html>

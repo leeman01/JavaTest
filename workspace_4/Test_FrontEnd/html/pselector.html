@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>가상클래스 선택자의 사용 </title>
+    <style>
+        a {
+            text-decoration: none;
+        }
+
+        a:link {
+            color: darkorange;
+        }
+
+        a:hover,
+        p.one:hover {
+            background-color: aqua;
+            color: aquamarine;
+            font-size: 1.2em;
+        }
+
+        p.one:hover {
+            cursor: pointer;
+        }
+
+        a:active {
+            color: yellow;
+        }
+
+        a:visited {
+            color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <h2> a태그의 가상클래스 선택자의 사용</h2>
+    <p> 상태의종류 : link, :hover , :active , :visited</p>
+
+    <div><a href="http://www.whitehouse.gov">백악관</a></div>
+    <div><a href="http://www.fbi.gov">FBI</a></div>
+    <p class="one">p태그1</p>
+    <p class="one">p태그2</p>
+</body>
+
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>변수의선언과 타입</title>
+</head>
+
+<body>
+    <h2>변수의선언과 scope</h2>
+    <p>출력결과는 콘솔창을 확인하시오</p>
+    <script>
+        /*
+            자바: Stringly typed 언어 -> 문법이 엄격
+            자바스크립트 : weakly typed언어 -> 변수를 선언후 다른 타입의 값을 대입해도 상관없다
+            => 동적 타이핑: 값이 대인되면서 변수의 타입이 결정
+            변수선언 : let , const , var
+
+        */
+        var a = "스무살";
+        var a = 25;
+        console.log(`a=${a}`)
+        let b = "서른살";
+        b = 30;
+        console.log(`b=${b}`)
+        const c = "마흔살";
+        // c=40 ;  => 다른값을 대입할수없다 대입하면 오류가 발생한다
+        console.log(`c=${c}`)
+
+        console.log('=========scope==============='); // 접근범위
+        function add(a, b) {
+            let result = a + b;
+            console.log(`합계: ${result}`)
+        }
+        add(10, 20);
+        // console.log(`함수의결과: ${result}`) => 이 는 에러이다
+        /* Scope:변수를 선언하고 사용할 때 유효범위
+
+            var : 함수레벨 스코프
+            let , const :블록레벨 스코프
+        */
+        // var 스코프 테스트
+        console.log('varscpre 결과')
+        function varScope() {
+            if (true) {
+                var x = 10;
+                console.log(x);
+            }
+            console.log(x);
+        }
+        varScope();
+        // console.log(x); 범위를 벗어나서 오류가 발생
+        console.log('======let의 스코프테스트=========')
+        function letScope() {
+            if (true) {
+                let y = 10;
+                // console.log(y); 에러발생 =>블록레벨 스코프
+            }
+            console.log(y);
+        }
+        letScope();
+        // console.log(y) 오류발생
+    </script>
+</body>
+
+</html>
