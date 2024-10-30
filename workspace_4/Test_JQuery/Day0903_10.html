@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>요쇼의 추가 또는 삭제</title>
+    <style>
+        div#app,
+        div#app2,
+        div#app3 {
+            border: 1px solid blue;
+        }
+    </style>
+    <script src="./script/jquery-3.7.1.min.js"></script>
+    <script>
+        // 추가버튼 눌렀을 때 동작
+        $(function () {
+            $("#append").on('click', function () {
+                // 1) 추가버튼
+                let myimg = ['./images/2.png', './images/3.png', './images/4.png', './images/5.png'];
+                let choice = Math.floor(Math.random() * 4);
+                let tag = `<img src="${myimg[choice]}" alt="몰루">`;
+                $('div#app').append(tag);
+            });
+            //prepend
+            $('#prepend').on('click', function () {
+                $('div#app2').prepend($('div#app2 img:last'))
+            });
+            // insert
+            $('#insert').on('click', function () {
+                $('<img src="./images/3.png">').insertBefore('div#app3:last');
+            });
+            $('#insert').on('click', function () {
+                $('<img src="./images/4.png">').insertBefore('div#app3 img:last');
+            });
+        });
+    </script>
+</head>
+
+<body>
+
+    <h2>요소의 추가 또는 삭제</h2>
+    <h3>요소의 추가(append,appendTo)</h3>
+    <button id="append" title="append:추가">append를 이용한 추가</button>
+    <div id="app"></div>
+
+    <hr>
+
+    <h2>요소의추가(prepend,prependTo)</h2>
+    <button id="prepend" title="prepend:추가">prepend를 이용한 추가</button>
+    <div id="app2">
+
+        <img src="./images/2.png" alt="몰라">
+        <img src="./images/3.png" alt="몰라">
+        <img src="./images/4.png" alt="몰라">
+        <img src="./images/5.png" alt="몰라">
+
+    </div>
+
+    <hr>
+    <h2>요소의 삽입(insert/after)</h2>
+    <button id="insert" title="insert:삽입">insert를 이용한 삽입</button>
+    <div id="app3">
+        <img src="./images/3.png" alt="몰라">
+        <img src="./images/4.png" alt="몰라">
+    </div>
+
+
+
+</body>
+
+
+
+</html>

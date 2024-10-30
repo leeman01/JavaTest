@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./script/jquery-3.7.1.min.js"></script>
+    <script>
+        //  is 는 동적인 상태값을 알아오고 attr은 초기값만 알아보는 것이다
+        $(function () {
+            $('#check1').on('change', function () {
+                let myCheck = $(this);
+                $('p').html(
+                    'attr : ' + myCheck.attr('checked') + '<br>'
+                    + 'is : ' + myCheck.is(':checked') + '<br>'
+                    + 'prop : ' + myCheck.prop('checked') + '<br>'
+                );
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <h2>CheckBox 상태확인(prop,attr,is)</h2>
+    <div>
+        <input type="checkbox" name="" id="check1" checked="checked">
+        <label for="check1">Remember Me</label>
+        <p></p>
+    </div>
+</body>
+
+</html>

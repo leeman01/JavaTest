@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>text(),html()</title>
+    <script src="./script/jquery-3.7.1.min.js"></script>
+    <script>
+        $(function () {
+            // text() :글자를 읽거나 쓰는 메소드 _inner data
+            // html(): html을 읽거나 쓰는 메소드_inner data
+            let myTag = `이것은<b>데이터</b>입니다`;
+            let myText = $('#myText').text(); //읽기
+            $('p#target').text(myText); // 쓰기
+
+            $('p#target').html(myTag); //쓰기 
+
+            //attr(): 속성 데이터를 읽거나 쓰는 메소드
+            // attr(속성명) : 속성값을 읽어옴
+            // attr(속성명,값) : 속성값을 쓰기
+            let temp = $('p>img').attr('src');
+            let temp2 = $('p>img').attr('alt');
+            // alert(temp + temp2);
+
+            $('p>img').attr('src', './images/2.png');
+            $('p>img').attr('alt', '화남');
+        })
+    </script>
+</head>
+
+<body>
+    <h2>text(),html(),attr()</h2>
+    <p id="myText">무궁화 꽃이 피었습니다</p>
+    <p id="target"></p>
+    <p>
+        <img src="./images/1.jpg" alt="무궁화">
+    </p>
+
+</body>
+
+</html>

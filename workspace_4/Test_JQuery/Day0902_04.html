@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>선택자를 이용한 dom 접근</title>
+    <script src="./script/jquery-3.7.1.min.js"></script>
+    <script>
+        $(function () {
+            // 다양한 JQuery 선택자 == CSS 선택자와 같다 !!
+            $('#wrap a[href]').css('border', '3px solid black'); // a의 속성 href를 가진 요소
+            $('#wrap a[href$=net]').css('color', '#ff0'); // a의 속성 중 href가 시작 new 으로 종료
+            $('#wrap a[href*=google]').css('color', '#f0f'); // a의 속성 중 hreff를 포함하는지
+            $('#wrap a[href^=https]').css('color', '#0ff'); // a의 속성 중 hreff로 시잓하는지
+
+            $('#userid:text').css('background-color', '#eee'); // a의 속성 중 hreff로 시잓하는지
+            $('#userpwd:password').css('background-color', 'pink'); // a의 속성 중 hreff로 시잓하는지
+
+        });
+
+    </script>
+</head>
+
+<body>
+    <div id="wrap">
+        <p><a href="https://naver.com">네이버</a></p>
+        <p><a href="http://nate.com">네이트</a></p>
+        <p><a href="http://daum.net">다음</a></p>
+        <p><a href="http://google.com">구글</a></p>
+    </div>
+    <form action="#" id="member">
+        <p>
+            <label>아이디 :
+                <input type="text" name="userid" id="userid">
+            </label>
+        </p>
+        <p>
+            <label>비밀번호 :
+                <input type="password" name="userpwd" id="userpwd">
+            </label>
+        </p>
+    </form>
+</body>
+
+</html>

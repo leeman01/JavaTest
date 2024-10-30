@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            width: 1000px;
+            border-top: 1px solid gray;
+            border-bottom: 1px solid gray;
+            border-collapse: collapse;
+        }
+
+        thead>tr {
+            background-color: aqua;
+        }
+
+        tr {
+            border-bottom: 1px dotted gray;
+        }
+
+        td,
+        th {
+            padding: 5px;
+        }
+
+        tbody tr:hover {
+            background-color: #eee;
+        }
+    </style>
+    <script src="./script/jquery-3.7.1.min.js"></script>
+    <script>
+        $(function () {
+            // 전체 선택상자를 체크하면 나머지를 모두 실행하도록
+            $('#checkAll').on('click', function () {
+                // alert('체크박스!');
+                if ($(this).is(':checked')) {
+                    $('tbody input:checkbox').prop('checked', true);
+                } else {
+                    $('tbody input:checkbox').prop('checked', false);
+                }
+            });
+            // 삭제버튼 클릭하면 체크된 고객명단 삭제
+            $('#deleteMember').on('click', function () {
+                let checkedItem = $('tbody input:checked').parent().parent();
+                checkedItem.remove();
+            })
+        });
+    </script>
+</head>
+
+<body>
+    <h2>★고객목록★</h2>
+    <p>총<span>5명의 고객이</span>검색되었습니다.</p>
+    <div id="active">
+        <input type="checkbox" id="checkAll">
+        <input type="button" id="deleteMember" value="삭제">
+
+
+    </div>
+
+    <div id="member">
+        <table>
+            <thead>
+                <tr>
+                    <th>선택</th>
+                    <th>이름(이메일)</th>
+                    <th>주소</th>
+                    <th>전화번호</th>
+                    <th>등급</th>
+                </tr>
+
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="box"><input type="checkbox" name="" id=""></td>
+                    <td class="name">홍길동(12354@naver.com)</td>
+                    <td class="address">서울시 종로구 홍은동</td>
+                    <td class="phone">010-1111-2222</td>
+                    <td class="type">최우수 고객</td>
+                </tr>
+                <tr>
+                    <td class="box"><input type="checkbox" name="" id=""></td>
+                    <td class="name">이몽룡(1234@naver.com)</td>
+                    <td class="address">서울시 종로구 홍은</td>
+                    <td class="phone">010-1111-2223</td>
+                    <td class="type">우수 고객</td>
+                </tr>
+                <tr>
+                    <td class="box"><input type="checkbox" name="" id=""></td>
+                    <td class="name">몽몽(124@naver.com)</td>
+                    <td class="address">서울 종로구 홍은동</td>
+                    <td class="phone">010-1211-2222</td>
+                    <td class="type">보통 고객</td>
+                </tr>
+                <tr>
+                    <td class="box"><input type="checkbox" name="" id=""></td>
+                    <td class="name">동(1234@naver.com)</td>
+                    <td class="address">서울시 홍은동</td>
+                    <td class="phone">010-1111-2222</td>
+                    <td class="type">망한 고객</td>
+                </tr>
+                <tr>
+                    <td class="box"><input type="checkbox" name="" id=""></td>
+                    <td class="name">홍길동(1234@naver.com)</td>
+                    <td class="address">서울시 종로구 홍은동</td>
+                    <td class="phone">010-1111-2222</td>
+                    <td class="type">보통 고객</td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+</body>
+
+</html>

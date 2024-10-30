@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        table {
+            width: 1000px;
+            border-top: 1px solid gray;
+            border-bottom: 1px solid gray;
+            border-collapse: collapse;
+        }
+
+        thead>tr {
+            background-color: aqua;
+        }
+
+        tr {
+            border-bottom: 1px dotted gray;
+        }
+
+        td,
+        th {
+            padding: 5px;
+        }
+
+        tbody tr:hover {
+            background-color: #eee;
+        }
+    </style>
+    <title>연습문제</title>
+
+    <script src="./script/jquery-3.7.1.min.js"></script>
+    <script src="./script/exam15_deleteMember.js"></script>
+</head>
+
+<body>
+    <h2>[연습문제]</h2>
+
+    <div>
+        <button id="receive">수신</button><br><br>
+        <input type="checkbox" id="checkAll">
+        <input type="button" id="deleteMember" value="삭제">
+    </div>
+    <h2>★고객목록★</h2>
+    <p>총<span>5명의 고객이</span>검색되었습니다.</p>
+    <div id="active">
+
+    </div>
+
+    <div id="member">
+        <table>
+            <thead>
+                <tr>
+                    <th>선택</th>
+                    <th>이름</th>
+                    <th>이메일</th>
+                    <th>전화번호</th>
+                    <th>버튼</th> <!-- 여기에는 삭제 버튼이 들어간다-->
+                </tr>
+
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div,
+        span {
+            width: 200px;
+            height: 40px;
+            background-color: aquamarine;
+            float: left;
+            padding: 10px;
+            margin: 10px;
+        }
+    </style>
+    <script src="./script/jquery-3.7.1.min.js"></script>
+    <script>
+        $(function () {
+            $('.myclass.otherclass').css('border', '3px solid red').css('color', 'magenta');
+        });
+        //jquery객체.jquery 함수()
+    </script>
+</head>
+
+<body>
+    <div class="myclass">div 태그 .myclass</div>
+    <div class="myclass otherclass">div 태그 .myclass .otherclass</div>
+    <span class="myclass otherclass">span 태그 .myclass .otherclass</span>
+
+</body>
+
+</html>
