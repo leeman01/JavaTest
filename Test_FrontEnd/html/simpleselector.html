@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>단순선택자의 예</title>
+</head>
+
+<body>
+    <h2> 단순선택자의예</h2>
+    <p class="one">
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+        Earum autem recusandae deserunt ipsa corrupti harum pariatur nihil fugit unde at repudiandae aut alias
+        distinctio vero molestiae,
+        aspernatur facilis architecto consequatur?
+    </p>
+    <p class="three">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt, tempora. Architecto eaque veritatis adipisci,
+        facere soluta cum animi velit blanditiis et labore porro eius, ducimus aliquid impedit molestiae eligendi quia.
+    </p>
+    <p class="one test">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil nobis nulla iure autem iste quo quos eos dolorem
+        maxime unde,
+        ullam ex dignissimos recusandae omnis quis? Expedita est explicabo assumenda.
+    </p>
+    <p id="two">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil nobis nulla iure autem iste quo quos eos dolorem
+        maxime unde,
+        ullam ex dignissimos recusandae omnis quis? Expedita est explicabo assumenda.
+    </p>
+    <!--글꼴 설정-->
+    <style>
+        * {
+            font-family: 'Times New Roman', Times, serif;
+            color: rgb(4, 4, 100);
+        }
+
+        /* 특이값: 11 */
+        p.test {
+            background-color: rgb(71, 211, 113);
+        }
+
+        /* 특이값: 10 */
+        .one {
+            background-color: aquamarine;
+        }
+
+        /* 특이값 : 101 */
+        p#two {
+            font-size: 1.5em;
+
+        }
+
+        #two,
+        .three {
+            color: white;
+            background-color: black;
+        }
+    </style>
+</body>
+
+</html>

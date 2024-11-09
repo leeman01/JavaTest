@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인화면</title>
+</head>
+
+<body>
+    <h2>로그인화면</h2>
+
+    <form th:action="@{/loginForm}" method="post">
+        <label for="">
+            아이디 : <input type="text" name="loginId" th:value="${session.remember} ? ${session.loginId} : ' ' "><br>
+        </label><br>
+        <label for="">
+            비밀번호: <input type="password" name="loginPwd"><br>
+        </label>
+        <input type="checkbox" name="remember-me" id="" th:checked="${session.remember}"> 아이디기억<br><br>
+        <input type="submit" value="로그인">
+
+    </form>
+</body>
+
+</html>

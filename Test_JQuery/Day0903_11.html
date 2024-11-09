@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>요쇼의 추가 또는 삭제</title>
+    <style>
+        div#app,
+        div#app2,
+        div#app3 {
+            border: 1px solid blue;
+        }
+    </style>
+    <script src="./script/jquery-3.7.1.min.js"></script>
+    <script>
+        // 추가버튼 눌렀을 때 동작
+        $(function () {
+            $('#remove').on('click', function () {
+                $('#app1 img:first').remove();
+            });
+            $('#empty').on('click', function () {
+                $('#app2').empty();
+            });
+        });
+    </script>
+</head>
+
+<body>
+
+    <!-- 끝태그가 없는 애들을 삭제한다-->
+    <h2>요소의삭제</h2>
+    <button id="remove" title="remove:삭제">remove를 이용한 삭제</button>
+    <div id="app1">
+
+        <img src="./images/2.png" alt="몰라">
+        <img src="./images/3.png" alt="몰라">
+        <img src="./images/4.png" alt="몰라">
+        <img src="./images/5.png" alt="몰라">
+        <img src="./images/2.png" alt="몰라">
+        <img src="./images/3.png" alt="몰라">
+        <img src="./images/4.png" alt="몰라">
+        <img src="./images/5.png" alt="몰라">
+
+    </div>
+
+    <hr>
+    <!--안쪽에 있는 걸 없앤다 끝태그가 있는 애들을 삭제한ㄷ나-->
+    <h2>요소의삭제 (empty)- 특정객체요소의 삭제</h2>
+    <button id="empty" title="empty:삭제">empty를 이용한 삭제</button>
+    <div id="app2">
+
+        <img src="./images/2.png" alt="몰라">
+        <img src="./images/3.png" alt="몰라">
+        <img src="./images/4.png" alt="몰라">
+        <img src="./images/5.png" alt="몰라">
+        <img src="./images/2.png" alt="몰라">
+        <img src="./images/3.png" alt="몰라">
+        <img src="./images/4.png" alt="몰라">
+        <img src="./images/5.png" alt="몰라">
+
+    </div>
+
+
+
+</body>
+
+
+
+</html>

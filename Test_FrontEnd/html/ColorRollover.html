@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>롤오버메뉴 작성하기</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=Noto+Serif+KR:wght@200..900&display=swap"
+        rel="stylesheet">
+    <style>
+        /* .noto-serif-kr-container {
+            font-family: "Noto Serif KR", serif;
+            font-optical-sizing: auto;
+            font-weight: <weight>;
+            font-style: normal;
+        }*/
+        div.container {
+            font-family: 'Times New Roman', Times, serif;
+            width: 500px;
+            height: 700px;
+            margin: 0 auto;
+            background-color: rgb(206, 255, 216);
+
+        }
+
+        /*   inline : 폭과 넗ㅂ이를 줄수 없다 , block: width(0) // inline : width x inline-block: width(0) 다른요소와나눔   */
+        span.gnb {
+            font-size: 1.3em;
+            font-weight: 400;
+            font-style: normal;
+            float: left;
+            display: block;
+            width: 20%;
+            height: 50px;
+            background-color: rgb(175, 221, 148);
+            text-align: center;
+            padding-top: 10px;
+        }
+
+        span.gnb:hover {
+            background-color: blueviolet;
+            color: white;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <span class="gnb">Menu-1</span>
+        <span class="gnb">Menu-2</span>
+        <span class="gnb">Menu-3</span>
+        <span class="gnb">Menu-4</span>
+        <span class="gnb">Menu-5</span>
+
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인한 결과</title>
+</head>
+
+<body>
+    <h2>로그인결과</h2>
+    <p th:unless="${session.loginid eq null}">
+        <span>로그인한 정보가없습니다</span>
+        <a href="logout">로그아웃</a>
+    </p>
+    <p th:if="${session.loginid eq null}">
+        <span>로그인한 아이디 [[${session.loginId}]]</span>
+        <span>[[${session.loginName}]]님, 어서오세요</span>
+        <a href="logout"></a>
+    </p>
+    <p>
+        <a th:href="@{/}">첫화면으로</a>
+    </p>
+</body>
+
+</html>

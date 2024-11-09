@@ -1,0 +1,59 @@
+package com.example.demo.dto;
+
+import java.time.LocalDateTime;
+
+import org.hibernate.annotations.CreationTimestamp;
+
+import com.example.demo.entity.AuthUserEntity;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@AllArgsConstructor
+@NoArgsConstructor
+@Setter
+@Getter
+@Builder
+public class AuthUserDto {
+	// 여기서 수정해야 할건  AccountCompanyDto가 있는데 굳이 회사정보를 추가했다는 점
+	private String username;
+	private String password;
+	private LocalDateTime lastLogin;
+	private int isSuperuser;
+
+	private String firstName;
+	private String lastName;
+	private String email;
+	private int isStaff;
+	private int isActive;
+	private String registerCompanyName;
+	private LocalDateTime dateJoined;
+	private String registerCompanyId;
+//	 파일경로를 추가했다...
+	private String filePath;
+	
+	public static AuthUserDto toDto(AuthUserEntity entity) {
+		return AuthUserDto.builder()
+				.username(entity.getUsername())
+				.password(entity.getPassword())
+				.isSuperuser(entity.getIsSuperuser())
+				.username(entity.getUsername())
+				.firstName(entity.getFirstName())
+				.lastName(entity.getLastName())
+				.email(entity.getEmail())
+				.isStaff(entity.getIsStaff())
+				.isActive(entity.getIsActive())
+				.dateJoined(entity.getDateJoined())
+				.registerCompanyName(entity.getRegisterCompanyName())
+				.registerCompanyId(entity.getRegisterCompanyId())
+				.filePath(entity.getFilePath())
+				.build();
+	}
+}

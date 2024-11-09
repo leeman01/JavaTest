@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>모델에서 데이터 꺼내기</title>
+</head>
+<body>
+	<h2>모델에서 데이터 꺼내기</h2>
+	<p>
+		html문서는 Model의 값을 꺼낼수 없다 <br>
+		그래서 thymeleaf 문법을 사용해야한다
+	</p>
+	<p>
+		아이디: [[${id}]]
+		비밀번호: [[${pwd}]]
+	</p>
+	<!--  [[${id}]] id값을 꺼내온다 model.addAttribute("id",userid);
+		model.addAttribute("pwd",userpwd);이떄의 이름과 동일해야한다-->
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script defer src="./스크립트/a17_CSS접근하기.js"></script>
+    <style>
+        /* img {
+            width: 80%;
+            width: 80%;
+        } */
+
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: aquamarine;
+            visibility: hidden;
+            /*  영역은 존재하나 눈에 안보이게 만들기 */
+        }
+
+        .item {
+            width: 100px;
+            height: 100px;
+            background-color: orange;
+            transition: all 1s ease-in-out;
+            /* 이후 나중에 애니메이션을 주겟다는 선언*/
+        }
+
+        .item:hover {
+            /* 마우스를 올리면  변화한다*/
+            width: 200px;
+            height: 200px;
+        }
+
+        p#click {
+            width: 300px;
+            height: 30px;
+            background-color: cadetblue;
+            text-align: center;
+            font-size: 1.2em;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /*~는 형제를 의미한다*/
+        div.myimg>img {
+            opacity: 0.0;
+            width: 100px;
+            transition: all 1s ease-in-out;
+        }
+
+        #click:hover~div>img {
+            opacity: 1.0;
+            width: 500px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <h2>JS로 CSS 접근하기</h2>
+    <div>
+        <input type="button" value="바꾸기" id="change">
+        <input type="button" value="나타나기" id="view">
+        <input type="button" value="색깔바구기" id="changecolor">
+    </div>
+    <p id="song">
+        나리나리 개나리 입에 따다 물고요<br>
+        뵹어라때 뿅뿅뿅 봄나들이갑니다
+    </p>
+    <div class="box"></div>
+    <div class="item">마우스를 올려봐</div>
+    <p id="click">마우스를 올려부세요</p>
+    <div class="myimg">
+        <img src="../Images/다운로드 (1).jpeg" alt="">
+    </div>
+</body>
+
+</html>

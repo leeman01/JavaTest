@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>가상요소선택자</title>
+    <style>
+        p.one::first-letter {
+            color: #f00;
+            font-size: xx-large;
+            font-weight: bold;
+        }
+
+        p.two::first-line {
+            color: #0f0;
+        }
+
+        p.three::before {
+            content: "하하하하하하!!";
+        }
+
+        p.four::after {
+            content: url(./Images/b.png);
+        }
+
+        p::selection {
+            color: aliceblue;
+            background-color: darkseagreen;
+        }
+    </style>
+</head>
+
+<body>
+    <h2> 가상요소 선택자의예</h2>
+    <p class="one">
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+        Earum autem recusandae deserunt ipsa corrupti harum pariatur nihil fugit unde at repudiandae aut alias
+        distinctio vero molestiae,
+        aspernatur facilis architecto consequatur?
+    </p>
+    <p class="two">
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+        Earum autem recusandae deserunt ipsa corrupti harum pariatur nihil fugit unde at repudiandae aut alias
+        distinctio vero molestiae,
+        aspernatur facilis architecto consequatur?
+    </p>
+    <p class="three">
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+        Earum autem recusandae deserunt ipsa corrupti harum pariatur nihil fugit unde at repudiandae aut alias
+        distinctio vero molestiae,
+        aspernatur facilis architecto consequatur?
+    </p>
+    <p class="four">
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+        Earum autem recusandae deserunt ipsa corrupti harum pariatur nihil fugit unde at repudiandae aut alias
+        distinctio vero molestiae,
+        aspernatur facilis architecto consequatur?
+    </p>
+
+</body>
+
+</html>

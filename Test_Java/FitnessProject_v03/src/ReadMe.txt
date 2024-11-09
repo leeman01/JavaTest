@@ -1,0 +1,9 @@
+2024년 7월 15일
+
+1. 최대 5명의 fitness 회원정보를 ArrayList로 관리하는 프로잭트
+2. UI,Service를 분리 + Interface
+3. 주작업 : C,R,U,D,RA (전체회원정보 조회)
+
+* UI : 사용자가 입출력하는 파일
+.Service : 객체배열을 가지고 있음. UI 에서 CRUD 요청이 오면 그 처리를 담당
+

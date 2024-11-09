@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>속성선택자의 사용</title>
+    <style>
+        p.data:hover {
+            background-color: blueviolet;
+        }
+
+        input[type="text"] {
+            width: 100px;
+            transition: width 1s ease-in-out;
+        }
+
+        input[type="text"]:focus {
+            width: 500px;
+        }
+
+        input[type="text"]:focus,
+        input[type="password"]:focus,
+        input[type="checkbox"]:focus {
+            outline: 1px solid red;
+            background-color: aquamarine;
+        }
+    </style>
+</head>
+
+<body>
+    <h2> 속성선택자의 사용</h2>
+    <p class="data">
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+        Earum autem recusandae deserunt ipsa corrupti harum pariatur nihil fugit unde at repudiandae aut alias
+        distinctio vero molestiae,
+        aspernatur facilis architecto consequatur?
+    </p>
+    <p>
+        Search: <input type="search" name="search">
+    </p>
+    <p>
+        <input type="text" name="text" placeholder="이름을 입력"><br>
+        <input type="password" name="pwd" placeholder="비밀번호 입력"><br>
+        <input type="checkbox" name="check"> 선택하시오<br>
+    </p>
+</body>
+
+</html>

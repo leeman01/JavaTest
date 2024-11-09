@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script defer src="./assingment1.js"></script>
+    <style>
+        .container {
+            width: 80%;
+            /* 사진과 테이블이 차지할 너비를 설정 */
+            margin: 0 auto;
+        }
+
+        img,
+        table {
+            width: 100%;
+            height: auto;
+        }
+
+        body {
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        span>image {
+            width: auto;
+        }
+
+        td#image {
+            width: auto;
+        }
+
+        table>th {
+            text-align: center;
+        }
+
+        span {
+            color: red;
+        }
+
+        fieldset#none {
+            border: none;
+        }
+
+        div#data {
+            border: 1px black;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="">
+        <h1 style="text-align: center;">2018년 국내 공개SW 수요조사</h1>
+        <img src="" alt="">
+        <img src="../Images/computer.png" alt="">
+        <table border="1">
+
+
+
+            <tr>
+                <th><span>*</span>이름</th>
+                <td><input type="text" id="name"></td>
+            </tr>
+            <tr>
+                <th><span>*</span>연락처(전화번호)</th>
+                <td>
+                    <label for="callphone"></label>
+                    <select name="" id="callphone">
+                        <optgroup>
+                            <option value="010">010</option>
+                            <option value="011">011</option>
+                            <option value="012">012</option>
+                        </optgroup>
+                    </select>
+                    <input type="text" id="tell">
+                </td>
+            </tr>
+            <tr>
+                <th><span>*</span>Email</th>
+                <td><input type="email" id="email"></td>
+            </tr>
+            <tr>
+                <th><span>*</span>IT직업군</th>
+                <td>
+                    <label for="job"></label>
+                    <select name="" id="job">
+                        <optgroup>
+                            <option value="Application Developer">Application Developer</option>
+                            <option value="Application Developer">Application Engineer</option>
+                        </optgroup>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td id="target" colspan="2"><span>*</span>Google 서비스중 가장 많이 사용하는 것은 무엇입니까?</td>
+            </tr>
+            <tr>
+                <!-- 이 태그는 겉보기상자를 없앨 예정이라 none이라 지정함 -->
+                <td colspan="2">
+                    <label for="tools"></label>
+                    <fieldset id="none" class="2">
+                        <input type="radio" name="tool" id="tools" clas="1" value="Google">Google
+                        <input type="radio" name="tool" id="tools" clas="1" value="Calender">Calender
+                        <input type="radio" name="tool" id="tools" clas="1" value="주소록">주소록
+                        <input type="radio" name="tool" id="tools" clas="1" value="Youtube">Youtube
+                    </fieldset>
+                </td>
+            </tr>
+
+            <tr>
+                <td id="target" colspan="2"><span>*</span>Google 문서도구중 그 기능을 좀더 강화햇으면 하는것은?</td>
+            </tr>
+            <!-- 이 태그는 겉보기상자를 없앨 예정이라 none이라 지정함 -->
+            <tr>
+                <td colspan="2">
+                    <label for="tools"></label>
+                    <fieldset id="none" class="5">
+                        <input type="checkbox" name="4" id="tools1" value="구글 워드프로세스" class="3"> 구글 워드프로세스
+                        <input type="checkbox" name="4" id="tools1" value="구글 스프레드시트" class="3"> 구글 스프레드시트
+                        <input type="checkbox" name="4" id="tools1" value="구글 지도" class="3"> 구글 지도
+                        <input type="checkbox" name="4" id="tools1" value="설문조사" class="3"> 설문조사
+                    </fieldset>
+
+                </td>
+            <tr>
+                <th colspan="2"> <span>*</span>기타 남기실 말은?</th>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <textarea style="background-color: yellow;" name="" id="text" cols="100"
+                        rows="5">좋은 프로그램 감사합니다!</textarea>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: center;">
+                    <input type="button" value="제출" id="summit">
+                    <input type="button" value="취소" id="cancel">
+                </td>
+            </tr>
+
+
+        </table>
+        <div style="border: 1px; color: aqua;" id="data">
+
+        </div>
+</body>
+
+</html>

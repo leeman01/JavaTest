@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>셀합치기 연습</title>
+    <style>
+        table {
+            border: 2px solid rgb(56, 124, 192);
+            border-collapse: collapse;
+        }
+
+        table thead {
+            background-color: #eee;
+        }
+
+        table th {
+            border: 1px solid #eee;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>셀합치기</h2>
+    <ul>
+        <li>rowspan을 이용-아래로</li>
+        <li>colspan을 이용- 오른쪽 병합</li>
+    </ul>
+    <table border="1">
+        <tbody>
+            <thead>
+                <tr>
+                    <th>제목1</th>
+                    <th>제목2</th>
+                    <th>제목3</th>
+                    <th>제목4</th>
+                </tr>
+            </thead>
+
+            <tr>
+                <td rowspan="3">가</td>
+                <td>가</td>
+                <td>나</td>
+                <td>다</td>
+            </tr>
+            <tr>
+                <td colspan="3">나</td>
+            </tr>
+            <tr>
+
+                <td>나</td>
+                <td>다</td>
+                <td>리</td>
+            </tr>
+            <tr>
+                <td>리</td>
+                <td>니</td>
+                <td>디</td>
+                <td>리</td>
+            </tr>
+        </tbody>
+
+    </table>
+</body>
+
+</html>

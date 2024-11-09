@@ -1,0 +1,49 @@
+package service;
+
+import vo.Product;
+	
+public class Service implements CosmeticServiceItml {
+	int count = 0;
+	Product [] list = new Product[10];
+
+	@Override
+	public boolean insert(Product product) {s
+		
+		if(count ==list.length) {
+			return false;
+		}
+		list[count++]= product;
+		return true; // 삽입 구문
+	}
+
+	@Override
+	public boolean update(Product product) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean delete() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public Product selectOne() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Product[] SelectAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int getCount() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
+}

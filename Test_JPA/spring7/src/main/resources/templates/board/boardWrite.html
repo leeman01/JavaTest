@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://thymeleaf.org" xmlns:sec="http://thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게시글 등록화면</title>
+    <link rel="stylesheet" th:href="@{/css/write.css}">
+</head>
+
+<body>
+    <div class="container">
+        <div class="container" th:replace="fragment/header(title='게시글 쓰기(f)')">
+
+        </div>
+    </div>
+
+    <!-- <div class="logo">
+            <a th:href="@{/}">
+                <img th:src="@{/images/logo.png}" alt="logo">
+            </a>
+            <h2>게시글 쓰기</h2>
+        </div>
+    </div> -->
+
+    <div class="content"> <!-- 파일이 첨부될때는 GET방식으로는 불가능하다-->
+        <form th:action="@{/board/boardWrite}" method="post" enctype="multipart/form-data">
+            <table border="1" style="color: black;">
+                <tr>
+                    <th><label for="boardWriter">작성자</label></th>
+                    <!-- 이제부터는 아이디로만 입력이된다 -->
+                    <td>
+                        <input type="text" name="boardWriter" id="boardWriter" th:value="${#authentication.name}"
+                            readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <th><label for="boardTitle">글제목</label></th>
+                    <td>
+                        <input type="text" name="boardTitle" id="boardTitle" required>
+                    </td>
+                </tr>
+                <tr>
+                    <th><label for="boardContent">글내용</label></th>
+                    <td>
+                        <textarea name="boardContent" id="boardContent" cols="30" rows="10" required></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <th><label for="uploadFile">첨부파일</label></th>
+                    <td>
+                        <input type="file" name="uploadFile" id="uploadFile" class="btn btn-light">
+                    </td>
+                </tr>
+                <tr>
+                    <th colspan="2">
+                        <input type="submit" value="글등록" class="btn btn-primary">
+                        <input type="reset" value="초기화" class="btn btn-danger">
+                    </th>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>
+
+</html>

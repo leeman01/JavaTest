@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>each를 반복한 활용처리</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+            float: left;
+            margin: 5px;
+        }
+    </style>
+    <script src="./script/jquery-3.7.1.min.js"></script>
+    <script>
+        let color = ['red', 'orange', 'cyan', 'silver', 'blue'];
+        $(function () {
+            let cnt = $('div').length;
+            // $.each('div',function(){}); 아래코드와 동일하뉴ㅛ현이다
+            $('div').each(function (index, item) {
+                $(this).css('background-color', color[index]);
+            })
+        });
+    </script>
+</head>
+
+<body>
+    <div>하나</div>
+    <div>둘</div>
+    <div>셋</div>
+    <div>넷</div>
+    <div>다섯</div>
+
+</body>
+
+</html>

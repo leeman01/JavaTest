@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>find() , end()</title>
+    <script src="./script/jquery-3.7.1.min.js"></script>
+    <script>
+        $(function () {
+            // 특정 요소를 찾을 때마다 점점 요소개수의 범위가 좁아짐
+            // end() 그 이전 상태의 선택으로 되돌리는 함수 
+            $('ul').find('.item1').css('background', 'red')
+                .end()
+                .find('.item3').css('background', 'blue');
+        });
+
+    </script>
+</head>
+
+<body>
+    <h2>6. find() , end()</h2>
+    <ul class="first">
+        <li class="item1">item1</li>
+        <li>item2</li>
+        <li class="item3">item3</li>
+    </ul>
+    <ul class="second">
+        <li class="item1">item1</li>
+        <li>item2</li>
+        <li class="item3">item3</li>
+    </ul>
+</body>
+
+</html>

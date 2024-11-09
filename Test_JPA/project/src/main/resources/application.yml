@@ -1,0 +1,38 @@
+spring:
+  application:
+    name: project
+  datasource:
+    url: jdbc:mysql://localhost:3306/firepunch?useSSL=false&useUnicode=true&serverTimezone=Asia/Seoul
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: root
+    hikari:
+      connection-timeout: 20000
+      minimum-idle: 10
+      maximum-pool-size: 10
+      idle-timeout: 300000
+      max-lifetime: 1800000
+  jpa:
+    properties:
+      hibernate:
+        format_sql: true
+    show-sql: true
+  thymeleaf:
+    cache: false
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: leerexman01@gmail.com
+    password: lumm srte xkut ajum
+    properties:
+      mail.smtp.debug: true
+      mail.smtp.connectiontimeout: 1000  # 1초
+      mail.starttls.enable: true
+      mail.smtp.auth: true
+
+server:
+  port: 9600
+
+logging:
+  level:
+    root: info

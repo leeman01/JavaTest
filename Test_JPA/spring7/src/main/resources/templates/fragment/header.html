@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게시글 목록</title>
+    <link rel="stylesheet" th:href="@{/css/list.css}">
+</head>
+
+<body>
+    <div class="container" th:fragment="top-menu(title)">
+        <div class="logo">
+            <a th:href="@{/}">
+                <img th:src="@{/images/logo.png}" alt="logo">
+            </a>
+            <h2 th:text="${title}"></h2>
+        </div>
+        <!-- 로그인정보 -->
+        <div class="user">
+            <ul>
+                <!-- 인증이 되지않은 사람-->
+                <li sec:authorize="isAnonymous()"><a th:href="@{/user/login}">로그인</a></li>
+                <li sec:authorize="isAuthenticated()"><a th:href="@{/user/logout}">[[${loginName}]]님
+                        [[${#authentication.name}]],로그아웃</a></li>
+            </ul>
+        </div>
+    </div> <!--end .container-->
+</body>
+
+</html>

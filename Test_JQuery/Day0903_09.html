@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./script/jquery-3.7.1.min.js"></script>
+    <style>
+        span {
+            color: red;
+            font-size: 0.8em;
+
+        }
+    </style>
+    <script>
+        // 전역변수 설정
+        let id_ok = false;
+        let pwd_ok = false;
+        $(function () {
+            check(); //아이디 비번 체크
+            $('#btn').on('click', function () {
+                // 성별
+                let gender = $('input[type=radio]:checked').val();
+                let hobbyList = $('input[type=checkbox]:checked').val();
+                let hobby = ' ';
+                $('input[type=checkbox]:checked').each(function (index, item) {
+                    // console.log(index + "," + item);
+                    // item은 태그이며 val()은 태그에 적용하는것이 x // 적용하려면 item은 jquery 객체여야한다
+                    // item을 jquery객체로 바꾼다
+                    hobby += $(item).val() + ' ';
+                });
+                let location = $('select>option:selected').val();
+                if (id_ok == true && pwd_ok == true) {
+                    alert("송신완료");
+                } else {
+                    alert("송신실패");
+                }
+            });
+        });
+        function check() {
+            $("#userId").on('keyup', function () {
+                let userId = $('#userId').val();
+                if (userId.length < 3 || userId.length > 5) {
+                    $('#id_check').text('아이디는 3~5');
+                    id_ok = false;
+                    return;
+                }
+                $('#id_check').text('');
+                id_ok = true;
+            });
+            $("#userPwd").on('keyup', function () {
+                let userpwd = $('#userPwd').val();
+                if (userpwd.length < 3 || userpwd.length > 5) {
+                    $('#pwd_check').text('password는 3~5');
+                    pwd_ok = false;
+                    return;
+                }
+                $('#pwd_check').text('');
+                pwd_ok = true;
+            });
+        }
+    </script>
+</head>
+
+<body>
+    <h2>[ 유효성 검증 ]</h2>
+    <form action="">
+        <table border="1">
+            <tr>
+                <th>아이디</th>
+                <td><input type="text" id="userId" placeholder="아이디를 3~5자">
+                    <span id="id_check"></span>
+                </td>
+
+            </tr>
+            <tr>
+                <th>비밀번호</th>
+                <td>
+                    <input type="password" id="userPwd" placeholder="비밀번호를 3~5자">
+                    <span id="pwd_check"></span>
+                </td>
+
+            </tr>
+            <tr>
+                <th>성별</th>
+                <td>
+                    <input type="radio" name="gender" value="남자" checked>남자 &nbsp
+                    <input type="radio" name="gender" value="여자">여자
+
+                </td>
+
+            </tr>
+            <tr>
+                <th>취미</th>
+                <td>
+                    <input type="checkbox" name="hobby" value="수영" checked>수영
+                    <input type="checkbox" name="hobby" value="마라톤">마라톤
+                    <input type="checkbox" name="hobby" value="자전거">자전거
+                    <input type="checkbox" name="hobby" value="등산">등산
+
+                </td>
+            </tr>
+            <tr>
+                <th>사는지역</th>
+                <td>
+                    <select name="location" id="location">
+                        <option value="서울">서울</option>
+                        <option value="광주">광주주</option>
+                        <option value="부산">부산</option>
+                        <option value="제주">제주</option>
+                    </select>
+
+                </td>
+            </tr>
+            <tr>
+                <th colspan="2">
+                    <input type="button" id="btn" value="확인">
+                </th>
+
+            </tr>
+        </table>
+    </form>
+</body>
+
+</html>

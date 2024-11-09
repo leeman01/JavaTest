@@ -1,0 +1,32 @@
+package study;
+
+import java.util.Set;
+import java.util.TreeSet;
+
+public class TreeSet_study {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Set set = new TreeSet();
+		
+		for(int i=0;set.size()<6;++i) {
+			int num = (int)(Math.random()*45+1);
+			set.add(new Integer(num));
+			
+		}
+		System.out.println(set);
+		
+		TreeSet set1 = new TreeSet();
+		String form = "b";
+		String to ="d";
+		set.add("abc"); set.add("alien"); set.add("bat");
+		set.add("car"); set.add("Car"); set.add("disc");
+		set.add("dance"); set.add("dZZZ"); set.add("dzzzzzz");
+		set.add("elephant"); set.add("elevator"); set.add("fan");
+		set.add("flower");
+		System.out.println(set);
+		
+
+	}
+
+}

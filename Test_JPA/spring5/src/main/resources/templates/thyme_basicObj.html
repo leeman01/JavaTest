@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>기본객체다루기</title>
+</head>
+
+<body>
+    <h2>기본객체다루기(숫자)</h2>
+    <ul>
+        <li>Integer(기본): <span th:text="${intNum}"></span></li>
+        <li>Integer 10: <span th:text="${#numbers.formatInteger(intNum,10)}"></span></li>
+        <li>Integer POINT: <span th:text="${#numbers.formatInteger(intNum,3,'POINT')}"></span></li>
+        <li>Integer COMMA: <span th:text="${#numbers.formatInteger(intNum,3,'COMMA')}"></span></li>
+        <li>Integer NONE: <span th:text="${#numbers.formatInteger(intNum,3,'NONE')}"></span></li>
+        <li>Integer 3: <span th:text="${#numbers.formatInteger(intNum,3)}"></span></li>
+        <hr>
+        <li>Double: <span th:text="${doubleNum}"></span></li>
+        <li>Double(소수 두자리): <span th:text="${#numbers.formatDecimal(doubleNum,3,2)}"></span></li>
+        <li>Double(1000단위 콤마 + 소수 두자리): <span th:text="${#numbers.formatDecimal(doubleNum,3,'COMMA',2,'POINT')}"></span>
+        </li>
+        <li>Double(1000단위 스페이스 + 소수 두자리): <span
+                th:text="${#numbers.formatDecimal(doubleNum,3,'WHITESPACE',3,'POINT')}"></span></li>
+        <hr>
+        <li>Percent: <span th:text="${percent}"></span></li>
+        <li>Percent(백분율,2자리): <span th:text="${#numbers.formatPercent(percent,0,2)}"></span></li>
+
+        <hr>
+        <li>Money: <span th:text="${money}"></span></li>
+        <li>Money(통화기호): <span th:text="${#numbers.formatCurrency(money)}"></span></li>
+    </ul>
+
+</body>
+
+</html>

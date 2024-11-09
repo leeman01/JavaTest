@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th = "http://thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+</head>
+<body>
+	<form action="calc" method="POST">
+		<input type="text" id="x" name="x"  th:value="${x}">x
+		<input type="text" id="y" name="y" th:value="${y}">y
+		<input type="submit" id="equal"  value="=">
+		<input type="button" id="clear"  value="c">
+		 
+		 <p id="result"> 정답: [[${z}]] </p>
+		
+	</form>
+	<script>
+		document.getElementById("clear").addEventListener('click',function(){
+			document.getElementById("x").value="" ;
+			document.getElementById("y").value="" ;
+			document.getElementById("result").innerHTML = "정답: " ;
+		});
+	
+	</script>
+	
+
+
+</body>
+</html>

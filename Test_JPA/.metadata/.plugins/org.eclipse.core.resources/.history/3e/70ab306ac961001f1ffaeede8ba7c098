@@ -1,0 +1,7 @@
+package hello.core.member;
+
+public class Grade {
+	private Long Id;
+	private String name;
+	pirvate String Grade'
+}

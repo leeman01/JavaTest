@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5. eq() , not() , is()</title>
+    <style>
+        div.item1,
+        div.item2,
+        div.item3 {
+            width: 50px;
+            height: 50px;
+            border: 1px solid black;
+            margin: 5px;
+            float: left;
+        }
+
+        div.first,
+        div.second,
+        div.third {
+            clear: both;
+        }
+    </style>
+    <script src="./script/jquery-3.7.1.min.js"></script>
+    <script>
+        $(function () {
+            let len = $('div').length; // 21
+            // console.log(`div의 개수 ${len}`)
+            $('div.item1').eq(2).css({ 'background-color': 'orange', 'border': '2px dotted red' });
+            $('div.item2:nth-child(2n)').css({ 'background': 'cyan' });
+            $('div.item2').not(':nth-child(2n)').css({ 'background': 'silver' });
+            // eq(n) : n은 index이므로 0부터 시작
+            // nth-child(n) : n은 count이므로 1부터 시작 
+            // each
+            $('div.item3').each(function (index, item) {
+                // console.log(index + "-" + item);
+                if ($(this).is('.choice')) {  // .choice 클래스를 가지고 있는지 체크
+                    $(this).css('background', 'green');  // 배경색을 녹색으로 설정
+                }
+            });
+
+
+        });
+    </script>
+</head>
+
+<body>
+    <h2>5. eq() , not() , is()</h2>
+    <div class="first">
+        <div class="item1"></div>
+        <div class="item1"></div>
+        <div class="item1"></div>
+        <div class="item1"></div>
+        <div class="item1"></div>
+        <div class="item1"></div>
+    </div>
+    <div class="second">
+        <div class="item2"></div>
+        <div class="item2"></div>
+        <div class="item2"></div>
+        <div class="item2"></div>
+        <div class="item2"></div>
+        <div class="item2"></div>
+    </div>
+    <div class="third">
+        <div class="item3"></div>
+        <div class="item3 choice"></div>
+        <div class="item3"></div>
+        <div class="item3"></div>
+        <div class="item3 choice"></div>
+        <div class="item3 choice"></div>
+    </div>
+
+</body>
+
+</html>

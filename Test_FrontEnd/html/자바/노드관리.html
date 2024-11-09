@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script defer src="./스크립트/a19_노드.js"></script>
+</head>
+
+<body>
+    <h2>노드(DOM)에 접근해서 처리하기</h2>
+    <p>
+        beforeend : 닫는 태그 바로 앞에<br>
+        beforebegin : 시작태그 바로 앞에 <br>
+
+        afterbegin : 시작태그 바로 뒤 <br>
+        afterend : 닫는 태그 바로 뒤
+
+    </p>
+    <!-- 기존에 내용을 날리고 오버라이딩하는 innerHTML과달리 아래에있는거 추가되는 개념이다 -->
+    <p>
+        <input type="button" id="afterend" value="afterend">
+        <input type="button" id="afterbegin" value="afterbegin">
+        <input type="button" id="beforebegin" value="beforerbegin">
+        <input type="button" id="beforeend" value="beforerend">
+    </p>
+    <ul id="list">
+        <li>하나</li>
+        <li>둟</li>
+        <li>셋</li>
+    </ul>
+
+</body>
+
+</html>

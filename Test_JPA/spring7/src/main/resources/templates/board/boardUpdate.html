@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게시글 수정화면</title>
+    <link rel="stylesheet" th:href="@{/css/write.css}">
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="container" th:replace="fragment/header(title='게시글 수정(f)')">
+
+        </div>
+    </div>
+    <!-- <div class="logo">
+            <a th:href="@{/}">
+                <img th:src="@{/images/logo.png}" alt="logo">
+            </a>
+            <h2>게시글 쓰기</h2>
+        </div>
+    </div> -->
+
+    <div class="content">
+        <form th:action="@{/board/boardUpdate}" method="post" enctype="multipart/form-data">
+            <input type="hidden" id="searchWord" name="searchWord" th:value="${searchWord}">
+            <input type="hidden" id="searchItem" name="searchItem" th:value="${searchItem}">
+            <input type="hidden" name="boardNum" th:value="${board.boardNum}">
+            <table border="1" style="color: black;">
+                <tr>
+                    <th><label for="boardWriter">작성자</label></th>
+                    <td>
+                        <input type="text" name="boardWriter" th:value="${board.boardWriter}" id="boardWriter"
+                            value="홍길동" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <th><label for="boardTitle">글제목</label></th>
+                    <td>
+                        <input type="text" name="boardTitle" th:value="${board.boardTitle}" id="boardTitle" required>
+                    </td>
+                </tr>
+                <tr>
+                    <th><label for="boardContent">작성일</label></th>
+                    <td>
+                        <span th:text="${#temporals.format(board.createDate,'yyyy-MM-dd HH::mm')}"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <th><label for="boardContent">수정일</label></th>
+                    <td>
+                        <span th:text="${#temporals.format(board.updateDate,'yyyy-MM-dd HH::mm')}"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <th><label for="boardContent">글내용</label></th>
+                    <td>
+                        <textarea name="boardContent" th:text="${board.boardContent}" id="boardContent" cols="30"
+                            rows="10" required></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <th><label for="uploadFile">첨부파일</label></th>
+                    <td>
+                        <span th:if="${board.originalFileName!= null}" th:text="${board.originalFileName}">
+                            파일명
+                        </span><br>
+                        <span th:if="${board.originalFileName!= null}">
+                            <a th:href="@{/board/deleteFile(boardNum=${board.boardNum})}">
+                                <img th:src="@{/images/delete.png}" alt="파일삭제" style="width: 50px; height: 50px;">
+                            </a>
+
+                        </span><br>
+                        <input type="file" name="uploadFile" id="uploadFile" class="btn btn-light">
+                    </td>
+                </tr>
+                <tr>
+                    <th colspan="2">
+                        <input type="submit" value="수정" class="btn btn-primary" id="updated">
+                        <input type="reset" value="목록" class="btn btn-danger">
+                    </th>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자바스크립트 자료형</title>
+    <script>
+        console.log("출력!~ Hello , world !");
+        // 한줄주석
+        /* 
+            ## 자료형
+            1)문자열 : ' ' , " " , ` `(탬플릿문자열)
+            2) 숫자형 : 정수 , 실수를 모두 포함한 숫자
+            3) 불린형 : true false (0을 제외한 모든 숫자를 true로 처리)
+            4) 함수형 :function() { ] , 선언형 함수 , 표현형함수 / 익명함수
+            5) 객체형 : 객체형은 종류가 매우 많음
+                5-1) object
+                5-2) JSON
+                5-3) Array(배열)
+                5-4) HTML (객체)
+                5-5) NUll 객체 - 레퍼렌스 변수가 아무 객체도 가르키지 않음을 나타냄
+                6) undefined 
+                - 변수를 선언한 후에 초기화하지 않으면 undefined
+                7) Symbol : 데이터의 유일성 보장을 위해 
+        */
+        // 문자열 자료형
+        let str = "대한민국";
+        console.log(str);
+        console.log(typeof str);
+        console.log("=======================");
+        let mart = "우리동네 마트는 '아줌마마트'입니다"
+        let say = '아버지가 말씀하셨다. "자 용돈이다~~~"'
+        console.log(mart);
+        console.log(say);
+
+        console.log("==백틱사용( 탬플릿 리터럴)==");
+        let age = 25;
+        console.log("당신의 나이는 " + age + "입니다" + "10년 후에는" + (age + 10) + "살이다");
+
+        let temp = `Hello world ! `;
+        console.log(temp);
+        console.log(`당신의 나이는 ${age}살이고,10년 후에는 ${age + 10}살이다`);
+
+        let story = "대한민국";
+        story += "korea";
+
+        story = `대한민국
+korea
+2024년 파리 올림픽`;
+        console.log(story);
+
+        // 숫자 자료형
+        let number = 12;
+        console.log(typeof number);
+        console.log(`나이는 ${age}`); // +로 결합해서 출력해도됨
+        let boolean = true;
+        console.log(boolean);
+        console.log(10 > 20);
+        if (1) console.log(`1은 true와 같다`);
+
+        // false 값
+        /*   null , undefined , NaN, " " */
+        if (null) {
+            console.log(`null은 참`);
+
+        } else {
+            console.log(`null은 거짓`);
+        }
+        if ("값") {
+            console.log(`참이다`);
+        }
+        if (!"") console.log(`값은 거짓이다`);
+        if ([]) console.log(`[]은 참이다(주의)`);
+        console.log("==================================")
+        //함수(선언적 함수)
+        function add(a, b) {
+            return a + b;
+        }
+        let result = add(15, 20);
+        console.log(`함수명호출의 결과 ${result}`);
+        // 함수자체를 값으로 표현햇다!!!!!!!!!!!!!!!!! => 이것만 된다
+        let sum = add;
+        console.log(`함수명호출의 결과 ${sum(12, 23)}`);
+        //  표현함수
+        let minus = function (a, b) {
+            return a - b;
+        };
+        console.log(`함수 minus 호출의결과 : ${minus(2, 6)}`);
+        console.log("==============================");
+        let cnt = 0;
+        // setInterval(function () {  // 무한반복 // 함수를 값으로 처리함 => 고차함수라한다   // 고차함수는 기본적으로 함수기 값이어야 가능하다
+        //     console.log(`출력됨=>${cnt++}`);
+        // }, 1000);
+        console.log("add함수 속성: " + typeof add);
+        console.log(typeof minus);
+
+        //============================JavaScript Object====================================
+        let obj = { name: '홍길동', age: 25 };
+        console.log(typeof obj);
+        console.log(`이름은` + obj['name']);
+        console.log(`나이는` + obj.age);
+        console.log(obj);
+        console.log("===========================================")
+        let obj2 = {
+            name: '저팔계',
+            age: 30,
+            sayHello: function () {
+                console.log(this.name + ", " + this.age);
+            }
+        };
+        console.log(obj2.sayHello());
+        console.log(typeof obj2);
+        // alert(typeof obj2);
+        console.log("==================================")
+        // JSON  데이터를 수단으로 사용 : 비동기통신할때 사용해볼 예정이다
+        let obj3 = { "name": '손오공', "age": 250 };
+        console.log(typeof obj3);
+        console.log(`이름은` + obj3['name']);
+        console.log(`나이는` + obj3.age);
+        console.log(obj3);
+        // alert(typeof obj3);
+        // alert(obj);
+        let obj4 = {
+            name: '사오정',
+            age: 30,
+            sayHello: function () {
+                console.log(this.name + ", " + this.age);
+            }
+        };
+        obj4.sayHello();
+        //  Array ============================================================
+        console.log("=============================");
+        let ary = [2, 2, 2, 2, 2, 2, 2];
+        console.log(typeof ary);
+        console.log(ary[0]);
+        console.log("=============================");
+        // HTML 객체
+
+        // body 태그 아래에
+
+        // null 객체 
+        let nullData = null;
+        console.log("null 정보: " + typeof nullData);
+        // undefineddata 객체
+        let notInt;
+        console.log(notInt);
+        console.log(typeof notInt);
+        console.log("=========symbol===============");
+        // 심볼객체
+        let mysymbol = Symbol();
+        console.log(mysymbol);
+        console.log(typeof mysymbol);
+
+    </script>
+</head>
+
+<body>
+    <h id="header">자바 스크립트 자료형</h>
+    <p>처리결과의 브라우저의 콘솔창에서 !!</p>
+    <script>
+        let tag = document.getElementById("header");
+
+        console.log(tag);
+        console.log(typeof tag);
+        // alert(tag);
+        // tag.innerHTML = "<span style='color::red'>바뀌엇나?</span>";
+        tag.innerText = "<span style='color::red'>바뀌엇나?</span>";
+
+    </script>
+
+</body>
+
+</html>

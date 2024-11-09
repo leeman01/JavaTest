@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>포지션</title>
+    <style>
+        div.item {
+            width: 150px;
+            height: 150px;
+            background-color: aqua;
+            border: 1px solid black;
+        }
+
+        div.one {
+            position: relative;
+            /* 동생태그들한테 영향을 주지않는다 */
+            top: 50px;
+            left: 50px;
+            background-color: blueviolet;
+        }
+
+        div.three {
+            position: relative;
+            /* 동생태그들한테 영향을 주지않는다 */
+            top: 50px;
+            left: 50px;
+            background-color: greenyellow;
+        }
+
+        div.two {
+            position: absolute;
+            /* 동생태그들한테 영향을 준다 이경우에는*/
+            top: 50px;
+            left: 50px;
+            background-color: yellow;
+        }
+
+        div.four {
+            position: relative;
+            /* 동생태그들한테 영향을 준다 이경우에는*/
+            top: 100px;
+            left: 100px;
+            background-color: rgb(55, 255, 65);
+            z-index: 5;
+            /* 높은 정수값을 가진 요소가 위로 배치됨*/
+        }
+
+        div.five {
+            position: relative;
+            /* 동생태그들한테 영향을 준다 이경우에는*/
+
+            left: 150px;
+            background-color: rgb(79, 26, 124);
+            z-index: 4;
+        }
+    </style>
+</head>
+
+<body>
+    <h2> 포지션을 이용한 배치</h2>
+    <p>
+        static: 기본값 ,
+        absolute :하나의 레이어를 생성 top , left , right , bottom<br>
+        부모의 포지션 위치를 기준으로 이동<br>
+        만약에 부모가 포지션이 없으면 body가 기준이 된다<br>
+        relative : 하나의 레이어를 생성 top , left , right , bottom<br>
+        해당요소 자체가 기준으로 이동<br>
+        fixed : 하나의 레이어를 생성 top , left , right , bottom<br>
+        화면이 기준으로 이동
+    </p>
+    <div class="item one">하나</div>
+    <div class="item two">둘</div>
+    <div class="item three">셋</div>
+    <div class="item four">넷</div>
+    <div class="item five">다섯</div>
+</body>
+
+</html>

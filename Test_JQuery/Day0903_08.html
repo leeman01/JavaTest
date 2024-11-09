@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>val()</title>
+    <script src="./script/jquery-3.7.1.min.js"></script>
+    <script>
+        $(function () {
+            $('#read').on('click', function () {
+                let value = $('#txt1').val(); // 읽고 쓰기 모두 가능
+                $('p#target').text(value);
+            });
+            // txt2를 읽어서 txt1표시
+            $('#write').on('click', function () {
+
+                let value = $('#txt2').val();     // 읽기
+                $('#txt1').val(value);  // 쓰기
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <h2>val()</h2>
+    <div>
+        <input type="text" id="txt1">
+        <input type="text" id="txt2">
+        <input type="button" id="read" value="읽기">
+        <input type="button" id="write" value="쓰기">
+    </div>
+    <p id="target"></p>
+
+</body>
+
+</html>
