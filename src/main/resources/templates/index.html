@@ -1,0 +1,692 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://thymeleaf.org/extras/spring-security" xmlns:layout="~{base}"
+      layout:decorate="~{base}" layout:fragment="content">
+
+<head>
+    <title>Index</title>
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.css" rel="stylesheet">
+    <style>
+        /* 캘린더의 크기를 화면에 맞춰 줄이기 */
+        /* 캘린더의 크기를 화면에 맞춰 줄이기 */
+        #calendar {
+            width: 50%;
+            margin: auto;
+
+
+        }
+
+        .fc {
+            font-size: 0.8em;
+        }
+
+        .form-container {
+            display: flex;
+            justify-content: space-between;
+            /* 공간을 균등하게 배분 */
+            margin-top: 20px;
+            width: 50%;
+            /* 캘린더와 동일한 너비 설정 */
+            margin: 0 auto;
+            /* 중앙 정렬 */
+        }
+
+        .form-container div {
+            margin: 0;
+            /* 여백 제거 */
+            flex: 1;
+            /* 각 요소가 동일한 너비를 가지도록 설정 */
+        }
+
+        .center-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .submit-btn {
+            width: 100%;
+            /* 버튼의 길이를 100%로 설정 */
+            margin-top: 10px;
+        }
+
+        /* 색상 정의 */
+        .event-max {
+            background-color: red;
+            /* 최대값 색상 */
+            color: white;
+        }
+
+        .event-min {
+            background-color: #5cb85c;
+            /* 최소값 색상 */
+            color: white;
+        }
+
+        .event-normal {
+            background-color: rgba(0, 0, 0, 0.9);
+            /* 공통 색상 */
+            color: white;
+        }
+
+        .ottdg {
+            color: #a94442;
+            background-color: #f2dede;
+            border-color: #e8c4c4;
+        }
+
+        .ottsc {
+            color: #3c763d;
+            background-color: #dff0d8;
+            border-color: #cae6be;
+        }
+
+        .ottif {
+            color: #31708f;
+            background-color: #d9edf7;
+            border-color: #bcdff1;
+        }
+
+        .ottwr {
+            color: #8a6d3b;
+            background-color: #fcf8e3;
+            border-color: #f9f0c3;
+        }
+
+        /* Alert text Block Div */
+        .ottdiv {
+            border-left-width: 20px;
+            border-radius: 5px;
+            padding: 15px;
+            border-left-style: solid;
+            font-size: .9rem;
+        }
+
+
+
+        .button {
+            background-color: #ffcc00;
+            /* 버튼 색상 */
+            color: #333;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 15px;
+            font-size: 0.9em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+        }
+
+        .button:hover {
+            background-color: #e6b800;
+        }
+
+        .note-corner {
+            width: 40px;
+            height: 40px;
+            background-color: #fff5b1;
+            /* 스티커 색상 */
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            border-radius: 0 10px 0 0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .ottdg {
+            color: #a94442;
+            background-color: #f2dede;
+            border-color: #e8c4c4;
+        }
+
+        .ottsc {
+            color: #3c763d;
+            background-color: #dff0d8;
+            border-color: #cae6be;
+        }
+
+        .ottif {
+            color: #31708f;
+            background-color: #d9edf7;
+            border-color: #bcdff1;
+        }
+
+        .ottwr {
+            color: #8a6d3b;
+            background-color: #fcf8e3;
+            border-color: #f9f0c3;
+        }
+
+        /* Alert text Block Div*/
+        .ottdiv {
+            border-left-width: 20px;
+            border-radius: 5px;
+            padding: 15px;
+            border-left-style: solid;
+            font-size: .9rem;
+        }
+    </style>
+
+</head>
+
+<body>
+<div id="spinner"
+     class="bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+    <div class="spinner-grow text-primary" style="width: 3rem; height: 3rem;" role="status">
+        <span class="sr-only">Loading...</span>
+    </div>
+</div>
+<div class="container-fluid p-0 pb-5">
+    <div class="owl-carousel header-carousel position-relative mb-5 owl-loaded owl-drag">
+
+
+        <div class="owl-stage-outer">
+            <div class="owl-stage"
+                 style="transform: translate3d(-3025px, 0px, 0px); transition: all; width: 9077px;">
+                <div class="owl-item cloned" style="width: 1512.8px;">
+                    <div class="owl-carousel-item position-relative">
+                        <img class="img-fluid" th:src="@{images/carousel-1.jpg}" alt="">
+                        <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center"
+                             style="background: rgba(6, 3, 21, .5);">
+                            <div class="container">
+                                <div class="row justify-content-start">
+                                    <div class="col-10 col-lg-8">
+                                        <h5 class="text-white text-uppercase mb-3 animated slideInDown">Transport
+                                            &amp;
+                                            Logistics Solution</h5>
+                                        <h1 class="display-5 text-white animated slideInDown mb-4">#1 무역 초보를 위한
+                                            <span class="text-primary">통합 물류 솔루션</span><br>지금 시작해보세요!
+                                        </h1>
+                                        <p class="fs-5 fw-medium text-white mb-4 pb-2">Vero elitr justo clita lorem.
+                                            Ipsum dolor at sed stet sit diam no. Kasd rebum ipsum et diam justo
+                                            clita et
+                                            kasd rebum sea elitr.</p>
+                                        <a href=""
+                                           class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Read
+                                            More</a>
+                                        <a href=""
+                                           class="btn btn-secondary py-md-3 px-md-5 animated slideInRight">Free
+                                            Quote</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="owl-item cloned" style="width: 1512.8px;">
+                    <div class="owl-carousel-item position-relative">
+                        <img class="img-fluid" th:src="@{images/carousel-2.jpg}" alt="">
+                        <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center"
+                             style="background: rgba(6, 3, 21, .5);">
+                            <div class="container">
+                                <div class="row justify-content-start">
+                                    <div class="col-10 col-lg-8">
+                                        <h5 class="text-white text-uppercase mb-3 animated slideInDown">Transport
+                                            &amp;
+                                            Logistics Solution</h5>
+                                        <h1 class="display-5 text-white animated slideInDown mb-4">#1 무역 초보를 위한
+                                            <span class="text-primary">통합 물류 솔루션</span><br>지금 시작해보세요!
+                                        </h1>
+                                        <p class="fs-5 fw-medium text-white mb-4 pb-2">복잡한 물류 절차를 간소화하고, 초보자도 손쉽게
+                                            이용할 수 있는 서비스입니다.<br>신속하고 효율적인 물류 관리, 지금 시작해보세요.</p>
+                                        <a href=""
+                                           class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Read
+                                            More</a>
+                                        <a href=""
+                                           class="btn btn-secondary py-md-3 px-md-5 animated slideInRight">Free
+                                            Quote</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="owl-item active" style="width: 1512.8px;">
+                    <div class="owl-carousel-item position-relative">
+                        <img class="img-fluid" th:src="@{images/carousel-1.jpg}" alt="">
+                        <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center"
+                             style="background: rgba(6, 3, 21, .5);">
+                            <div class="container">
+                                <div class="row justify-content-start">
+                                    <div class="col-10 col-lg-8">
+                                        <h5 class="text-white text-uppercase mb-3 animated slideInDown">Transport
+                                            &amp;
+                                            Logistics Solution</h5>
+                                        <h1 class="display-5 text-white animated slideInDown mb-4">#1 무역 초보를 위한
+                                            <span class="text-primary">통합 물류 솔루션</span><br>지금 시작해보세요!
+                                        </h1>
+                                        <p class="fs-5 fw-medium text-white mb-4 pb-2">쉽고 간편한 물류 관리로 무역의 시작을
+                                            돕습니다.<br>
+                                            누구나 손쉽게 사용할 수 있는 통합 솔루션을 경험해보세요.</p>
+                                        <a href=""
+                                           class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Read
+                                            More</a>
+                                        <a href=""
+                                           class="btn btn-secondary py-md-3 px-md-5 animated slideInRight">확인해보기</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="owl-item" style="width: 1512.8px;">
+                    <div class="owl-carousel-item position-relative">
+                        <img class="img-fluid" th:src="@{images/carousel-2.jpg}" alt="">
+                        <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center"
+                             style="background: rgba(6, 3, 21, .5);">
+                            <div class="container">
+                                <div class="row justify-content-start">
+                                    <div class="col-10 col-lg-8">
+                                        <h5 class="text-white text-uppercase mb-3 animated slideInDown">Transport
+                                            &amp;
+                                            Logistics Solution</h5>
+                                        <h1 class="display-5 text-white animated slideInDown mb-4">#1 무역 초보를 위한
+                                            <span class="text-primary">통합 물류 솔루션</span><br>지금 시작해보세요!
+                                        </h1>
+                                        <p class="fs-5 fw-medium text-white mb-4 pb-2">무역의 모든 과정을 한 곳에서
+                                            관리하세요.<br>초보자도 전문가처럼 쉽게 사용할 수 있는 통합 물류 플랫폼입니다.</p>
+                                        <a href=""
+                                           class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Read
+                                            More</a>
+                                        <a href=""
+                                           class="btn btn-secondary py-md-3 px-md-5 animated slideInRight">Free
+                                            Quote</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="owl-item cloned" style="width: 1512.8px;">
+                    <div class="owl-carousel-item position-relative">
+                        <img class="img-fluid" th:src="@{images/carousel-1.jpg}" alt="">
+                        <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center"
+                             style="background: rgba(6, 3, 21, .5);">
+                            <div class="container">
+                                <div class="row justify-content-start">
+                                    <div class="col-10 col-lg-8">
+                                        <h5 class="text-white text-uppercase mb-3 animated slideInDown">Transport
+                                            &amp;
+                                            Logistics Solution</h5>
+                                        <h1 class="display-5 text-white animated slideInDown mb-4">#1 무역 초보를 위한
+                                            <span class="text-primary">통합 물류 솔루션</span><br>지금 시작해보세요!
+                                        </h1>
+                                        <p class="fs-5 fw-medium text-white mb-4 pb-2">처음 시작하는 무역, 복잡하지 않게.<br>간편한
+                                            물류 관리로 성공적인 첫걸음을 지원합니다.</p>
+                                        <a href=""
+                                           class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Read
+                                            More</a>
+                                        <a href=""
+                                           class="btn btn-secondary py-md-3 px-md-5 animated slideInRight">Free
+                                            Quote</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="owl-item cloned" style="width: 1512.8px;">
+                    <div class="owl-carousel-item position-relative">
+                        <img class="img-fluid" th:src="@{images/carousel-2.jpg}" alt="">
+                        <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center"
+                             style="background: rgba(6, 3, 21, .5);">
+                            <div class="container">
+                                <div class="row justify-content-start">
+                                    <div class="col-10 col-lg-8">
+                                        <h5 class="text-white text-uppercase mb-3 animated slideInDown">Transport
+                                            &amp;
+                                            Logistics Solution</h5>
+                                        <h1 class="display-5 text-white animated slideInDown mb-4">#1 무역 초보를 위한
+                                            <span class="text-primary">통합 물류 솔루션</span><br>지금 시작해보세요!
+                                        </h1>
+                                        <p class="fs-5 fw-medium text-white mb-4 pb-2">불필요한 복잡함 없이, 빠르고 간편한 물류
+                                            관리.<br>
+                                            지금 바로 시작해보세요!</p>
+                                        <a href=""
+                                           class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Read
+                                            More</a>
+                                        <a href=""
+                                           class="btn btn-secondary py-md-3 px-md-5 animated slideInRight">Free
+                                            Quote</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 달력이 들어갈 html 택그 사전준비 -->
+<div class="container-fluid overflow-hidden py-5 px-lg-0">
+    <div class="container feature py-5 px-lg-0">
+        <div class="row g-5 mx-lg-0">
+            <div class="col-lg-4 feature-text wow fadeInUp" data-wow-delay="0.1s"
+                 style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
+                <h5 class="text-secondary text-uppercase mb-3">미래 4주 간의 예측 운임을 확인하세요</h5>
+                <br>
+                <!-- 선적지 선택 -->
+                <div class="d-flex mb-5 wow fadeIn" data-wow-delay="0.5s"
+                     style="visibility: visible; animation-delay: 0.5s; animation-name: fadeIn;">
+                    <i class="fa-solid fa-ship fa-3x text-primary "></i>선적국가:&nbsp;&nbsp;
+                    <div class="col-12 col-sm-6">
+                        <select class="form-control border-0" style="height: 55px;" id="placeOfLoading">
+                            <option value="">선택</option>
+                            <option value="0">인천</option>
+                            <option value="1">경인</option>
+                            <option value="2">평택.당진</option>
+                            <option value="3">부산</option>
+                            <option value="4">광양</option>
+                            <option value="5">울산</option>
+                            <option value="7">포항</option>
+                            <option value="8">마산</option>
+                            <option value="9">군산</option>
+                            <option value="10">목포</option>
+                            <option value="11">부산신항</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- 양하지 선택 -->
+                <div class="d-flex mb-5 wow fadeIn" data-wow-delay="0.5s"
+                     style="visibility: visible; animation-delay: 0.5s; animation-name: fadeIn;">
+                    <i class="fa-solid fa-ship fa-3x text-primary "></i>양하국가:&nbsp;&nbsp;
+                    <div class="col-12 col-sm-6">
+                        <select class="form-control border-0" style="height: 55px;" id="buyerCountry"
+                                onchange="updateDestinationPorts()">
+                            <option value="">선택</option>
+                            <option value="europe">유럽</option>
+                            <option value="southeast_asia">동남아시아</option>
+                            <option value="japan">일본</option>
+                            <option value="china">중국</option>
+                            <option value="usa">미국</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- 양하지 항구 선택 -->
+                <div class="d-flex mb-5 wow fadeIn" data-wow-delay="0.5s"
+                     style="visibility: visible; animation-delay: 0.5s; animation-name: fadeIn;">
+                    <i class="fa-solid fa-anchor fa-3x text-primary"></i>
+                    <div class="col-12 col-sm-6">
+                        <select class="form-select border-0" style="height: 55px;" id="placeOfUnloading">
+                            <option value="">양하지 항구를 선택하세요</option>
+                        </select>
+                    </div>
+                </div>
+
+
+                <!-- 제출 버튼 -->
+                <div class="d-flex mb-0 wow fadeInUp" data-wow-delay="0.7s"
+                     style="visibility: visible; animation-delay: 0.7s; animation-name: fadeInUp;">
+                    <div class="col-8">
+                        <button class="btn btn-primary submit-btn py-1" style="font-size: 0.9em;"
+                                onclick="sendData()">Submit</button>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- 달력 영역 -->
+            <div class="col-lg-6 pe-lg-0 wow fadeInRight" data-wow-delay="0.1s"
+                 style="min-height: 400px; visibility: visible; animation-delay: 0.1s; animation-name: fadeInRight; padding-right: 50px; margin-top: -10px;"
+                 id="calendar">
+            </div>
+            <div class="sticky-note" id="note-corners">
+                <div class="ottdiv ottif"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 여기서 부터는 팀원과 관련된 내용이 나온다 -->
+
+<div class="container-xxl py-5">
+    <div class="container py-5">
+        <div class="text-center wow fadeInUp" data-wow-delay="0.1s"
+             style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
+            <h6 class="text-secondary text-uppercase">Our Team</h6>
+            <h1 class="mb-5">Team Members</h1><br>
+        </div>
+        <div class="row g-4">
+            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s"
+                 style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp;">
+                <div class="team-item p-4">
+                    <!-- <div class="overflow-hidden mb-4">
+                        <img class="img-fluid" th:src="@{images/keon.jpg}" alt="">
+                    </div> -->
+                    <h5 class="mb-0">이동건</h5><br>
+                    <p>Team Leader,<br>Web Main Engineer</p>
+                    <div class="btn-slide mt-1">
+                        <i class="fa fa-share"></i>
+                        <span>
+                                <a href=""><i class="fab fa-facebook-f"></i></a>
+                                <a href=""><i class="fab fa-twitter"></i></a>
+                                <a href=""><i class="fab fa-instagram"></i></a>
+                            </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s"
+                 style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInUp;">
+                <div class="team-item p-4">
+                    <!-- <div class="overflow-hidden mb-4">
+                        <img class="img-fluid" th:src="@{images/team-2.jpg}" alt="">
+                    </div> -->
+                    <h5 class="mb-0">윤수</h5><br>
+                    <p>Frontend Developer,<br>Web Sub Engineer</p>
+                    <div class="btn-slide mt-1">
+                        <i class="fa fa-share"></i>
+                        <span>
+                                <a href=""><i class="fab fa-facebook-f"></i></a>
+                                <a href=""><i class="fab fa-twitter"></i></a>
+                                <a href=""><i class="fab fa-instagram"></i></a>
+                            </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.7s"
+                 style="visibility: visible; animation-delay: 0.7s; animation-name: fadeInUp;">
+                <div class="team-item p-4">
+                    <!-- <div class="overflow-hidden mb-4">
+                        <img class="img-fluid" th:src="@{images/team-3.jpg}" alt="">
+                    </div> -->
+                    <h5 class="mb-0">조민근</h5><br>
+                    <p>Web Lead Developer,<br>System Planner</p>
+                    <div class="btn-slide mt-1">
+                        <i class="fa fa-share"></i>
+                        <span>
+                                <a href=""><i class="fab fa-facebook-f"></i></a>
+                                <a href=""><i class="fab fa-twitter"></i></a>
+                                <a href=""><i class="fab fa-instagram"></i></a>
+                            </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.9s"
+                 style="visibility: visible; animation-delay: 0.9s; animation-name: fadeInUp;">
+                <div class="team-item p-4">
+                    <!-- <div class="overflow-hidden mb-4">
+                        <img class="img-fluid" th:src="@{images/team-4.jpg}" alt="">
+                    </div> -->
+                    <h5 class="mb-0">안태환</h5><br>
+                    <p>Web Sub Engineer</p>
+                    <br>
+                    <div class="btn-slide mt-1">
+                        <i class="fa fa-share"></i>
+                        <span>
+                                <a href=""><i class="fab fa-facebook-f"></i></a>
+                                <a href=""><i class="fab fa-twitter"></i></a>
+                                <a href=""><i class="fab fa-instagram"></i></a>
+                            </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--  스크립트 -->
+<script>
+    const destinationPorts = {
+        'europe': ['LE HAVRE', 'ROTTERDAM', 'ANTWERPEN', 'HAMBURG', 'FELIXSTOWE'],
+        'southeast_asia': ['MANILA', 'BANGKOK', 'KAOHSIUNG', 'HONG KONG', 'SINGAPORE'],
+        'japan': ['YOKOHAMA', 'MOJI/KITAKYUSHU', 'NAGOYA'],
+        'china': ['TIANJIN XINGANG PT', 'QINGDAO', 'SHANGHAI'],
+        'usa': ['OAKLAND, CA', 'LOSANGELES', 'NEWYORK']
+    };
+
+    function updateDestinationPorts() {
+        const destinationPortSelect = document.getElementById("placeOfUnloading");
+        const selectedCountry = document.getElementById("buyerCountry").value;
+
+        destinationPortSelect.innerHTML = '<option value="">양하지 항구를 선택하세요</option>';
+
+        if (selectedCountry) {
+            destinationPorts[selectedCountry].forEach(port => {
+                const option = document.createElement("option");
+                option.value = port;
+                option.textContent = port;
+                destinationPortSelect.appendChild(option);
+            });
+        }
+    }
+    function formatDate(date) {
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0'); // 월은 0부터 시작하므로 +1
+        const day = String(date.getDate()).padStart(2, '0');
+        return `${year}년 ${month}월 ${day}일`;
+    }
+
+    let calendar;
+
+    function sendData() {
+        const placeOfLoading = document.getElementById("placeOfLoading").value;
+        const placeOfUnloading = document.getElementById("placeOfUnloading").value;
+
+        // AJAX 요청을 통해 캘린더를 업데이트
+        calendar.refetchEvents();
+    }
+
+    // ... (기존 코드 유지)
+
+    document.addEventListener("DOMContentLoaded", function () {
+        let calendarEl = document.getElementById("calendar");
+
+        calendar = new FullCalendar.Calendar(calendarEl, {
+            initialView: "dayGridMonth", // 초기 뷰 설정
+            locale: 'ko', // 한국어 설정
+            eventSources: [
+                {
+                    events: function (info, successCallback, failureCallback) {
+                        const placeOfLoading = document.getElementById("placeOfLoading").value;
+                        const placeOfUnloading = document.getElementById("placeOfUnloading").value;
+
+                        $.ajax({
+                            type: 'GET',
+                            url: '/index/calendar',
+                            data: {
+                                placeOfLoading: placeOfLoading,
+                                placeOfUnloading: placeOfUnloading
+                            },
+                            dataType: 'json',
+                            success: function (specialDays) {
+                                let specialEvents = [];
+                                let values = [];
+
+                                // 모든 날짜에 대해 데이터를 수집
+                                Object.keys(specialDays).forEach(function (dateKey) {
+                                    let date = new Date(dateKey);
+                                    let value = specialDays[dateKey];
+                                    values.push(value);
+
+                                    // 7일 간격으로 이벤트 생성
+                                    for (let i = 0; i < 7; i++) {
+                                        specialEvents.push({
+                                            title: '예측운임: $' + value,
+                                            start: new Date(date.getFullYear(), date.getMonth(), date.getDate() + i).toISOString().split('T')[0],
+                                            allDay: true,
+                                            value: value // 값을 추가하여 나중에 비교할 수 있도록 함
+                                        });
+                                    }
+                                });
+
+                                // 최대값 및 최소값 찾기
+                                const maxValue = Math.max(...values);
+                                const minValue = Math.min(...values);
+
+                                // 이벤트의 클래스 설정
+                                specialEvents.forEach(event => {
+                                    if (event.value === maxValue) {
+                                        event.classNames = ['event-max']; // 최대값 색상 클래스 적용
+                                    } else if (event.value === minValue) {
+                                        event.classNames = ['event-min']; // 최소값 색상 클래스 적용
+                                    } else {
+                                        event.classNames = ['event-normal']; // 기본 색상 설정
+                                    }
+                                });
+                                document.querySelector('.sticky-note').style.display = 'block';
+                                // 추천 메시지 업데이트
+                                const recommendationMessageContainer = document.getElementById("note-corners");
+                                recommendationMessageContainer.innerHTML = ''; // 기존 메시지 초기화
+
+                                if (values.length > 0) {
+                                    let highestPredictionDate = new Date(Object.keys(specialDays)[values.indexOf(maxValue)]);
+                                    highestPredictionDate = formatDate(highestPredictionDate);
+                                    let lowestPredictionDate = new Date(Object.keys(specialDays)[values.indexOf(minValue)]);
+                                    lowestPredictionDate = formatDate(lowestPredictionDate);
+                                    // 포스트잇 내용 추가
+                                    recommendationMessageContainer.innerHTML += `
+        <div class="ottdiv ottif" style = "text-align: center;">
+            <h4 style = "color: #333;">미래 4주 예측 운임 기준으로 안내됩니다.</h4> <br>
+            <strong style="font-size: 1.1rem; color: #d9534f;">${highestPredictionDate}</strong>
+            부터 일주일간의 예상운임:
+            <strong style="font-size: 1.1rem; color: #d9534f;">$${maxValue}</strong>
+            <br>
+            미래 4주 중 가장 운임이 높아 가장 물류비 절감에 도움이 되지 않습니다.
+            <br><br>
+            <strong style="font-size: 1.1rem; color: #5cb85c;">${lowestPredictionDate}</strong>
+            부터 일주일간의 예상운임:
+            <strong style="font-size: 1.1rem; color: #5cb85c;">$${minValue}</strong>
+            <br>
+            미래 4주 중 가장 운임이 낮아 가장 물류비 절감에 도움이 됩니다.
+            </div>
+        `;
+                                }
+
+                                successCallback(specialEvents); // 모든 이벤트를 한 번에 추가
+                            },
+                            error: function () {
+                                failureCallback(); // 실패 시 콜백 호출
+                            }
+                        });
+                    }
+                }
+            ]
+        });
+
+        calendar.render();
+    });
+
+</script>
+
+
+<!-- 여기부터는 달력이므로 건드리지 마시오-->
+
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/locales/ko.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="lib/easing/easing.min.js"></script>
+<script src="lib/wow/wow.min.js"></script>
+<script src="lib/waypoints/waypoints.min.js"></script>
+<script src="lib/counterup/counterup.min.js"></script>
+<script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+</body>
+
+</html>

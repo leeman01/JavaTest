@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{base}" layout:fragment="content">
+
+<head>
+    <title>상품 등록</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <style>
+        /* 드롭다운의 높이를 제한하여 스크롤이 생기도록 설정 */
+        select.form-select {
+            max-height: 200px;
+            /* 드롭다운의 최대 높이를 설정 */
+            overflow-y: auto;
+            /* 스크롤 가능하게 설정 */
+        }
+    </style>
+</head>
+
+<body>
+<section id="product-insert" class="container mt-5">
+    <h1 class="text-center mb-4">상품 등록</h1>
+
+    <form th:action="@{/product/insert}" method="post" enctype="multipart/form-data" class="row g-4">
+        <!-- 상품명 입력 -->
+        <div class="col-md-6">
+            <label for="productName" class="form-label">상품명</label>
+            <input type="text" class="form-control required" id="productName" name="productName"
+                   placeholder="상품명을 입력하세요">
+        </div>
+        &nbsp;
+        <!-- 상품 가격 입력 -->
+        <div class="col-md-6">
+            <label for="price" class="form-label">가격</label>
+            <input type="text" class="form-control required" id="price" name="productPrice"
+                   oninput="formatPrice(this)" placeholder="가격을 입력하세요">
+            <div class="invalid-feedback">숫자만 입력 가능합니다.</div>
+        </div>
+        &nbsp;
+        <!-- 상품 설명 입력 -->
+        <div class="col-md-12">
+            <label for="description" class="form-label">상품 설명</label>
+            <textarea class="form-control required" id="description" name="productDescription" rows="4"
+                      placeholder="상품 설명을 입력하세요"></textarea>
+        </div>
+        &nbsp;
+        <!-- 대표 이미지 첨부 -->
+        <div class="col-md-12">
+            <label for="imageInput" class="form-label">대표 이미지 첨부</label>
+            <input type="file" id="imageInput" name="productImageFile" class="form-control w-auto" accept="image/*"
+                   required>
+            <div id="imagePreview" class="d-flex flex-wrap mt-3"></div>
+        </div>
+
+        <!-- 회사 정보 입력 -->
+        <div class="col-md-3">
+            <label for="companyName" class="form-label">기업명</label>
+            <input type="text" class="form-control" id="companyName" name="companyName">
+        </div>
+
+        <!-- 설립연도 입력 -->
+        <div class="col-md-2">
+            <label for="foundedYear" class="form-label">설립연도</label>
+            <input type="number" class="form-control" id="foundedYear" name="foundedYear" min="1000" max="9999">
+        </div>
+
+        <!-- 사업 유형 입력 -->
+        <div class="col-md-2">
+            <label for="businessType" class="form-label">사업 유형</label>
+            <input type="text" class="form-control" id="businessType" name="businessType">
+        </div>
+
+        <!-- 국가 입력 -->
+        <div class="col-md-3">
+            <label for="country" class="form-label">국가</label>
+            <select id="country" name="country" class="form-select">
+                <option value="" selected disabled>국가를 선택하세요</option>
+                <option value="South Korea" selected>대한민국</option>
+                <option value="United States">미국</option>
+                <option value="United Kingdom">영국</option>
+                <option value="Germany">독일</option>
+                <option value="France">프랑스</option>
+                <option value="Japan">일본</option>
+                <option value="China">중국</option>
+                <option value="Australia">호주</option>
+                <option value="Canada">캐나다</option>
+                <option value="Brazil">브라질</option>
+                <option value="India">인도</option>
+                <option value="Mexico">멕시코</option>
+                <option value="Italy">이탈리아</option>
+                <option value="Spain">스페인</option>
+                <option value="Russia">러시아</option>
+                <option value="South Africa">남아프리카 공화국</option>
+                <option value="Turkey">터키</option>
+                <option value="Saudi Arabia">사우디아라비아</option>
+                <option value="Argentina">아르헨티나</option>
+                <option value="New Zealand">뉴질랜드</option>
+                <!-- 추가 국가 필요 시 더 추가 가능 -->
+            </select>
+        </div>
+
+        <!-- 등록 버튼 -->
+        <div class="col-12 text-center">
+            <button type="submit" class="btn btn-primary" id="submitButton" disabled>등록</button>
+        </div>
+    </form>
+</section>
+
+<script>
+    // 가격 입력 시 쉼표 추가
+    function formatPrice(input) {
+        const value = input.value.replace(/,/g, ''); // 기존 쉼표 제거
+        if (!isNaN(value)) {
+            input.value = parseInt(value).toLocaleString(); // 숫자로 변환 후 쉼표 추가
+        }
+    }
+
+    // 폼 유효성 검사 및 이미지 미리보기 관련 스크립트
+    function validateForm() {
+        const inputs = document.querySelectorAll('.required');
+        const price = document.getElementById('price');
+        const images = document.getElementById('imageInput').files;
+        const button = document.getElementById('submitButton');
+        let allFilled = true;
+
+        // 모든 필수 입력 필드가 채워졌는지 확인
+        inputs.forEach(input => {
+            if (!input.value.trim()) {
+                allFilled = false;
+            }
+        });
+
+        // 가격 필드가 올바른지 확인
+        const priceValid = /^\d+(,\d{3})*$/.test(price.value.replace(/,/g, ''));
+
+        // 최소 한 장 이상의 이미지가 첨부되었는지 확인
+        const imagesValid = images.length > 0;
+
+        // 모든 조건이 충족되면 버튼 활성화
+        button.disabled = !(allFilled && priceValid && imagesValid);
+    }
+
+    // 이미지 미리보기 기능 (대표 이미지)
+    function previewImages() {
+        const imageContainer = document.getElementById('imagePreview');
+        const files = document.getElementById('imageInput').files;
+        imageContainer.innerHTML = ''; // 이전 미리보기 초기화
+
+        Array.from(files).forEach(file => {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                const img = document.createElement('img');
+                img.src = e.target.result;
+                img.classList.add('img-thumbnail');
+                img.style.maxWidth = '100px';
+                img.style.margin = '10px';
+                imageContainer.appendChild(img);
+            };
+            reader.readAsDataURL(file);
+        });
+
+        validateForm(); // 이미지가 첨부된 후 유효성 검사 호출
+    }
+
+    // 로드 시 유효성 검사 및 이벤트 핸들러 설정
+    window.onload = function () {
+        const inputs = document.querySelectorAll('.required');
+        inputs.forEach(input => input.addEventListener('input', validateForm));
+        document.getElementById('price').addEventListener('input', function () {
+            formatPrice(this);
+        });
+        document.getElementById('imageInput').addEventListener('change', previewImages);
+    };
+</script>
+</body>
+
+</html>

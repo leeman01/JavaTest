@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{base}" layout:fragment="content">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Declare_success</title>
+    <link rel="stylesheet" th:href="@{/css/min.css}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+
+</head>
+
+<body>
+    <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s" style="margin-top: 20px;">
+        <div class="container text-center py-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <i class="bi bi-check-circle-fill display-1 text-warning"></i>
+                    <h1 class="mb-4">견적의뢰 접수가 완료되었습니다</h1>
+                    <p class="mb-4">요청하신 견적서는 마이페이지에서 확인가능합니다</p>
+                    <a class="btn btn-primary rounded-pill py-3 px-5" th:href="@{/mypage/myexport/list}">마이페이지</a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

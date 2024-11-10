@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{base}" layout:fragment="content">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/min.css}">
+    <title>EXPORT_DELCLARATION_FORM</title>
+    <link rel="stylesheet" href="/css/min.css">
+</head>
+
+<body>
+    <!-- Page Header Start -->
+    <div class="container-fluid page-header py-5"
+        style="margin-bottom: 6rem; background-image: url('http://localhost:9600/images/declare.jpg'); background-size: cover;background-position: center;height: 35vh;">
+        <div class="container py-5">
+            <h1 class="display-3 text-white mb-3 animated slideInDown">Declaration</h1>
+            <nav aria-label="breadcrumb animated slideInDown">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a class="text-white" href="#">Home</a></li>
+                    <li class="breadcrumb-item"><a class="text-white" href="#">My Page</a></li>
+                    <li class="breadcrumb-item"><a class="text-white" href="#">Process</a></li>
+                    <li class="breadcrumb-item text-white active" aria-current="page">Declaration</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    </div>
+    <!-- Page Header End -->
+    <div class="col-lg-5 wow fadeInUp sticky-header" data-wow-delay="0.1s">
+        <h6 class="text-secondary text-uppercase mb-3 export-header">Export Declaration</h6>
+        <h1 class="export-title">자동 작성된 내용을 확인하시고<br>
+            하단의 전송버튼을 누르시면 수출신고를 완료하게 됩니다.</h1>
+        <p class="export-paragraph">마이페이지에 저장된 거래정보를 <br>바탕으로 작성되었습니다.</p>
+    </div>
+    <div class="container-xxl py-5">
+        <div class="container py-5">
+            <div class="row g-5 align-items-center">
+                <div class="col-lg-8">
+                    <div class="bg-light text-center p-5 wow fadeIn" data-wow-delay="0.5s">
+                        <form id="exportForm">
+                            <div class="row g-3">
+                                <input type="hidden" id="uTradeHubID" name="uTradeHubID" value="ozoz9978" required>
+                                <input type="hidden" id="Seller_uTradeHubID" name="Seller_uTradeHubID" value="ozoz9978"
+                                    required>
+                                <input type="hidden" id="uTradeHubNum" name="uTradeHubNum" value="100000152" required>
+                                <input type="hidden" id="AutoDeclaration" name="AutoDeclaration" value="Y" required>
+                                <input type="hidden" id="DeliveryStatus" name="DeliveryStatus" value="BD" required>
+                                <input type="hidden" id="DeliveryMeans" name="DeliveryMeans" value="KTNT" required>
+                                <input type="hidden" id="SellerPartyDeclarationId" name="SellerPartyDeclarationId"
+                                    value="84545" required>
+                                <input type="hidden" id="GoodsLocZipCode" name="GoodsLocZipCode" value="13493" required>
+                                <input type="hidden" id="GoodsLocAddress" name="GoodsLocAddress"
+                                    value="서울시 강남구 영동대로 511" required>
+                                <input type="hidden" id="GoodsLocAddress2" name="GoodsLocAddress2"
+                                    value="한국무역, 트레이드타워, 4층" required>
+                                <input type="hidden" id="LoadingLocPortCode" name="LoadingLocPortCode" value="ICN"
+                                    required>
+                                <input type="hidden" id="ManufactureLocCode" name="ManufactureLocCode" value="999"
+                                    required><br><br>
+                                <input type="hidden" id="PaymentTypeCode" name="PaymentTypeCode" value="CD"
+                                    required><br><br>
+                                <input type="hidden" id="MakerCustomsId" name="MakerCustomsId" value="제조미상9999000"
+                                    required>
+                                <input type="hidden" id="MakerName" name="MakerName" value="미상" required>
+                                <input type="hidden" id="MakerZipCode" name="MakerZipCode" value="38421" required>
+                                <input type="hidden" id="FreightAmount" name="FreightAmount" value="" required>
+                                <input type="hidden" id="InsuranceAmount" name="InsuranceAmount" value="" required>
+                                <input type="hidden" id="ApplicationNotice" name="ApplicationNotice" value="" required>
+                                <input type="hidden" id="MallDomn" name="MallDomn" value="" required>
+                                <input type="hidden" id="FreightForwarderCode1" name="FreightForwarderCode1" value=""
+                                    required>
+                                <input type="hidden" id="FreightForwarderCode2" name="FreightForwarderCode2" value=""
+                                    required>
+                                <input type="hidden" id="FreightForwarderCode3" name="FreightForwarderCode3" value=""
+                                    required>
+                                <input type="hidden" id="ItemNo" name="ItemNo" value="ubsinc_P00000XO" required>
+                                <div class="col-12">
+                                    <h2 class="mt-5" style="position: relative; top: -20px;">수출신고서 미리보기</h2>
+                                </div>
+                                <div class="col-12">
+                                    <label for="InvoiceNo">인보이스 넘버</label>
+                                    <input type="text" class="form-control border-0" id="InvoiceNo" name="InvoiceNo"
+                                        value="INV-2024-001" required style="height: 55px;">
+                                </div>
+
+                                <input type="hidden" id="RequestType" name="RequestType" value="N" required>
+
+                                <div class="col-12 col-sm-6">
+                                    <label for="PaymentAmount">결제금액</label>
+                                    <input type="number" class="form-control border-0" id="PaymentAmount"
+                                        name="PaymentAmount" value="1500000" required style="height: 55px;">
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <label for="PaymentCurrencyCode">결제통화코드</label>
+                                    <input type="text" class="form-control border-0" id="PaymentCurrencyCode"
+                                        name="PaymentCurrencyCode" value="USD" required style="height: 55px;">
+                                </div>
+                                <div class="col-12">
+                                    <label for="DestinationCountryCode">목적국 국가코드</label>
+                                    <input type="text" class="form-control border-0" id="DestinationCountryCode"
+                                        name="DestinationCountryCode" value="CN" required style="height: 55px;">
+                                </div>
+                                <div class="col-12">
+                                    <label for="BuyerPartyEngName">구매자 상호명</label>
+                                    <input type="text" class="form-control border-0" id="BuyerPartyEngName"
+                                        name="BuyerPartyEngName" value="GOSINARA" required style="height: 55px;">
+                                </div>
+                                <div class="col-12">
+                                    <label for="BuyerPartyAddress">구매자 주소</label>
+                                    <input type="text" class="form-control border-0" id="BuyerPartyAddress"
+                                        name="BuyerPartyAddress" value="456 Importer Rd, Shanghai, China" required
+                                        style="height: 55px;">
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <label for="TotalPackageQuantity">총 포장갯수</label>
+                                    <input type="number" class="form-control border-0" id="TotalPackageQuantity"
+                                        name="TotalPackageQuantity" value="300" required style="height: 55px;">
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <label for="TotalPackageWeight">총 중량(KG)</label>
+                                    <input type="number" class="form-control border-0" id="TotalPackageWeight"
+                                        name="TotalPackageWeight" value="3600" required style="height: 55px;">
+                                </div>
+                                <div class="col-12">
+                                    <label for="SellerPartyCompanyName">판매자 상호명</label>
+                                    <input type="text" class="form-control border-0" id="SellerPartyCompanyName"
+                                        name="SellerPartyCompanyName" value="Seosan International" required
+                                        style="height: 55px;">
+                                </div>
+                                <div class="col-12">
+                                    <label for="SellerPartyRegistNo">판매자 사업자등록번호</label>
+                                    <input type="text" class="form-control border-0" id="SellerPartyRegistNo"
+                                        name="SellerPartyRegistNo" value="1234567890" required style="height: 55px;">
+                                </div>
+                                <div class="col-12">
+                                    <label for="SellerPartyAddress">판매자 주소</label>
+                                    <input type="text" class="form-control border-0" id="SellerPartyAddress"
+                                        name="SellerPartyAddress" value="경기도 화성시" required style="height: 55px;">
+                                </div>
+                                <div class="col-12">
+                                    <label for="SellerPartyCeoName">판매자 대표명</label>
+                                    <input type="text" class="form-control border-0" id="SellerPartyCeoName"
+                                        name="SellerPartyCeoName" value="서승우" required style="height: 55px;">
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <label for="SellerPartyZipCode">판매자 우편번호 5자리</label>
+                                    <input type="text" class="form-control border-0" id="SellerPartyZipCode"
+                                        name="SellerPartyZipCode" value="18412" required style="height: 55px;">
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <label for="SellerPartyCustomsId">판매자 통관고유부호</label>
+                                    <input type="text" class="form-control border-0" id="SellerPartyCustomsId"
+                                        name="SellerPartyCustomsId" value="MK1234567890" required style="height: 55px;">
+                                </div>
+                                <div class="col-12">
+                                    <label for="TransportMeansCode">주 운송수단코드</label>
+                                    <select class="form-select border-0" id="TransportMeansCode"
+                                        name="TransportMeansCode" required style="height: 55px;">
+                                        <option value="10" selected>10 - 선박</option>
+                                        <option value="20">20 - 철도</option>
+                                        <option value="30">30 - 차량</option>
+                                        <option value="40">40 - 항공기</option>
+                                        <option value="50">50 - 우편물(EMS/국제소포)</option>
+                                        <option value="60">60 - 복합</option>
+                                        <option value="70">70 - 고정운송설비</option>
+                                        <option value="80">80 - 내륙수로</option>
+                                        <option value="90">90 - 기타</option>
+                                    </select>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <label for="CustomsCode">세관코드</label>
+                                    <input type="text" class="form-control border-0" id="CustomsCode" name="CustomsCode"
+                                        value="012" required style="height: 55px;">
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <label for="CustomsDeptCode">세관 과 코드</label>
+                                    <input type="text" class="form-control border-0" id="CustomsDeptCode"
+                                        name="CustomsDeptCode" value="D9" required style="height: 55px;">
+                                </div>
+                                <div class="col-12">
+                                    <label for="ExportPartyTypeCode">수출자구분</label>
+                                    <select class="form-select border-0" id="ExportPartyTypeCode"
+                                        name="ExportPartyTypeCode" required style="height: 55px;">
+                                        <option value="A" selected>수출대행자가 제조자와 동일한 경우</option>
+                                        <option value="C">수출화주가 완제품공급(원상태 공급 포함)을 받아 수출한 경우</option>
+                                        <option value="D">수출화주와 제조자가 본지사 관계인 경우</option>
+                                    </select>
+                                </div>
+                                <div class="col-12">
+                                    <label for="CustomsTaxRefundRequest">간이환급신청여부</label>
+                                    <select class="form-select border-0" id="CustomsTaxRefundRequest"
+                                        name="CustomsTaxRefundRequest" required style="height: 55px;">
+                                        <option value="AD">Yes</option>
+                                        <option value="NO" selected>No</option>
+                                    </select>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <label for="InspectionCode">검사방법</label>
+                                    <select class="form-select border-0" id="InspectionCode" name="InspectionCode"
+                                        required style="height: 55px;">
+                                        <option value="A">신고지 검사</option>
+                                        <option value="B" selected>적재지 검사</option>
+                                    </select>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <label for="DeliveryTermsCode">인도조건 (FOB/CIF)</label>
+                                    <select class="form-select border-0" id="DeliveryTermsCode" name="DeliveryTermsCode"
+                                        required style="height: 55px;">
+                                        <option value="FOB" selected>FOB</option>
+                                        <option value="CIF">CIF</option>
+                                    </select>
+                                </div>
+                                <div class="col-12">
+                                    <h2 class="mt-5">Item Details</h2>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <label for="OriginLocCode">원산지 국가코드</label>
+                                    <input type="text" class="form-control border-0" id="OriginLocCode"
+                                        name="OriginLocCode" value="US" required style="height: 55px;">
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <label for="NetWeight">순중량</label>
+                                    <input type="number" class="form-control border-0" id="NetWeight" name="NetWeight"
+                                        value="3000" required style="height: 55px;">
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <label for="Quantity">수량</label>
+                                    <input type="number" class="form-control border-0" id="Quantity" name="Quantity"
+                                        value="300" required style="height: 55px;">
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <label for="QuantityUnitCode">물품수량단위</label>
+                                    <input type="text" class="form-control border-0" id="QuantityUnitCode"
+                                        name="QuantityUnitCode" value="CT" required style="height: 55px;">
+                                </div>
+                                <div class="col-12">
+                                    <label for="BrandName">영문상표명</label>
+                                    <input type="text" class="form-control border-0" id="BrandName" name="BrandName"
+                                        value="PROGAME Video Game console" required style="height: 55px;">
+                                </div>
+                                <div class="col-12">
+                                    <label for="GoodsDesc">거래품명(영문)</label>
+                                    <input type="text" class="form-control border-0" id="GoodsDesc" name="GoodsDesc"
+                                        value="VIDEO GAMES FOR TV" required style="height: 55px;">
+                                </div>
+                                <div class="col-12">
+                                    <label for="GoodsName">모델규격명</label>
+                                    <input type="text" class="form-control border-0" id="GoodsName" name="GoodsName"
+                                        value="Model No. XYZ Includes HDMI" required style="height: 55px;">
+                                </div>
+                                <div class="col-12">
+                                    <label for="HSCode">HS Code</label>
+                                    <input type="text" class="form-control border-0" id="HSCode" name="HSCode"
+                                        value="1901909092" required style="height: 55px;">
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <label for="PackageQuantity">포장개수</label>
+                                    <input type="number" class="form-control border-0" id="PackageQuantity"
+                                        name="PackageQuantity" required style="height: 55px;">
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <label for="PackageUnitCode">포장단위</label>
+                                    <input type="text" class="form-control border-0" id="PackageUnitCode"
+                                        name="PackageUnitCode" value="CT" required style="height: 55px;">
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <label for="DeclarationPrice">단가 * 수량의 가격</label>
+                                    <input type="number" class="form-control border-0" id="DeclarationPrice"
+                                        name="DeclarationPrice" value="500000" required style="height: 55px;">
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <label for="UnitPrice">단가</label>
+                                    <input type="number" class="form-control border-0" id="UnitPrice" name="UnitPrice"
+                                        value="500" required style="height: 55px;">
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <label for="DeclPriceCurrencyCode">통화</label>
+                                    <input type="text" class="form-control border-0" id="DeclPriceCurrencyCode"
+                                        name="DeclPriceCurrencyCode" value="USD" required style="height: 55px;">
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <label for="SupplierRegistNo">공급자사업자번호</label>
+                                    <input type="number" class="form-control border-0" id="SupplierRegistNo"
+                                        name="SupplierRegistNo" value="1208102922" required style="height: 55px;">
+                                </div>
+                                <div class="col-12">
+                                    <button class="btn btn-primary w-100 py-3" type="submit">전송하기</button>
+                                </div>
+                            </div>
+                        </form>
+                        <div id="message" class="mt-3"></div>
+
+                        <button id="nextButton" class="btn btn-primary"
+                            style="display: none; float: right; font-size: 12px; padding: 5px 10px; margin-top: 10px; "
+                            th:onclick="|window.location.href='@{/export/Declare_success}'|">-></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script>
+        document.getElementById('exportForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const formData = {
+                uTradeHubID: document.getElementById('uTradeHubID').value,
+                SelleruTradeHubID: document.getElementById('Seller_uTradeHubID').value,
+                uTradeHubNum: document.getElementById('uTradeHubNum').value,
+                AutoDeclaration: document.getElementById('AutoDeclaration').value,
+                DeliveryStatus: document.getElementById('DeliveryStatus').value,
+                DeliveryMeans: document.getElementById('DeliveryMeans').value,
+                InvoiceNo: document.getElementById('InvoiceNo').value,
+                RequestType: document.getElementById('RequestType').value,
+                PaymentAmount: parseFloat(document.getElementById('PaymentAmount').value),
+                PaymentCurrencyCode: document.getElementById('PaymentCurrencyCode').value,
+                DestinationCountryCode: document.getElementById('DestinationCountryCode').value,
+                BuyerPartyEngName: document.getElementById('BuyerPartyEngName').value,
+                BuyerPartyAddress: document.getElementById('BuyerPartyAddress').value,
+                TotalPackageQuantity: parseInt(document.getElementById('TotalPackageQuantity').value),
+                TotalPackageWeight: parseFloat(document.getElementById('TotalPackageWeight').value),
+                SellerPartyCompanyName: document.getElementById('SellerPartyCompanyName').value,
+                SellerPartyRegistNo: document.getElementById('SellerPartyRegistNo').value,
+                SellerPartyAddress: document.getElementById('SellerPartyAddress').value,
+                SellerPartyCeoName: document.getElementById('SellerPartyCeoName').value,
+                SellerPartyZipCode: document.getElementById('SellerPartyZipCode').value,
+                SellerPartyCustomsId: document.getElementById('SellerPartyCustomsId').value,
+                SellerPartyDeclarationId: document.getElementById('SellerPartyDeclarationId').value,
+                GoodsLocZipCode: document.getElementById('GoodsLocZipCode').value,
+                GoodsLocAddress: document.getElementById('GoodsLocAddress').value,
+                GoodsLocAddress2: document.getElementById('GoodsLocAddress2').value,
+                LoadingLocPortCode: document.getElementById('LoadingLocPortCode').value,
+                TransportMeansCode: document.getElementById('TransportMeansCode').value,
+                CustomsCode: document.getElementById('CustomsCode').value,
+                CustomsDeptCode: document.getElementById('CustomsDeptCode').value,
+                ManufactureLocCode: document.getElementById('ManufactureLocCode').value,
+                PaymentTypeCode: document.getElementById('PaymentTypeCode').value,
+                ExportPartyTypeCode: document.getElementById('ExportPartyTypeCode').value,
+                CustomsTaxRefundRequest: document.getElementById('CustomsTaxRefundRequest').value,
+                InspectionCode: document.getElementById('InspectionCode').value,
+                MakerCustomsId: document.getElementById('MakerCustomsId').value,
+                MakerName: document.getElementById('MakerName').value,
+                MakerZipCode: document.getElementById('MakerZipCode').value,
+                DeliveryTermsCode: document.getElementById('DeliveryTermsCode').value,
+                FreightAmount: document.getElementById('FreightAmount').value,
+                InsuranceAmount: document.getElementById('InsuranceAmount').value,
+                ApplicationNotice: document.getElementById('ApplicationNotice').value,
+                MallDomn: document.getElementById('MallDomn').value,
+                FreightForwarderCode1: document.getElementById('FreightForwarderCode1').value,
+                FreightForwarderCode2: document.getElementById('FreightForwarderCode2').value,
+                FreightForwarderCode3: document.getElementById('FreightForwarderCode3').value
+            };
+
+            fetch('http://localhost:9600/export/declare', {  // 로컬 백엔드로 요청
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'API-KEY': 'c6d9a09b-cb7e-4644-8aff-db7245e8cec2-917da2fd-c3cb-3621-0000-01928e2e84fc',  // API Key 추가
+                },
+                body: JSON.stringify(formData)
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Success:', data);
+
+                    // HTML 화면에 성공 메시지 표시
+                    let messageDiv = document.getElementById('message');
+                    messageDiv.innerText = '관세청으로 수출신고가 완료되었습니다';
+
+                    // "다음으로" 버튼을 보이게 설정
+                    document.getElementById('nextButton').style.display = 'block';
+
+                    function proceedToDeclareSuccess() {
+                        window.location.href = '/export/Declare_success'; // ExportController의 /export/declare_success로 이동
+                    }
+                })
+
+
+        });
+
+    </script>
+</body>
+
+</html>

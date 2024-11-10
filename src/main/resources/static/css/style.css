@@ -1,0 +1,1570 @@
+/********** Template CSS **********/
+:root {
+    --primary: #FF3E41;
+    --secondary: #51CFED;
+    --light: #F8F2F0;
+    --dark: #060315;
+}
+
+.fw-medium {
+    font-weight: 600 !important;
+}
+
+.back-to-top {
+    position: fixed;
+    display: none;
+    right: 45px;
+    bottom: 45px;
+    z-index: 99;
+}
+
+
+/*** Spinner ***/
+#spinner {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .5s ease-out, visibility 0s linear .5s;
+    z-index: 99999;
+}
+
+#spinner.show {
+    transition: opacity .5s ease-out, visibility 0s linear 0s;
+    visibility: visible;
+    opacity: 1;
+}
+
+
+/*** Button ***/
+.btn {
+    font-weight: 600;
+    transition: .5s;
+}
+
+.btn.btn-primary,
+.btn.btn-secondary {
+    color: #FFFFFF;
+}
+
+.btn-square {
+    width: 38px;
+    height: 38px;
+}
+
+.btn-sm-square {
+    width: 32px;
+    height: 32px;
+}
+
+.btn-lg-square {
+    width: 48px;
+    height: 48px;
+}
+
+.btn-square,
+.btn-sm-square,
+.btn-lg-square {
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: normal;
+}
+
+/*** Navbar ***/
+.navbar .dropdown-toggle::after {
+    border: none;
+    content: "\f107";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    vertical-align: middle;
+    margin-left: 8px;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    position: relative;
+    margin-right: 30px;
+    padding: 25px 0;
+    color: #FFFFFF;
+    font-size: 15px;
+    text-transform: uppercase;
+    outline: none;
+}
+
+.navbar-light .navbar-nav .nav-link:hover,
+.navbar-light .navbar-nav .nav-link.active {
+    color: var(--primary);
+}
+
+@media (max-width: 991.98px) {
+    .navbar-light .navbar-nav .nav-link {
+        margin-right: 0;
+        padding: 10px 0;
+    }
+
+    .navbar-light .navbar-nav {
+        border-top: 1px solid #EEEEEE;
+    }
+}
+
+.navbar-light .navbar-brand,
+.navbar-light a.btn {
+    height: 75px;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: var(--dark);
+    font-weight: 500;
+}
+
+.navbar-light.sticky-top {
+    top: -100px;
+    transition: .5s;
+}
+
+@media (min-width: 992px) {
+    .navbar-light .navbar-nav .nav-link::before {
+        position: absolute;
+        content: "";
+        width: 0;
+        height: 5px;
+        top: -6px;
+        left: 50%;
+        background: #FFFFFF;
+        transition: .5s;
+    }
+
+    .navbar-light .navbar-nav .nav-link:hover::before,
+    .navbar-light .navbar-nav .nav-link.active::before {
+        width: 100%;
+        left: 0;
+    }
+
+    .navbar-light .navbar-nav .nav-link.nav-contact::before {
+        display: none;
+    }
+
+    .navbar .nav-item .dropdown-menu {
+        display: block;
+        border: none;
+        margin-top: 0;
+        top: 150%;
+        opacity: 0;
+        visibility: hidden;
+        transition: .5s;
+    }
+
+    .navbar .nav-item:hover .dropdown-menu {
+        top: 100%;
+        visibility: visible;
+        transition: .5s;
+        opacity: 1;
+    }
+}
+
+
+/*** Header ***/
+@media (max-width: 768px) {
+    .header-carousel .owl-carousel-item {
+        position: relative;
+        min-height: 500px;
+    }
+
+    .header-carousel .owl-carousel-item img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .header-carousel .owl-carousel-item h5,
+    .header-carousel .owl-carousel-item p {
+        font-size: 14px !important;
+        font-weight: 400 !important;
+    }
+
+    .header-carousel .owl-carousel-item h1 {
+        font-size: 30px;
+        font-weight: 600;
+    }
+}
+
+.header-carousel .owl-nav {
+    position: absolute;
+    top: 50%;
+    right: 8%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+}
+
+.header-carousel .owl-nav .owl-prev,
+.header-carousel .owl-nav .owl-next {
+    margin: 7px 0;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+    background: transparent;
+    border: 1px solid #FFFFFF;
+    border-radius: 45px;
+    font-size: 22px;
+    transition: .5s;
+}
+
+.header-carousel .owl-nav .owl-prev:hover,
+.header-carousel .owl-nav .owl-next:hover {
+    background: var(--primary);
+    border-color: var(--primary);
+}
+
+.page-header {
+    background: linear-gradient(rgba(6, 3, 21, .5), rgba(6, 3, 21, .5)), url(../img/carousel-1.jpg) center center no-repeat;
+    background-size: cover;
+}
+
+.breadcrumb-item+.breadcrumb-item::before {
+    color: var(--light);
+}
+
+
+/*** About ***/
+@media (min-width: 992px) {
+    .container.about {
+        max-width: 100% !important;
+    }
+
+    .about-text {
+        padding-right: calc(((100% - 960px) / 2) + .75rem);
+    }
+}
+
+@media (min-width: 1200px) {
+    .about-text {
+        padding-right: calc(((100% - 1140px) / 2) + .75rem);
+    }
+}
+
+@media (min-width: 1400px) {
+    .about-text {
+        padding-right: calc(((100% - 1320px) / 2) + .75rem);
+    }
+}
+
+
+/*** Feature ***/
+@media (min-width: 992px) {
+    .container.feature {
+        max-width: 100% !important;
+    }
+
+    .feature-text {
+        padding-left: calc(((100% - 960px) / 2) + .75rem);
+    }
+}
+
+@media (min-width: 1200px) {
+    .feature-text {
+        padding-left: calc(((100% - 1140px) / 2) + .75rem);
+    }
+}
+
+@media (min-width: 1400px) {
+    .feature-text {
+        padding-left: calc(((100% - 1320px) / 2) + .75rem);
+    }
+}
+
+
+/*** Service, Price & Team ***/
+.service-item,
+.price-item,
+.team-item {
+    box-shadow: 0 0 45px rgba(0, 0, 0, .07);
+}
+
+.service-item img,
+.team-item img {
+    transition: .5s;
+}
+
+.service-item:hover img,
+.team-item:hover img {
+    transform: scale(1.1);
+}
+
+.service-item a.btn-slide,
+.price-item a.btn-slide,
+.team-item div.btn-slide {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    font-size: 0;
+}
+
+.service-item a.btn-slide i,
+.service-item a.btn-slide span,
+.price-item a.btn-slide i,
+.price-item a.btn-slide span,
+.team-item div.btn-slide i,
+.team-item div.btn-slide span {
+    position: relative;
+    height: 40px;
+    padding: 0 15px;
+    display: inline-flex;
+    align-items: center;
+    font-size: 16px;
+    color: #FFFFFF;
+    background: var(--primary);
+    border-radius: 0 35px 35px 0;
+    transition: .5s;
+    z-index: 2;
+}
+
+.team-item div.btn-slide span a i {
+    padding: 0 10px;
+}
+
+.team-item div.btn-slide span a:hover i {
+    background: var(--secondary);
+}
+
+.service-item a.btn-slide span,
+.price-item a.btn-slide span,
+.team-item div.btn-slide span {
+    padding-left: 0;
+    left: -100%;
+    z-index: 1;
+}
+
+.service-item:hover a.btn-slide i,
+.price-item:hover a.btn-slide i,
+.team-item:hover div.btn-slide i {
+    border-radius: 0;
+}
+
+.service-item:hover a.btn-slide span,
+.price-item:hover a.btn-slide span,
+.team-item:hover div.btn-slide span {
+    left: 0;
+}
+
+.service-item a.btn-slide:hover i,
+.service-item a.btn-slide:hover span,
+.price-item a.btn-slide:hover i,
+.price-item a.btn-slide:hover span {
+    background: var(--secondary);
+}
+
+
+/*** Testimonial ***/
+.testimonial-carousel .owl-item .testimonial-item {
+    position: relative;
+    transition: .5s;
+}
+
+.testimonial-carousel .owl-item.center .testimonial-item {
+    box-shadow: 0 0 45px rgba(0, 0, 0, .08);
+    animation: pulse 1s ease-out .5s;
+}
+
+.testimonial-carousel .owl-dots {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.testimonial-carousel .owl-dot {
+    position: relative;
+    display: inline-block;
+    margin: 0 5px;
+    width: 15px;
+    height: 15px;
+    background: var(--primary);
+    border: 5px solid var(--light);
+    border-radius: 15px;
+    transition: .5s;
+}
+
+.testimonial-carousel .owl-dot.active {
+    background: var(--light);
+    border-color: var(--primary);
+}
+
+
+/*** Contact ***/
+@media (min-width: 992px) {
+    .container.contact-page {
+        max-width: 100% !important;
+    }
+
+    .contact-page .contact-form {
+        padding-left: calc(((100% - 960px) / 2) + .75rem);
+    }
+}
+
+@media (min-width: 1200px) {
+    .contact-page .contact-form {
+        padding-left: calc(((100% - 1140px) / 2) + .75rem);
+    }
+}
+
+@media (min-width: 1400px) {
+    .contact-page .contact-form {
+        padding-left: calc(((100% - 1320px) / 2) + .75rem);
+    }
+}
+
+
+/*** Footer ***/
+.footer {
+    background: linear-gradient(rgba(6, 3, 21, .5), rgba(6, 3, 21, .5)), url(../img/map.png) center center no-repeat;
+    background-size: cover;
+}
+
+.footer .btn.btn-social {
+    margin-right: 5px;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--light);
+    border: 1px solid #FFFFFF;
+    border-radius: 35px;
+    transition: .3s;
+}
+
+.footer .btn.btn-social:hover {
+    color: var(--primary);
+}
+
+.footer .btn.btn-link {
+    display: block;
+    margin-bottom: 5px;
+    padding: 0;
+    text-align: left;
+    color: #FFFFFF;
+    font-size: 15px;
+    font-weight: normal;
+    text-transform: capitalize;
+    transition: .3s;
+}
+
+.footer .btn.btn-link::before {
+    position: relative;
+    content: "\f105";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    margin-right: 10px;
+}
+
+.footer .btn.btn-link:hover {
+    letter-spacing: 1px;
+    box-shadow: none;
+}
+
+.footer .copyright {
+    padding: 25px 0;
+    font-size: 15px;
+    border-top: 1px solid rgba(256, 256, 256, .1);
+}
+
+.footer .copyright a {
+    color: var(--light);
+}
+
+.hover-zoom {
+    transition: transform 0.3s ease;
+}
+
+.hover-zoom:hover {
+    transform: scale(1.1);
+    /* 마우스 오버 시 1.1배 확대 */
+}
+
+/* 추천 상품 이미지 hover 시 확대 효과 */
+.featured-product img {
+    transition: transform 0.3s ease;
+    z-index: 1;
+}
+
+.featured-product img:hover {
+    transform: scale(1.1);
+    /* 마우스 오버 시 이미지 확대 */
+}
+
+/* 상품명 스타일, 이미지 위에 표시되도록 z-index 적용 */
+.featured-product h4 {
+    position: relative;
+    z-index: 2;
+    background: rgba(255, 255, 255, 0.7);
+    /* 반투명한 배경으로 텍스트 가독성 높임 */
+    padding: 5px;
+    border-radius: 5px;
+}
+
+/* 상품 설명 입력란 크기 조정 */
+#description {
+    width: 100%;
+    height: 150px;
+    resize: none;
+}
+
+/* 이미지 첨부 버튼 크기 조정 */
+#imageInput {
+    width: 100%;
+}
+
+.small-product-image {
+    width: auto;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.pagination {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.pagination a {
+    color: #007BFF;
+    margin: 0 5px;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+.pagination a.active {
+    background-color: #007BFF;
+    color: white;
+}
+
+.pagination a:hover {
+    background-color: #0056b3;
+    color: white;
+}
+
+.product-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* 회사 정보와 제품 세부 정보 레이아웃 조정 */
+.product-details {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    margin-top: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.company-info h3,
+.product-details h3 {
+    margin-top: 20px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #333;
+}
+
+.company-info p,
+.product-details p {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.product-description {
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.product-date {
+    font-size: 0.9rem;
+    color: #999;
+    margin-bottom: 20px;
+}
+
+.product-views {
+    margin-top: 20px;
+    text-align: left;
+    padding: 0;
+    border: none;
+}
+
+.product-views p {
+    margin-bottom: 8px;
+}
+
+.product-views span {
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+/* 상품 상세 페이지의 이미지 크기 고정 설정 */
+.product-image {
+    width: 400px;
+    /* 고정 너비 */
+    height: 400px;
+    /* 고정 높이 */
+    object-fit: cover;
+    /* 이미지 비율 유지하며 고정 크기에 맞게 설정 */
+    margin-bottom: 20px;
+    /* 아래쪽 간격 */
+    border-radius: 10px;
+    /* 선택 사항: 이미지 테두리 둥글게 */
+}
+
+/* 모든 상품 이미지 스타일 */
+.product-image {
+    display: block;
+    max-width: 100%;
+    /* 부모 요소 너비에 맞춤 */
+    max-height: 500px;
+    /* 화면에서 너무 크지 않게 높이 제한 */
+    width: auto;
+    height: auto;
+    /* 원본 비율 유지 */
+    margin-bottom: 20px;
+    /* 아래쪽 간격 */
+    object-fit: contain;
+    /* 원본 비율을 유지하면서 이미지 크기 맞춤 */
+}
+
+div.image-container {
+    /* width: 600px;
+    height: 600px; */
+    flex: 1;
+    max-width: 50%;
+    /* 이미지 컨테이너 너비를 절반으로 설정 */
+    padding-right: 20px;
+    /* 이미지와 상품 정보 사이에 여백 추가 */
+}
+
+/* 대표 이미지 크기 조정 */
+.product-main-image {
+    max-width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+/* 제품 정보 관련 스타일 */
+.product-views p,
+.company-info p {
+    margin: 0.5em 0;
+}
+
+.company-info {
+    /* border-top: 1px solid #ccc;
+    margin-top: 1.5em;
+    padding-top: 1.5em; */
+    margin-top: 30px;
+    padding-top: 15px;
+    border-top: 1px solid #ddd;
+}
+
+/* 세부 이미지 스타일 */
+.additional-images .additional-image {
+    max-width: 150px;
+    margin-right: 15px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+
+/* 페이지네이션 스타일 추가 */
+.pagination {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.pagination a {
+    color: #007BFF;
+    margin: 0 5px;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+.pagination a.active {
+    background-color: #007BFF;
+    color: white;
+}
+
+.pagination a:hover {
+    background-color: #0056b3;
+    color: white;
+}
+
+/* 게시글 설명 부분 CSS */
+p.description {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    /* 최대 3줄까지만 표시 */
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    /* 넘치는 부분은 ...으로 표시 */
+    max-height: 4.5em;
+    /* 라인의 최대 높이를 설정 (1줄 당 약 1.5em) */
+    line-height: 1.5em;
+    /* 줄 간격 설정 */
+    height: 50px;
+}
+
+/* 상품 상세 페이지 스타일 */
+#product-detail {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+.product-info {
+    /* padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1;
+    max-width: 45%;
+    상품 정보 섹션 너비 설정
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    상품 정보는 위에서 아래로 정렬 */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 20px;
+}
+
+.product-info h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.product-price {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #e74c3c;
+    margin-bottom: 10px;
+}
+
+.product-date,
+.product-views {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.company-info h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.company-info p {
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+    color: #555;
+}
+
+.product-details,
+.company-info {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    margin-top: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* prodMain.css 삭제하고 만듦 */
+.container_promotion {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.product-list {
+    max-width: 1200px;
+    margin: 0 auto;
+    /* 가운데 정렬 */
+    padding-left: 20px;
+    /* 왼쪽 여백 */
+    padding-right: 20px;
+    /* 오른쪽 여백 */
+}
+
+.product-item {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+.product-card {
+    max-width: 100%;
+    width: 300px;
+}
+
+.card {
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    transition: transform 0.3s;
+    overflow: hidden;
+    /* 이미지가 카드 밖으로 넘어가지 않도록 설정 */
+}
+
+.fixed-image {
+    width: 100%;
+    /* 이미지가 컨테이너에 맞게 */
+    height: 200px;
+    /* 고정된 높이 */
+    object-fit: cover;
+    /* 비율 유지하며 이미지 자르기 */
+    border-radius: 8px;
+    /* 이미지 테두리 둥글게 */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    /* 그림자 효과 */
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-body {
+    padding: 15px;
+}
+
+.text-danger {
+    color: #e74c3c;
+}
+
+/* 이미지 크기 고정 */
+.fixed-size {
+    width: 100%;
+    height: 200px;
+    /* 원하는 크기로 설정 */
+    object-fit: cover;
+    /* 이미지가 고정된 크기 내에서 꽉 차게 함 */
+    border-radius: 15px;
+    /* 이미지도 둥글게 */
+    transition: transform 0.3s ease;
+    /* hover 시 부드러운 애니메이션 */
+}
+
+/* hover 시 부드럽게 확대 */
+.fixed-size:hover {
+    transform: scale(1.05);
+    /* hover 시 약간 확대 */
+}
+
+/* 상품명 중앙 정렬 및 간격 */
+.card-body h4 {
+    font-size: 1.2rem;
+    /* 상품명 크기 적당히 조정 */
+    margin: 0;
+    /* 기본 margin 제거 */
+    line-height: 1.5;
+    /* 상품명 텍스트 간격 조정 */
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .product-price {
+        font-size: 1.5rem;
+    }
+
+    .product-date {
+        font-size: 0.8rem;
+    }
+
+    .product-date,
+    .product-views {
+        font-size: 0.9rem;
+    }
+
+    .company-info h3 {
+        font-size: 1.3rem;
+    }
+
+    .company-info p {
+        font-size: 1rem;
+    }
+
+    .product-main-image {
+        max-width: 100%;
+        height: auto;
+        object-fit: contain;
+    }
+
+    .product-details,
+    .company-info {
+        padding: 15px;
+    }
+
+    .product-info {
+        padding: 10px;
+    }
+
+    .product-info h1 {
+        font-size: 2rem;
+    }
+
+    .product-description {
+        font-size: 1rem;
+    }
+
+    #product-detail {
+        padding: 15px;
+    }
+
+    /*폼(민근재량)*/
+
+    h6 {
+        font-size: 2.5rem;
+        /* h6 태그에 대한 전체적인 크기를 설정 */
+        font-weight: bold;
+    }
+
+    .export-title {
+        font-weight: 400;
+        /* 글자 굵기를 줄여서 덜 두껍게 설정 */
+        font-size: 1.0rem;
+        font-weight: bold;
+        /* 글씨 크기를 줄임 */
+        line-height: 1.4;
+        /* 줄 간격을 설정하여 가독성 개선 */
+        margin-bottom: 10px;
+        /* p 요소와의 간격을 줄이기 위해 margin-bottom 조정 */
+    }
+
+    .export-paragraph {
+        margin-top: 5px;
+        /* h1 요소와의 간격을 줄이기 위해 margin-top 조정 */
+    }
+
+    .sticky-header {
+        position: sticky;
+        top: 30px;
+        /* 스크롤 시 화면 상단에서 30px 아래에 고정되도록 설정 */
+        right: 80px;
+        /* 화면의 오른쪽에 고정되도록 설정 */
+        z-index: 1000;
+        /* 다른 요소보다 위에 표시되도록 설정 */
+        background-color: #f8f9fa;
+        /* 배경색 설정 */
+        padding: 15px 20px;
+        /* 여백을 늘려 크기를 키움 */
+        width: 25%;
+        /* 설명 부분의 가로 너비 설정 */
+        height: auto;
+        /* 높이를 자동으로 설정하여 필요한 만큼만 차지 */
+        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+        /* 약간의 그림자 추가 */
+        float: right;
+        text-align: center;
+        /* 화면 오른쪽에 위치 */
+    }
+
+    /* 클래스와 그 내부 태그들에게 오른쪽으로 이동하는 스타일 적용 */
+    .col-lg-8 {
+        transform: translateX(150px);
+        /* 원하는 만큼 이동 거리 조정 */
+    }
+
+    .container-xxl {
+        margin-top: -92px;
+        max-width: 3000px;
+        margin-right: auto;
+        margin-left: auto;
+        padding: 0 40px;
+    }
+
+
+    /* Page Header 높이 조절 및 비디오 설정 */
+    .page-header {
+        position: relative;
+        height: 50vh;
+        /* 페이지 헤더 높이를 3분의 1만 줄인 값으로 설정 */
+        overflow: hidden;
+        /* 비디오가 페이지 헤더 영역을 벗어나지 않도록 설정 */
+        padding: 0;
+        /* 불필요한 패딩 제거 */
+        margin-bottom: 6rem;
+        /* 기존 마진 유지 */
+    }
+
+    .main-area {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        /* 비디오가 페이지 헤더 공간을 완전히 채우도록 설정 */
+        object-fit: cover;
+    }
+
+    .quotes-area {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        background-color: rgba(0, 0, 0, 0.5);
+        text-align: center;
+        z-index: 2;
+    }
+
+    .item-header .vertical-part {
+        font-size: 1.25rem;
+        font-family: "Roboto", sans-serif;
+        font-weight: 700;
+        line-height: 1.2;
+        color: #FFFFFF;
+        /* 다른 텍스트는 하얀색으로 설정 */
+        margin-bottom: 0.5rem;
+    }
+
+    .service-name {
+        font-size: 2rem;
+        font-family: "Roboto", sans-serif;
+        font-weight: 700;
+        line-height: 1.2;
+        color: #51CFED !important;
+        /* '청해지니 통합물류서비스'는 지정된 색으로 설정 */
+        margin-bottom: 0.5rem;
+    }
+
+    /*** Button Custom Styles ***/
+    .btn {
+        font-weight: 600 !important;
+        /* 기존 스타일을 덮어씌우기 위해 !important 사용 */
+        transition: .5s;
+        color: #FFFFFF !important;
+        /* 텍스트 색상 하얀색으로 설정 */
+        background-color: #FF3E41 !important;
+        /* 버튼 배경색 지정 */
+    }
+
+    .btn:hover {
+        background-color: #51CFED !important;
+        /* 버튼 호버 시 배경색 변경 */
+    }
+
+    /* Primary, Secondary 버튼 텍스트 색상 유지 */
+    .btn.btn-primary,
+    .btn.btn-secondary {
+        color: #FFFFFF !important;
+    }
+
+    /*** Feature 크기 조절 및 전체 너비 축소 ***/
+    .feature {
+        padding: 2rem 2rem;
+        /* 상하 패딩을 줄이면서 좌우 여백을 추가 */
+        max-width: 90%;
+        /* 전체 섹션의 너비를 줄여서 좌우 여백을 더 확보 */
+        margin: 0 auto;
+        /* 가운데 정렬 */
+    }
+
+    .feature-text h1 {
+        font-size: 2rem;
+        /* 헤딩 크기를 줄여서 컴팩트하게 만듭니다 */
+        margin-bottom: 2rem;
+        /* 하단 마진을 줄여 공간을 더 절약 */
+    }
+
+    .feature-text .d-flex {
+        margin-bottom: 2rem;
+        /* 각 기능 블록 사이의 간격 줄이기 */
+    }
+
+    .feature-text h5 {
+        font-size: 1.25rem;
+        /* 기능 제목의 크기 줄이기 */
+    }
+
+    .feature-text p {
+        font-size: 0.9rem;
+        /* 기능 설명 텍스트의 크기 줄이기 */
+    }
+
+    .col-lg-6 {
+        padding: 0.5rem;
+        /* 열 사이의 패딩 줄이기 */
+    }
+
+    @media (max-width: 992px) {
+        .feature {
+            padding: 1rem 1rem;
+            /* 작은 화면에서는 패딩을 더 줄이되 좌우 여백 유지 */
+            max-width: 95%;
+            /* 작은 화면에서는 너비를 조금 더 늘려줌 */
+        }
+
+        .feature-text h1 {
+            font-size: 1.75rem;
+            /* 작은 화면에서는 헤딩 크기를 더 줄임 */
+        }
+
+        .feature-text h5 {
+            font-size: 1.1rem;
+            /* 작은 화면에서는 기능 제목 크기를 더 줄임 */
+        }
+
+        .feature-text p {
+            font-size: 0.8rem;
+            /* 작은 화면에서는 설명 텍스트 크기 줄이기 */
+        }
+    }
+
+    @media (min-width: 992px) {
+        .container.feature {
+            max-width: 90% !important;
+            /* 최대 너비를 전체 너비의 90%로 줄임 */
+            margin: 0 auto;
+            /* 가운데 정렬 */
+        }
+
+        .feature {
+            padding: 1.5rem 2rem;
+            /* 큰 화면에서 좌우 여백을 유지하면서 상하 패딩 줄이기 */
+        }
+
+        .feature-text {
+            padding-left: 2rem;
+            /* 좌측 패딩을 고정값으로 설정하여 간격을 일관되게 유지 */
+        }
+    }
+
+    @media (min-width: 1200px) {
+        .feature {
+            padding: 1.5rem 3rem;
+            /* 더 큰 화면에서 좌우 여백을 조금 더 추가 */
+        }
+
+        .feature-text {
+            padding-left: 3rem;
+            /* 좌측 패딩을 고정값으로 설정 */
+        }
+    }
+
+    @media (min-width: 1400px) {
+        .feature {
+            padding: 1.5rem 4rem;
+            /* 매우 큰 화면에서 좌우 여백을 더 추가 */
+        }
+
+        .feature-text {
+            padding-left: 4rem;
+            /* 좌측 패딩을 고정값으로 설정 */
+        }
+    }
+}
+
+/* join.html, login.html */
+.page-container {
+    padding-top: 120px;
+    /* 헤더에 가리지 않도록 상단 여백 추가 */
+    max-width: 600px;
+    /* 페이지의 최대 너비 설정 */
+    margin: 0 auto;
+    /* 가운데 정렬 */
+}
+
+.logo {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.logo img {
+    width: 100px;
+    /* 로고 크기 조정 */
+    margin-bottom: 10px;
+}
+
+h2 {
+    font-size: 2rem;
+    color: var(--primary);
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul li {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+}
+
+ul li i {
+    margin-right: 10px;
+    font-size: 1.2rem;
+    color: var(--primary);
+    /* 아이콘 색상 */
+}
+
+ul li input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    background-color: #f7f7f7;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+ul li input:focus {
+    border-color: var(--primary);
+    outline: none;
+}
+
+.btns {
+    text-align: center;
+}
+
+.btn-primary {
+    background-color: var(--primary);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 25px;
+    border: none;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: var(--secondary);
+    transform: translateY(-2px);
+}
+
+.btn-light {
+    background-color: #fff;
+    color: var(--primary);
+    padding: 10px 20px;
+    border: 1px solid var(--primary);
+    border-radius: 25px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.btn-light:hover {
+    background-color: var(--primary);
+    color: #fff;
+}
+
+.error-message {
+    font-size: 0.85rem;
+    color: red;
+    margin-top: 5px;
+}
+
+/* 로그인 페이지 스타일 */
+.login-container {
+    padding-top: 120px;
+    /* 헤더에 가리지 않도록 상단 여백 추가 */
+    max-width: 600px;
+    /* 페이지의 최대 너비 설정 */
+    margin: 0 auto;
+    /* 가운데 정렬 */
+}
+
+.login-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 로그인 페이지 입력칸과 로고 길이 조정 */
+.login-content,
+.login-content input[type="text"],
+.login-content input[type="password"] {
+    max-width: 400px;
+    /* 로고 크기에 맞게 입력칸 최대 너비 설정 */
+    width: 100%;
+    /* 화면 크기에 따라 너비를 조정 */
+    margin: 0 auto;
+    /* 가운데 정렬 */
+}
+
+.logo img {
+    max-width: 400px;
+    /* 입력칸과 로고의 너비를 일치시킴 */
+    width: 100%;
+    margin: 0 auto;
+    display: block;
+    /* 가운데 정렬 */
+}
+
+/* index.html 수정 css 코드 */
+/* 선택 박스 스타일 */
+.form-control,
+.form-select {
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 0 15px;
+    font-size: 1rem;
+    color: #333;
+    transition: border-color 0.3s ease-in-out;
+}
+
+.form-select {
+    width: 250px;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 5px rgba(255, 62, 65, 0.2);
+    outline: none;
+}
+
+/* 아이콘과 선택 박스 정렬 */
+.d-flex.mb-5 .fa-ship,
+.d-flex.mb-5 .fa-anchor {
+    margin-right: 15px;
+    color: var(--primary);
+}
+
+.d-flex.mb-5 {
+    align-items: center;
+}
+
+/* 버튼 스타일 */
+.submit-btn {
+    background-color: var(--primary);
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+    padding: 15px 0;
+    font-size: 1rem;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.submit-btn:hover {
+    background-color: var(--secondary);
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+/* Custom style for prodMain.html */
+
+/* 검색 바 스타일 */
+.form-control-custom,
+.form-select-custom {
+    height: 45px;
+    /* 높이 조정 */
+    font-size: 1rem;
+    /* 폰트 크기 */
+    padding: 0 15px;
+    /* 좌우 여백 */
+    background-color: #f8f8f8;
+    /* 배경색 */
+    border: 1px solid #ddd;
+    /* 테두리 */
+    border-radius: 25px;
+    /* 둥근 모서리 */
+    transition: border-color 0.3s ease-in-out;
+    /* 포커스 시 전환 효과 */
+}
+
+.form-control-custom:focus,
+.form-select-custom:focus {
+    border-color: var(--primary);
+    /* 포커스 시 색상 */
+    box-shadow: 0 0 5px rgba(255, 62, 65, 0.2);
+    /* 포커스 시 그림자 */
+    outline: none;
+}
+
+/* 검색 버튼 스타일 */
+.btn-custom {
+    height: 45px;
+    /* 검색창과 동일한 높이 */
+    font-size: 1rem;
+    /* 버튼 텍스트 크기 */
+    border-radius: 25px;
+    /* 둥근 모서리 */
+    padding: 0 20px;
+    /* 좌우 패딩 */
+    transition: background-color 0.3s, transform 0.3s;
+    /* 전환 효과 */
+}
+
+.btn-custom.btn-primary {
+    background-color: var(--primary);
+    /* 기본 배경색 */
+    color: #fff;
+    /* 텍스트 색상 */
+}
+
+.btn-custom.btn-primary:hover {
+    background-color: var(--secondary);
+    /* 호버 시 배경색 변경 */
+    transform: translateY(-2px);
+    /* 호버 시 약간 위로 이동 */
+}
+
+/* ** Progress Bar Custom Styles ** */
+
+/* Progress Container */
+.progress-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.progress-header h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--secondary);
+    margin: 0;
+}
+
+.progress-percentage {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+/* Progress Gauge */
+.progress-gauge {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#progress-gauge-bar {
+    width: 100%;
+    height: 20px;
+    border-radius: 10px;
+    appearance: none;
+}
+
+#progress-gauge-bar::-webkit-progress-bar {
+    background-color: #ddd;
+    border-radius: 10px;
+}
+
+#progress-gauge-bar::-webkit-progress-value {
+    background-color: var(--primary);
+    border-radius: 10px;
+}
+
+#progress-gauge-bar::-moz-progress-bar {
+    background-color: var(--primary);
+    border-radius: 10px;
+}
+
+/* Progress Steps */
+.progress-step {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+/* .progress-image-circle,
+.progress-image-icon {
+    width: 50px;
+    height: 50px;
+    background-color: #fff;
+    border: 2px solid var(--primary);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} */
+
+/* .progress-image-circle img,
+.progress-image-icon img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    원본 비율을 유지하면서 이미지를 표시
+} */
+
+*/ .progress-image-arrow {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Memo Section */
+.memo-body {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.memo-body ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.memo-body ul li {
+    padding: 5px 0;
+    font-size: 0.95rem;
+    color: #555;
+}
+
+.memo-head h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--primary);
+    margin-bottom: 10px;
+}
+
+.pointer h4 {
+    font-size: 0.85rem;
+    text-align: center;
+    margin: 0;
+    color: var(--dark);
+}

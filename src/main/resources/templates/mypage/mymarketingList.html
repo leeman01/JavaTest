@@ -1,0 +1,62 @@
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{base}" layout:fragment="content">
+
+<head>
+    <title>mymarketing</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<body>
+    <!-- List Start -->
+    <div class="container-xxl py-5">
+        <div class="container py-5">
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.3s" th:each="product : ${products}">
+                    <div class="service-item p-4">
+                        <div class="overflow-hidden mb-4">
+                            <img th:src="@{/product/download(id=${product.id})}" alt="상품 이미지"
+                                class="small-product-image">
+                        </div>
+                        <h4 class="mb-3" th:text="${product.productName}"></h4>
+                        <p class="description" th:text="${product.productDescription}"
+                            style="height:60px; background-color: #efefef;"></p>
+                        <!-- 조회수 추가 -->
+                        <p>일일 조회수: <span th:text="${product.dailyViews}"></span></p>
+                        <p>누적 조회수: <span th:text="${product.totalViews}"></span></p>
+                        <a class="btn-slide mt-2"
+                            th:href="@{/mypage/mymarketing/detail/{productId}(productId=${product.id})}">
+                            <i class="fa fa-arrow-right"></i><span>보러가기</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <script>
+                document.addEventListener("DOMContentLoaded", function () {
+                    const descriptions = document.querySelectorAll('.description');
+                    descriptions.forEach(description => {
+                        const maxLength = 50; // 최대 글자 수
+                        if (description.textContent.length > maxLength) {
+                            description.textContent = description.textContent.substring(0, maxLength) + '...';
+                        }
+                    });
+                });
+            </script>
+
+            <!-- 페이지네이션 -->
+            <div class="pagination d-flex justify-content-center">
+                <a th:if="${currentPage > 0}" th:href="@{/mypage/mymarketing/list(page=${currentPage - 1})}">&laquo;
+                    이전</a>
+                <span th:each="i : ${#numbers.sequence(0, totalPages - 1)}">
+                    <a th:href="@{/mypage/mymarketing/list(page=${i})}" th:text="${i + 1}"
+                        th:classappend="${i == currentPage} ? 'active'"></a>
+                </span>
+                <a th:if="${currentPage < totalPages - 1}"
+                    th:href="@{/mypage/mymarketing/list(page=${currentPage + 1})}">다음
+                    &raquo;</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- List End -->
+</body>

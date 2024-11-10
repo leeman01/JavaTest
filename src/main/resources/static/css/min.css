@@ -1,0 +1,724 @@
+/********** Template CSS **********/
+:root {
+    --primary: #FF3E41;
+    --secondary: #51CFED;
+    --light: #F8F2F0;
+    --dark: #060315;
+}
+
+.fw-medium {
+    font-weight: 600 !important;
+}
+
+.back-to-top {
+    position: fixed;
+    display: none;
+    right: 45px;
+    bottom: 45px;
+    z-index: 99;
+}
+
+
+/*** Spinner ***/
+#spinner {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .5s ease-out, visibility 0s linear .5s;
+    z-index: 99999;
+}
+
+#spinner.show {
+    transition: opacity .5s ease-out, visibility 0s linear 0s;
+    visibility: visible;
+    opacity: 1;
+}
+
+
+/*** Button ***/
+.btn {
+    font-weight: 600;
+    transition: .5s;
+}
+
+.btn.btn-primary,
+.btn.btn-secondary {
+    color: #FFFFFF;
+}
+
+.btn-square {
+    width: 38px;
+    height: 38px;
+}
+
+.btn-sm-square {
+    width: 32px;
+    height: 32px;
+}
+
+.btn-lg-square {
+    width: 48px;
+    height: 48px;
+}
+
+.btn-square,
+.btn-sm-square,
+.btn-lg-square {
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: normal;
+}
+
+/*** Navbar ***/
+.navbar .dropdown-toggle::after {
+    border: none;
+    content: "\f107";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    vertical-align: middle;
+    margin-left: 8px;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    position: relative;
+    margin-right: 30px;
+    padding: 25px 0;
+    color: #FFFFFF;
+    font-size: 15px;
+    text-transform: uppercase;
+    outline: none;
+}
+
+.navbar-light .navbar-nav .nav-link:hover,
+.navbar-light .navbar-nav .nav-link.active {
+    color: var(--primary);
+}
+
+@media (max-width: 991.98px) {
+    .navbar-light .navbar-nav .nav-link {
+        margin-right: 0;
+        padding: 10px 0;
+    }
+
+    .navbar-light .navbar-nav {
+        border-top: 1px solid #EEEEEE;
+    }
+}
+
+.navbar-light .navbar-brand,
+.navbar-light a.btn {
+    height: 75px;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: var(--dark);
+    font-weight: 500;
+}
+
+.navbar-light.sticky-top {
+    top: -100px;
+    transition: .5s;
+}
+
+@media (min-width: 992px) {
+    .navbar-light .navbar-nav .nav-link::before {
+        position: absolute;
+        content: "";
+        width: 0;
+        height: 5px;
+        top: -6px;
+        left: 50%;
+        background: #FFFFFF;
+        transition: .5s;
+    }
+
+    .navbar-light .navbar-nav .nav-link:hover::before,
+    .navbar-light .navbar-nav .nav-link.active::before {
+        width: 100%;
+        left: 0;
+    }
+
+    .navbar-light .navbar-nav .nav-link.nav-contact::before {
+        display: none;
+    }
+
+    .navbar .nav-item .dropdown-menu {
+        display: block;
+        border: none;
+        margin-top: 0;
+        top: 150%;
+        opacity: 0;
+        visibility: hidden;
+        transition: .5s;
+    }
+
+    .navbar .nav-item:hover .dropdown-menu {
+        top: 100%;
+        visibility: visible;
+        transition: .5s;
+        opacity: 1;
+    }
+}
+
+
+/*** Header ***/
+@media (max-width: 768px) {
+    .header-carousel .owl-carousel-item {
+        position: relative;
+        min-height: 500px;
+    }
+
+    .header-carousel .owl-carousel-item img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .header-carousel .owl-carousel-item h5,
+    .header-carousel .owl-carousel-item p {
+        font-size: 14px !important;
+        font-weight: 400 !important;
+    }
+
+    .header-carousel .owl-carousel-item h1 {
+        font-size: 30px;
+        font-weight: 600;
+    }
+}
+
+.header-carousel .owl-nav {
+    position: absolute;
+    top: 50%;
+    right: 8%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+}
+
+.header-carousel .owl-nav .owl-prev,
+.header-carousel .owl-nav .owl-next {
+    margin: 7px 0;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+    background: transparent;
+    border: 1px solid #FFFFFF;
+    border-radius: 45px;
+    font-size: 22px;
+    transition: .5s;
+}
+
+.header-carousel .owl-nav .owl-prev:hover,
+.header-carousel .owl-nav .owl-next:hover {
+    background: var(--primary);
+    border-color: var(--primary);
+}
+
+.page-header {
+    background: linear-gradient(rgba(6, 3, 21, .5), rgba(6, 3, 21, .5)), url(../img/carousel-1.jpg) center center no-repeat;
+    background-size: cover;
+}
+
+.breadcrumb-item+.breadcrumb-item::before {
+    color: var(--light);
+}
+
+
+/*** About ***/
+@media (min-width: 992px) {
+    .container.about {
+        max-width: 100% !important;
+    }
+
+    .about-text {
+        padding-right: calc(((100% - 960px) / 2) + .75rem);
+    }
+}
+
+@media (min-width: 1200px) {
+    .about-text {
+        padding-right: calc(((100% - 1140px) / 2) + .75rem);
+    }
+}
+
+@media (min-width: 1400px) {
+    .about-text {
+        padding-right: calc(((100% - 1320px) / 2) + .75rem);
+    }
+}
+
+
+/*** Feature ***/
+@media (min-width: 992px) {
+    .container.feature {
+        max-width: 100% !important;
+    }
+
+    .feature-text {
+        padding-left: calc(((100% - 960px) / 2) + .75rem);
+    }
+}
+
+@media (min-width: 1200px) {
+    .feature-text {
+        padding-left: calc(((100% - 1140px) / 2) + .75rem);
+    }
+}
+
+@media (min-width: 1400px) {
+    .feature-text {
+        padding-left: calc(((100% - 1320px) / 2) + .75rem);
+    }
+}
+
+
+/*** Service, Price & Team ***/
+.service-item,
+.price-item,
+.team-item {
+    box-shadow: 0 0 45px rgba(0, 0, 0, .07);
+}
+
+.service-item img,
+.team-item img {
+    transition: .5s;
+}
+
+.service-item:hover img,
+.team-item:hover img {
+    transform: scale(1.1);
+}
+
+.service-item a.btn-slide,
+.price-item a.btn-slide,
+.team-item div.btn-slide {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    font-size: 0;
+}
+
+.service-item a.btn-slide i,
+.service-item a.btn-slide span,
+.price-item a.btn-slide i,
+.price-item a.btn-slide span,
+.team-item div.btn-slide i,
+.team-item div.btn-slide span {
+    position: relative;
+    height: 40px;
+    padding: 0 15px;
+    display: inline-flex;
+    align-items: center;
+    font-size: 16px;
+    color: #FFFFFF;
+    background: var(--primary);
+    border-radius: 0 35px 35px 0;
+    transition: .5s;
+    z-index: 2;
+}
+
+.team-item div.btn-slide span a i {
+    padding: 0 10px;
+}
+
+.team-item div.btn-slide span a:hover i {
+    background: var(--secondary);
+}
+
+.service-item a.btn-slide span,
+.price-item a.btn-slide span,
+.team-item div.btn-slide span {
+    padding-left: 0;
+    left: -100%;
+    z-index: 1;
+}
+
+.service-item:hover a.btn-slide i,
+.price-item:hover a.btn-slide i,
+.team-item:hover div.btn-slide i {
+    border-radius: 0;
+}
+
+.service-item:hover a.btn-slide span,
+.price-item:hover a.btn-slide span,
+.team-item:hover div.btn-slide span {
+    left: 0;
+}
+
+.service-item a.btn-slide:hover i,
+.service-item a.btn-slide:hover span,
+.price-item a.btn-slide:hover i,
+.price-item a.btn-slide:hover span {
+    background: var(--secondary);
+}
+
+
+/*** Testimonial ***/
+.testimonial-carousel .owl-item .testimonial-item {
+    position: relative;
+    transition: .5s;
+}
+
+.testimonial-carousel .owl-item.center .testimonial-item {
+    box-shadow: 0 0 45px rgba(0, 0, 0, .08);
+    animation: pulse 1s ease-out .5s;
+}
+
+.testimonial-carousel .owl-dots {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.testimonial-carousel .owl-dot {
+    position: relative;
+    display: inline-block;
+    margin: 0 5px;
+    width: 15px;
+    height: 15px;
+    background: var(--primary);
+    border: 5px solid var(--light);
+    border-radius: 15px;
+    transition: .5s;
+}
+
+.testimonial-carousel .owl-dot.active {
+    background: var(--light);
+    border-color: var(--primary);
+}
+
+
+/*** Contact ***/
+@media (min-width: 992px) {
+    .container.contact-page {
+        max-width: 100% !important;
+    }
+
+    .contact-page .contact-form {
+        padding-left: calc(((100% - 960px) / 2) + .75rem);
+    }
+}
+
+@media (min-width: 1200px) {
+    .contact-page .contact-form {
+        padding-left: calc(((100% - 1140px) / 2) + .75rem);
+    }
+}
+
+@media (min-width: 1400px) {
+    .contact-page .contact-form {
+        padding-left: calc(((100% - 1320px) / 2) + .75rem);
+    }
+}
+
+
+/*** Footer ***/
+.footer {
+    background: linear-gradient(rgba(6, 3, 21, .5), rgba(6, 3, 21, .5)), url(../img/map.png) center center no-repeat;
+    background-size: cover;
+}
+
+.footer .btn.btn-social {
+    margin-right: 5px;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--light);
+    border: 1px solid #FFFFFF;
+    border-radius: 35px;
+    transition: .3s;
+}
+
+.footer .btn.btn-social:hover {
+    color: var(--primary);
+}
+
+.footer .btn.btn-link {
+    display: block;
+    margin-bottom: 5px;
+    padding: 0;
+    text-align: left;
+    color: #FFFFFF;
+    font-size: 15px;
+    font-weight: normal;
+    text-transform: capitalize;
+    transition: .3s;
+}
+
+.footer .btn.btn-link::before {
+    position: relative;
+    content: "\f105";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    margin-right: 10px;
+}
+
+.footer .btn.btn-link:hover {
+    letter-spacing: 1px;
+    box-shadow: none;
+}
+
+.footer .copyright {
+    padding: 25px 0;
+    font-size: 15px;
+    border-top: 1px solid rgba(256, 256, 256, .1);
+}
+
+.footer .copyright a {
+    color: var(--light);
+}
+
+/*폼(민근재량)*/
+
+h6 {
+    font-size: 2.5rem;
+    /* h6 태그에 대한 전체적인 크기를 설정 */
+    font-weight: bold;
+}
+
+.export-title {
+    font-weight: 400;
+    /* 글자 굵기를 줄여서 덜 두껍게 설정 */
+    font-size: 1.0rem;
+    font-weight: bold;
+    /* 글씨 크기를 줄임 */
+    line-height: 1.4;
+    /* 줄 간격을 설정하여 가독성 개선 */
+    margin-bottom: 10px;
+    /* p 요소와의 간격을 줄이기 위해 margin-bottom 조정 */
+}
+
+.export-paragraph {
+    margin-top: 5px;
+    /* h1 요소와의 간격을 줄이기 위해 margin-top 조정 */
+}
+
+.sticky-header {
+    position: sticky;
+    top: 30px;
+    /* 스크롤 시 화면 상단에서 30px 아래에 고정되도록 설정 */
+    right: 80px;
+    /* 화면의 오른쪽에 고정되도록 설정 */
+    z-index: 1000;
+    /* 다른 요소보다 위에 표시되도록 설정 */
+    background-color: #f8f9fa;
+    /* 배경색 설정 */
+    padding: 15px 20px;
+    /* 여백을 늘려 크기를 키움 */
+    width: 25%;
+    /* 설명 부분의 가로 너비 설정 */
+    height: auto;
+    /* 높이를 자동으로 설정하여 필요한 만큼만 차지 */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    /* 약간의 그림자 추가 */
+    float: right;
+    text-align: center;
+    /* 화면 오른쪽에 위치 */
+}
+
+/* 클래스와 그 내부 태그들에게 오른쪽으로 이동하는 스타일 적용 */
+.col-lg-8 {
+    transform: translateX(150px);
+    /* 원하는 만큼 이동 거리 조정 */
+}
+
+.container-xxl {
+    margin-top: -92px;
+    max-width: 3000px;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 0 40px;
+}
+
+
+/* Page Header 높이 조절 및 비디오 설정 */
+.page-header {
+    position: relative;
+    height: 50vh;
+    /* 페이지 헤더 높이를 3분의 1만 줄인 값으로 설정 */
+    overflow: hidden;
+    /* 비디오가 페이지 헤더 영역을 벗어나지 않도록 설정 */
+    padding: 0;
+    /* 불필요한 패딩 제거 */
+    margin-bottom: 6rem;
+    /* 기존 마진 유지 */
+}
+
+.main-area {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* 비디오가 페이지 헤더 공간을 완전히 채우도록 설정 */
+    object-fit: cover;
+}
+
+.quotes-area {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    text-align: center;
+    z-index: 2;
+}
+
+.item-header .vertical-part {
+    font-size: 1.25rem;
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    line-height: 1.2;
+    color: #FFFFFF;
+    /* 다른 텍스트는 하얀색으로 설정 */
+    margin-bottom: 0.5rem;
+}
+
+.service-name {
+    font-size: 2rem;
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    line-height: 1.2;
+    color: #51CFED !important;
+    /* '청해지니 통합물류서비스'는 지정된 색으로 설정 */
+    margin-bottom: 0.5rem;
+}
+
+/*** Button Custom Styles ***/
+.btn {
+    font-weight: 600 !important;
+    /* 기존 스타일을 덮어씌우기 위해 !important 사용 */
+    transition: .5s;
+    color: #FFFFFF !important;
+    /* 텍스트 색상 하얀색으로 설정 */
+    background-color: #FF3E41 !important;
+    /* 버튼 배경색 지정 */
+}
+
+.btn:hover {
+    background-color: #51CFED !important;
+    /* 버튼 호버 시 배경색 변경 */
+}
+
+/* Primary, Secondary 버튼 텍스트 색상 유지 */
+.btn.btn-primary,
+.btn.btn-secondary {
+    color: #FFFFFF !important;
+}
+
+/*** Feature 크기 조절 및 전체 너비 축소 ***/
+.feature {
+    padding: 2rem 2rem;
+    /* 상하 패딩을 줄이면서 좌우 여백을 추가 */
+    max-width: 90%;
+    /* 전체 섹션의 너비를 줄여서 좌우 여백을 더 확보 */
+    margin: 0 auto;
+    /* 가운데 정렬 */
+}
+
+.feature-text h1 {
+    font-size: 2rem;
+    /* 헤딩 크기를 줄여서 컴팩트하게 만듭니다 */
+    margin-bottom: 2rem;
+    /* 하단 마진을 줄여 공간을 더 절약 */
+}
+
+.feature-text .d-flex {
+    margin-bottom: 2rem;
+    /* 각 기능 블록 사이의 간격 줄이기 */
+}
+
+.feature-text h5 {
+    font-size: 1.25rem;
+    /* 기능 제목의 크기 줄이기 */
+}
+
+.feature-text p {
+    font-size: 0.9rem;
+    /* 기능 설명 텍스트의 크기 줄이기 */
+}
+
+.col-lg-6 {
+    padding: 0.5rem;
+    /* 열 사이의 패딩 줄이기 */
+}
+
+@media (max-width: 992px) {
+    .feature {
+        padding: 1rem 1rem;
+        /* 작은 화면에서는 패딩을 더 줄이되 좌우 여백 유지 */
+        max-width: 95%;
+        /* 작은 화면에서는 너비를 조금 더 늘려줌 */
+    }
+
+    .feature-text h1 {
+        font-size: 1.75rem;
+        /* 작은 화면에서는 헤딩 크기를 더 줄임 */
+    }
+
+    .feature-text h5 {
+        font-size: 1.1rem;
+        /* 작은 화면에서는 기능 제목 크기를 더 줄임 */
+    }
+
+    .feature-text p {
+        font-size: 0.8rem;
+        /* 작은 화면에서는 설명 텍스트 크기 줄이기 */
+    }
+}
+
+@media (min-width: 992px) {
+    .container.feature {
+        max-width: 90% !important;
+        /* 최대 너비를 전체 너비의 90%로 줄임 */
+        margin: 0 auto;
+        /* 가운데 정렬 */
+    }
+
+    .feature {
+        padding: 1.5rem 2rem;
+        /* 큰 화면에서 좌우 여백을 유지하면서 상하 패딩 줄이기 */
+    }
+
+    .feature-text {
+        padding-left: 2rem;
+        /* 좌측 패딩을 고정값으로 설정하여 간격을 일관되게 유지 */
+    }
+}
+
+@media (min-width: 1200px) {
+    .feature {
+        padding: 1.5rem 3rem;
+        /* 더 큰 화면에서 좌우 여백을 조금 더 추가 */
+    }
+
+    .feature-text {
+        padding-left: 3rem;
+        /* 좌측 패딩을 고정값으로 설정 */
+    }
+}
+
+@media (min-width: 1400px) {
+    .feature {
+        padding: 1.5rem 4rem;
+        /* 매우 큰 화면에서 좌우 여백을 더 추가 */
+    }
+
+    .feature-text {
+        padding-left: 4rem;
+        /* 좌측 패딩을 고정값으로 설정 */
+    }
+}

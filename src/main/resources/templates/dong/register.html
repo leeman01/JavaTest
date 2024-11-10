@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{base}" layout:fragment="content">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+    <div class="col-lg-7">
+        <div class="bg-light text-center p-5 wow fadeIn" data-wow-delay="0.5s"
+            style="visibility: visible; animation-delay: 0.5s; animation-name: fadeIn;">
+            <form th:action="@{/dong/start}" method="post">
+                <div class="row g-3">
+                    <div class="col-12 col-sm-6">
+                        <input type="text" class="form-control border-0" placeholder="이름입력" style="height: 55px;"
+                            name="username">
+                    </div>
+                    <div class="col-12 col-sm-6">
+                        <input type="email" class="form-control border-0" placeholder="Your Email" style="height: 55px;"
+                            name="email">
+                    </div>
+                    <div class="col-12 col-sm-6">
+                        <input type="text" class="form-control border-0" placeholder="Your Mobile"
+                            style="height: 55px;">
+                    </div>
+                    <div class="col-12 col-sm-6">
+                        <input type="text" class="form-control border-0" placeholder="회사 아이디" style="height: 55px;"
+                            name="registerCompanyId">
+                    </div>
+                    <div class="col-12">
+                        <textarea class="form-control border-0" placeholder="Special Note"></textarea>
+                    </div>
+                    <div class="col-12">
+                        <button class="btn btn-primary w-100 py-3" type="submit">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    </div>
+
+</body>
+
+</html>

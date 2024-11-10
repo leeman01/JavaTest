@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{base}" layout:fragment="content">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <title>화물 정보 입력 폼</title>
+</head>
+
+<body>
+    <div class="container-xxl py-5">
+        <div class="container py-5">
+            <div class="row g-5 align-items-center">
+                <div class="col-lg-5 wow fadeInUp" data-wow-delay="0.1s"
+                    style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
+                    <h6 class="text-secondary text-uppercase mb-3">Get A Quote</h6>
+                    <h1 class="mb-5">상품정보를 입력하세요!</h1>
+                    <p class="mb-5">해당 내용은 본사의 철저한 보안으로 절대 유출되지<br> 않습니다.
+                        안심하고 작성해주세요. <br>
+                        작성하신 내용을 기반으로 수출신고와 선적서류가 작성됩니다.</p>
+                    <div class="d-flex align-items-center">
+                        <i class="fa fa-headphones fa-2x flex-shrink-0 bg-primary p-3 text-white"></i>
+                        <div class="ps-4">
+                            <h6>문의사항은 아래로 연락주세요!</h6>
+                            <h3 class="text-primary m-0">+012 345 6789</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <div class="bg-light text-center p-5 wow fadeIn" data-wow-delay="0.5s"
+                        style="visibility: visible; animation-delay: 0.5s; animation-name: fadeIn;">
+                        <form action="/dong/ofinfoNew" method="post" onsubmit="return validateForm()">
+                            <input type="hidden" th:value="${exportId}" name="exportId">
+                            <input type="hidden" th:value="${userId}" name="userId">
+                            <input type="hidden" name="searchItem" value="">
+                            <input type="hidden" name="searchWord" value="">
+                            <div class="row g-3">
+                                <div class="col-12 col-sm-6">
+                                    상품명<input type="text" class="form-control border-0" placeholder="화물명"
+                                        style="height: 55px;" id="name" name="name" value="SAMSUNG TV">
+                                </div>
+                                <div class="col-12 col-sm-6 mb-3">
+                                    HS 코드<input type="text" class="form-control border-0" placeholder="HS 코드 입력"
+                                        style="height: 55px;" id="hscode" name="hscode" value="123456789">
+                                </div>
+                                <div class="col-12 col-sm-6 mb-3">
+                                    상품 개수<input type="number" class="form-control border-0" placeholder="상품 개수"
+                                        style="height: 55px;" id="quantity" name="quantity" value="200">
+                                </div>
+                                <div class="col-12 col-sm-6 mb-3">
+                                    상품 단가<input type="number" class="form-control border-0" placeholder="상품 단가"
+                                        style="height: 55px;" id="pricePerunit" name="pricePerunit" value="3000">
+                                </div>
+                                <div class="col-12 col-sm-6 mb-3">
+                                    상품 설명<input type="text" class="form-control border-0" placeholder="상품 설명"
+                                        style="height: 55px;" id="description" name="description" value="한국최고의 TV">
+                                </div>
+
+
+                                <div class="col-12 col-sm-6">
+                                    화물 가로 (cm)
+                                    <input type="text" class="form-control border-0" placeholder="화물 가로"
+                                        style="height: 55px;" id="width" name="width" value="50">
+                                </div>
+
+                                <div class="col-12 col-sm-6">
+                                    화물 세로 (cm)
+                                    <input type="text" class="form-control border-0" placeholder="화물 세로"
+                                        style="height: 55px;" id="length" name="length" value="100">
+                                </div>
+
+                                <div class="col-12 col-sm-6">
+                                    화물 높이 (cm)
+                                    <input type="text" class="form-control border-0" placeholder="화물 높이"
+                                        style="height: 55px;" id="height" name="height" value="50">
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    화물 중량 (kg)
+                                    <input type="text" class="form-control border-0" placeholder="화물 중량"
+                                        style="height: 55px;" id="weight" name="weight" value="200">
+                                </div>
+
+                                <div class="col-12 col-sm-6">
+                                    화물 수량
+                                    <input type="text" class="form-control border-0" placeholder="화물 수량"
+                                        style="height: 55px;" id="quantity" name="quantity" value="20">
+                                </div>
+
+                                <div class="col-12 col-sm-6">
+                                    컨테이너 종류
+                                    <select id="containerType" name="containerType" class="form-control border-0"
+                                        style="height: 55px;">
+                                        <option value="">선택하세요</option>
+                                        <option value="표준" selected>표준 컨테이너</option>
+                                        <option value="냉동">냉동 컨테이너</option>
+                                        <option value="오픈">오픈 톱 컨테이너</option>
+                                        <option value="플렛랙">플랫 랙 컨테이너</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-12 col-sm-6">
+                                    위험화물 여부
+                                    <select id="isDangerous" name="isDangerous" class="form-control border-0"
+                                        style="height: 55px;">
+                                        <option value="">선택하세요</option>
+                                        <option value="0" selected>일반화물</option>
+                                        <option value="1">위험화물</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-12">
+                                    <button class="btn btn-primary w-100 py-3" type="submit">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+
+    <script>
+        function validateForm() {
+            const fields = [
+                { id: 'name', name: '화물명' },
+                { id: 'width', name: '화물 가로' },
+                { id: 'length', name: '화물 세로' },
+                { id: 'height', name: '화물 높이' },
+                { id: 'weight', name: '화물 중량' },
+                { id: 'quantity', name: '화물 수량' },
+                { id: 'containerType', name: '컨테이너 종류' },
+                { id: 'isDangerous', name: '위험화물 여부' }
+            ];
+
+            for (let field of fields) {
+                const input = document.getElementById(field.id);
+                if (!input || (input.tagName === "SELECT" && input.value === "") || (input.value.trim() === "")) {
+                    alert(field.name + "을(를) 입력하세요.");
+                    input.focus(); // 포커스를 해당 필드로 이동
+                    return false; // 폼 제출 중단
+                }
+            }
+
+            // 숫자 입력 검증
+            const numberFields = ['width', 'length', 'height', 'weight', 'quantity'];
+            for (let id of numberFields) {
+                const input = document.getElementById(id);
+                if (isNaN(input.value) || input.value.trim() === "") {
+                    alert(input.placeholder + "은(는) 숫자만 입력해야 합니다.");
+                    input.focus();
+                    return false; // 폼 제출 중단
+                }
+            }
+
+            return true; // 모든 필드가 유효하므로 폼 제출 허용
+        }
+    </script>
+</body>
+
+</html>

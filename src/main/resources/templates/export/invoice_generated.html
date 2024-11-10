@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{base}" layout:fragment="content">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>상업송장 생성 완료</title>
+    <link rel="stylesheet" href="/css/min.css">
+</head>
+
+<body>
+    <div class="container-xxl py-5">
+        <div class="container py-5">
+            <div class="text-center wow fadeInUp" data-wow-delay="0.1s"
+                style="position: relative; top: -20px; margin-top: 50px;"> <!-- 여백 추가 -->
+                <h6 class="text-secondary text-uppercase">상업 송장이 성공적으로 생성되었습니다.</h6>
+                <h1 class="mb-5">모든 자동 생성 문서는 Word로 제공됩니다.</h1>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="price-item bg-light text-center p-4">
+                        <h5 class="text-primary mb-1">Commercial Invoice</h5><br>
+                        <div class="p-4 pt-0">
+                            <p><i class="fa fa-check text-success me-3"></i>Invoice Number: <span>INV-2024-001</span>
+                            </p>
+                            <p><i class="fa fa-check text-success me-3"></i>Shipping Date: <span>2024-10-21</span></p>
+                            <p><i class="fa fa-check text-success me-3"></i>Consignee: <span>GOSINARA</span></p>
+                            <a href="/export/downloadInvoice" class="btn-slide mt-2">
+                                <i class="fa fa-arrow-right"></i><span>상업송장 다운로드</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="price-item bg-light text-center p-4">
+                        <h5 class="mb-1" style="color: grey;">Packing List</h5><br>
+                        <div class="p-4 pt-0">
+                            <p><i class="fa fa-check text-success me-3"></i>Invoice Number: <span>INV-2024-001</span>
+                            </p>
+                            <p><i class="fa fa-check text-success me-3"></i>Shipping Date: <span>2024-10-21</span></p>
+                            <p><i class="fa fa-check text-success me-3"></i>Consignee: <span>GOSINARA</span></p>
+                            <a href="/export/downloadInvoice" class="btn-slide mt-2">
+                                <i class="fa fa-arrow-right"></i><span>포장명세서 다운로드</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 wow fadeInUp" data-wow-delay="0.7s">
+                    <div class="price-item bg-light text-center p-4">
+                        <h5 class="mb-1" style="color: grey;">Certificate of Origin</h5><br>
+                        <div class="p-4 pt-0">
+                            <p><i class="fa fa-check text-success me-3"></i>Invoice Number: <span>INV-2024-001</span>
+                            </p>
+                            <p><i class="fa fa-check text-success me-3"></i>Shipping Date: <span>2024-10-21</span></p>
+                            <p><i class="fa fa-check text-success me-3"></i>Consignee: <span>GOSINARA</span></p>
+                            <a href="/export/downloadInvoice" class="btn-slide mt-2">
+                                <i class="fa fa-arrow-right"></i><span>원산지 증명서 신청서 다운로드</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="col-3 mx-auto mt-8">
+        <a class="btn btn-primary w-100 py-3" th:href="@{mypage/myexport/detail(exportId=${exportId})}">이전으로 되돌아가기</a>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,344 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <title>myexportDetailProgressBar</title>
+</head>
+<body>
+
+<div id="data-container" th:data-progress="${myexportDetail.process}"></div>
+<!-- FOB Progress Bar Start -->
+<div th:fragment="progress-bar" th:if="${myexportDetail.incoterm == 'FOB'}" class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
+    <div class="container-fluid overflow-hidden py-3">
+        <div class="container py-2">
+            <!-- Progress-gauge -->
+            <div class="progress-header">
+                <h3 class="text-secondary">진행현황</h3>
+                <div>
+                    <span th:text="${myexportDetail.incoterm}" class="text-primary"></span>
+                    <span>진행도: </span>
+                    <span class="progress-percentage text-primary">66%</span>
+                </div>
+            </div>
+            <div class="progress-step">
+                <div class="progress-gauge">
+                    <label for="progress-gauge-bar"></label>
+                    <progress id="progress-gauge-bar" max="100" value="66"></progress>
+                </div>
+            </div>
+
+            <!-- Progress-bar -->
+            <div class="progress-step py-0">
+                <div class="progress-image-circle">
+                    <img th:src="@{/images/circle.png}" alt="">
+                </div>
+                <div class="progress-image-arrow">
+                    <img th:src="@{/images/arrow-right.png}" alt="">
+                </div>
+                <div class="progress-image-icon">
+                    <img th:src="@{/images/truck-icon.png}" alt="">
+                </div>
+                <div class="progress-image-arrow">
+                    <img th:src="@{/images/arrow-right.png}" alt="">
+                </div>
+                <div class="progress-image-icon">
+                    <img th:src="@{/images/ship-icon.png}" alt="">
+                </div>
+                <div class="progress-image-arrow">
+                    <img th:src="@{/images/arrow-right.png}" alt="">
+                </div>
+                <div class="progress-image-circle">
+                    <img th:src="@{/images/circle.png}" alt="">
+                </div>
+            </div>
+
+            <!-- Pointer -->
+            <div class="progress-step py-0" id="progress-arrow-steps">
+                <div class="progress-image-circle pointer">
+                    <img th:src="@{/images/circle.png}" alt="">
+                </div>
+                <div class="progress-image-arrow pointer" data-progress="0">
+                    <img th:src="@{/images/arrow-up.png}" alt="" class="img-arrow-up">
+                </div>
+                <div class="progress-image-icon pointer">
+                    <img th:src="@{/images/truck-icon.png}" alt="">
+                </div>
+                <div class="progress-image-arrow pointer" data-progress="1">
+                    <img th:src="@{/images/arrow-up.png}" alt=""  class="img-arrow-up">
+                </div>
+                <div class="progress-image-icon pointer">
+                    <img th:src="@{/images/ship-icon.png}" alt="">
+                </div>
+                <div class="progress-image-arrow pointer" data-progress="3">
+                    <img th:src="@{/images/arrow-up.png}" alt=""  class="img-arrow-up">
+                </div>
+                <div class="progress-image-circle pointer">
+                    <img th:src="@{/images/circle.png}" alt="">
+                </div>
+            </div>
+
+            <!-- Text -->
+            <div class="progress-step py-0" id="progress-text-steps">
+                <div class="progress-image-circle pointer">
+                    <img th:src="@{/images/circle.png}" alt="">
+                </div>
+                <div class="progress-image-arrow pointer" data-progress="0">
+                    <h4>선적 전</h4>
+                </div>
+                <div class="progress-image-icon pointer">
+                    <img th:src="@{/images/truck-icon.png}" alt="">
+                </div>
+                <div class="progress-image-arrow pointer" data-progress="1">
+                    <h4>선적 시</h4>
+                </div>
+                <div class="progress-image-icon pointer">
+                    <img th:src="@{/images/ship-icon.png}" alt="">
+                </div>
+                <div class="progress-image-arrow pointer" data-progress="3">
+                    <h4>도착 시</h4>
+                </div>
+                <div class="progress-image-circle pointer">
+                    <img th:src="@{/images/circle.png}" alt="">
+                </div>
+            </div>
+
+            <!-- Memo -->
+            <div class="row text-center">
+                <h2><span th:text="${myexportDetail.processName}"></span> <span th:text="${myexportDetail.incoterm}"></span> 조건 관련 주요 수출절차</h2>
+                <div class="col-6">
+                    <div class="memo-head">
+                        <h3>비용</h3>
+                    </div>
+                    <!-- FOB 선적전(process==0) start -->
+                    <div th:if="${myexportDetail.process == 0}" class="memo-body">
+                        <ul>
+                            <li>TRUCKING CHG: 내륙운송비(공장->선적항)</li>
+                            <li>HANDLING CHG: 물류작업비</li>
+                            <li>CLEANING CHF: 컨테이너청소비</li>
+                        </ul>
+                    </div>
+                    <!-- FOB 선적전 end -->
+                    <!-- FOB 도착시(process==3) start -->
+                    <div th:if="${myexportDetail.process == 3}" class="memo-body">
+                        <ul>
+                            <li>IMPORT CUSTOMS FEE: 수입통관비용</li>
+                            <li>LOCAL D/O FEES: 화물인도지시서 비용</li>
+                            <li>DRAYGE: 단거리운송비(항구->근내륙)</li>
+                            <li>LOCAL TERMINAL: 현지터미널작업비용</li>
+                        </ul>
+                    </div>
+                    <!-- FOB 도착시 end -->
+                </div>
+                <div class="col-6">
+                    <div class="memo-head">
+                        <h3>서류</h3>
+                    </div>
+                    <!-- FOB 선적전(process==0) start -->
+                    <div th:if="${myexportDetail.process == 0}" class="memo-body">
+                        <ul>
+                            <li>수출통관서류: 상업송장(INVOICE), 포장명세서(P/L), 원산지증명서(C/O)</li>
+                            <li>운송계약서: 선하증권(B/L)</li>
+                            <li>수출허가증: 필요 시 특정 품목의 수출 허가</li>
+                        </ul>
+                    </div>
+                    <!-- FOB 선적전 end -->
+                    <!-- FOB 도착후(process==3) start -->
+                    <div th:if="${myexportDetail.process == 3}" class="memo-body">
+                        <ul>
+                            <li>도착통지서(ARRIVAL NOTICE): 화물도착을 바이어에게 알리는 서류</li>
+                            <li>화물인도지시서(D/O): 화물을 바이에어게 인도하기 위한 지시서</li>
+                            <li>수입통관서류(IMPORT CUSTOMS DOC): 수입신고서류</li>
+                        </ul>
+                    </div>
+                    <!-- FOB 도착후 end -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- FOB Progress Bar End -->
+<!-- DDP Progress Bar Start -->
+<div th:fragment="progress-bar" th:if="${myexportDetail.incoterm == 'DDP'}" class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
+    <div class="container-fluid overflow-hidden py-3">
+        <div class="container py-2">
+
+            <!-- Progress-gauge -->
+            <div class="progress-header">
+                <h3 class="text-secondary">진행현황</h3>
+                <div>
+                    <span th:text="${myexportDetail.incoterm}" class="text-primary"></span>
+                    <span>진행도: </span>
+                    <span class="progress-percentage text-primary">66%</span>
+                </div>
+            </div>
+            <div class="progress-step">
+                <div class="progress-gauge">
+                    <label for="progress-gauge-bar"></label>
+                    <progress id="progress-gauge-bar" max="100" value="80">80%</progress>
+                </div>
+            </div>
+
+            <!-- Progress-bar -->
+            <div class="progress-step py-0">
+                <div class="progress-image-circle">
+                    <img th:src="@{/images/circle.png}" alt="">
+                </div>
+                <div class="progress-image-arrow">
+                    <img th:src="@{/images/arrow-right.png}" alt="">
+                </div>
+                <div class="progress-image-icon">
+                    <img th:src="@{/images/truck-icon.png}" alt="">
+                </div>
+                <div class="progress-image-arrow">
+                    <img th:src="@{/images/arrow-right.png}" alt="">
+                </div>
+                <div class="progress-image-icon">
+                    <img th:src="@{/images/ship-icon.png}" alt="">
+                </div>
+                <div class="progress-image-arrow">
+                    <img th:src="@{/images/arrow-right.png}" alt="">
+                </div>
+                <div class="progress-image-icon">
+                    <img th:src="@{/images/ship-icon.png}" alt="">
+                </div>
+                <div class="progress-image-arrow">
+                    <img th:src="@{/images/arrow-right.png}" alt="">
+                </div>
+                <div class="progress-image-icon">
+                    <img th:src="@{/images/truck-icon.png}" alt="">
+                </div>
+                <div class="progress-image-arrow">
+                    <img th:src="@{/images/arrow-right.png}" alt="">
+                </div>
+                <div class="progress-image-circle">
+                    <img th:src="@{/images/circle.png}" alt="">
+                </div>
+            </div>
+
+            <!-- Pointer -->
+            <div class="progress-step py-0" id="progress-arrow-steps">
+                <div class="progress-image-circle pointer">
+                    <img th:src="@{/images/circle.png}" alt="">
+                </div>
+                <div class="progress-image-arrow pointer" data-progress="0">
+                    <img th:src="@{/images/arrow-up.png}" alt="" class="img-arrow-up">
+                </div>
+                <div class="progress-image-icon pointer">
+                    <img th:src="@{/images/truck-icon.png}" alt="">
+                </div>
+                <div class="progress-image-arrow pointer" data-progress="1">
+                    <img th:src="@{/images/arrow-up.png}" alt=""  class="img-arrow-up">
+                </div>
+                <div class="progress-image-icon pointer">
+                    <img th:src="@{/images/ship-icon.png}" alt="">
+                </div>
+                <div class="progress-image-arrow pointer" data-progress="2">
+                    <img th:src="@{/images/arrow-up.png}" alt=""  class="img-arrow-up">
+                </div>
+                <div class="progress-image-icon pointer">
+                    <img th:src="@{/images/ship-icon.png}" alt="">
+                </div>
+                <div class="progress-image-arrow pointer" data-progress="3">
+                    <img th:src="@{/images/arrow-up.png}" alt=""  class="img-arrow-up">
+                </div>
+                <div class="progress-image-icon pointer">
+                    <img th:src="@{/images/truck-icon.png}" alt="">
+                </div>
+                <div class="progress-image-arrow pointer" data-progress="4">
+                    <img th:src="@{/images/arrow-up.png}" alt=""  class="img-arrow-up">
+                </div>
+                <div class="progress-image-circle pointer">
+                    <img th:src="@{/images/circle.png}" alt="">
+                </div>
+            </div>
+
+            <!-- Text -->
+            <div class="progress-step py-0" id="progress-text-steps">
+                <div class="progress-image-circle pointer">
+                    <img th:src="@{/images/circle.png}" alt="">
+                </div>
+                <div class="progress-image-arrow pointer" data-progress="0">
+                    <h4>선적 전</h4>
+                </div>
+                <div class="progress-image-icon pointer">
+                    <img th:src="@{/images/truck-icon.png}" alt="">
+                </div>
+                <div class="progress-image-arrow pointer" data-progress="1">
+                    <h4>선적 시</h4>
+                </div>
+                <div class="progress-image-icon pointer">
+                    <img th:src="@{/images/ship-icon.png}" alt="">
+                </div>
+                <div class="progress-image-arrow pointer" data-progress="2">
+                    <h4>운송 중</h4>
+                </div>
+                <div class="progress-image-icon pointer">
+                    <img th:src="@{/images/ship-icon.png}" alt="">
+                </div>
+                <div class="progress-image-arrow pointer" data-progress="3">
+                    <h4>도착 시</h4>
+                </div>
+                <div class="progress-image-icon pointer">
+                    <img th:src="@{/images/truck-icon.png}" alt="">
+                </div>
+                <div class="progress-image-arrow pointer" data-progress="4">
+                    <h4>도착 후</h4>
+                </div>
+                <div class="progress-image-circle pointer">
+                    <img th:src="@{/images/circle.png}" alt="">
+                </div>
+            </div>
+
+            <!-- Memo -->
+            <div class="row text-center">
+                <h2><span th:text="${myexportDetail.processName}"></span> <span th:text="${myexportDetail.incoterm}"></span> 조건 관련 주요 수출절차</h2>
+                <div class="col-6">
+                    <div class="memo-head">
+                        <h3>비용</h3>
+                    </div>
+                    <!-- DDP 선적전(process==0) start -->
+                    <div th:if="${myexportDetail.process == 0}" class="memo-body">
+                        <ul>
+                            <li>TRUCKING CHG: 내륙운송비</li>
+                            <li>HANDLING CHG: 물류작업비</li>
+                            <li>EXPORT CUSTOMS FEE: 수출통관비용</li>
+                            <li>DOCUMENT FEE: 서류발급비</li>
+                        </ul>
+                    </div>
+                    <!-- DDP 선적전 end -->
+                    <!-- DDP 운송중(process==2) start -->
+                    <div th:if="${myexportDetail.process == 2}" class="memo-body">
+                        <ul>
+                            <li>OF(OCEAN FREIGHT): 해상운임</li>
+                            <li>TRANSMISSION OF BL: 선하증권 전송비용</li>
+                        </ul>
+                    </div>
+                    <!-- DDP 운송중 end -->
+                </div>
+                <div class="col-6">
+                    <div class="memo-head">
+                        <h3>서류</h3>
+                    </div>
+                    <!-- DDP 선적전(process==0) start -->
+                    <div th:if="${myexportDetail.process == 0}" class="memo-body">
+                        <ul>
+                            <li>상업송장(CI): 거래조선, 가격이 명시된 송장</li>
+                            <li>포장명세서(P/L): 물품 포장정보와 세부사항</li>
+                            <li>수출통관서류: 수출 신고를 위한 서류</li>
+                        </ul>
+                    </div>
+                    <!-- DDP 운송중 end -->
+                    <!-- DDP 운송중(process==2) start -->
+                    <div th:if="${myexportDetail.process == 2}" class="memo-body">
+                        <ul>
+                            <li>해상보험증권(MARINE INSUARANCE CERTIFICATE): 운송중 발생가능한 위험을 대비하는 보험증서(필요시)</li>
+                        </ul>
+                    </div>
+                    <!-- DDP 운송중 end -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- DDP Progress Bar End -->
+
+</body>

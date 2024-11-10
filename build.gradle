@@ -1,0 +1,73 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.3.2'
+	id 'io.spring.dependency-management' version '1.1.6'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(17)
+	}
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+	maven {
+        url "https://repository.aspose.com/repo/"
+    }
+}
+
+dependencies {
+ 	implementation 'mysql:mysql-connector-java:8.0.28'  
+	implementation 'javax.servlet:javax.servlet-api:4.0.1'
+	implementation 'org.apache.poi:poi:5.2.2'
+	implementation 'org.apache.poi:poi-ooxml:5.2.2'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect' // 공통 템플릿 사용
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-webflux' // 챗봇 관련
+	implementation 'io.projectreactor:reactor-core' // 챗봇 관련
+	compileOnly 'org.projectlombok:lombok'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	runtimeOnly 'com.mysql:mysql-connector-j'
+	annotationProcessor 'org.projectlombok:lombok'
+	implementation 'com.aspose:aspose-words:24.9:jdk17' // Aspose 라이브러리 for Word
+	implementation 'jakarta.mail:jakarta.mail-api:2.0.0' // 메일 전송
+	implementation 'com.sun.mail:jakarta.mail:2.0.0' // 메일 전송 구현체
+	implementation 'jakarta.activation:jakarta.activation-api:2.0.0' // 파일 첨부 관련
+	implementation 'org.springframework.boot:spring-boot-starter-mail' // Spring Mail Starter
+	implementation 'org.modelmapper:modelmapper:3.1.1' // model mapper 사용
+
+	implementation 'org.apache.poi:poi-ooxml:5.2.2'
+	implementation 'org.apache.poi:poi:5.2.2'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'javax.servlet:javax.servlet-api:4.0.1'
+	
+	
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
+
+	// 테스트와 관련된 코드	
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.springframework.security:spring-security-test'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
+tasks.withType(JavaCompile) {
+    options.compilerArgs << "-parameters"
+}
+

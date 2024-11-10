@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="~{base}" layout:decorate="~{base}" layout:fragment="content">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Map with Sea Route</title>
+
+    <style>
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            /* 부드러운 배경색 */
+            color: #333;
+            /* 텍스트 색상 */
+        }
+
+        /* 사용자 정의 InfoWindow 스타일 */
+        .custom-info-window {
+            font-family: Arial, sans-serif;
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            max-width: 200px;
+        }
+
+        .info-window h3 {
+            margin: 0;
+            color: #007bff;
+        }
+
+        .info-window p {
+            margin: 5px 0;
+        }
+
+
+        #googleMap {
+
+            width: 100%;
+            height: 100vh;
+            position: relative;
+            border: 2px solid #007BFF;
+            /* 지도 경계선 */
+            border-radius: 8px;
+            /* 모서리 둥글게 */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            /* 그림자 효과 */
+        }
+
+        #overlayImage {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 200px;
+            height: auto;
+            /* 비율 유지 */
+            z-index: 10;
+            opacity: 0.8;
+        }
+
+        /* 버튼 스타일 */
+        #real {
+            background-color: #28A745;
+            /* 버튼 배경색 */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            /* 버튼 모서리 둥글게 */
+            transition: background-color 0.3s;
+            /* 배경색 변화 효과 */
+            position: absolute;
+            /* 위치를 절대값으로 설정 */
+            bottom: 20px;
+            /* 아래에서 20px */
+            left: 20px;
+            /* 왼쪽에서 20px */
+            z-index: 10;
+            /* 지도 위에 버튼이 나타나도록 설정 */
+        }
+
+        #real:hover {
+            background-color: #218838;
+            /* 버튼 hover 시 색상 변화 */
+        }
+    </style>
+</head>
+
+<body>
+
+<input type="button" value="클릭하소이" id="real">
+<!-- Google Map이 표시될 영역 -->
+<div id="googleMap"></div>
+
+<script>
+    var map; // 지도 객체
+    function initMap() {
+        var mapOptions = {
+            center: { lat: 37.5665, lng: 126.978 }, // 서울을 중심으로 설정
+            zoom: 3 // 한국을 잘 보이게 하는 줌 레벨
+        };
+        map = new google.maps.Map(document.getElementById("googleMap"), mapOptions);
+    }
+
+    var markers = []; // 마커 배열 , tempmax, tempmin, windspped, gust
+
+    function myMap(lat, lng, now, humidity, pressure, sealevel, temp, des, windspeed, windgust) {
+        // 지도 옵션 설정 (주어진 위도 및 경도로 시작)
+        var mapOptions = {
+            center: new google.maps.LatLng(lat, lng),
+            zoom: 3 // 넓게 보여서 두 항구가 보이게 하기 위해 낮은 줌 레벨 설정
+        };
+
+        // 지도 생성
+        map = new google.maps.Map(document.getElementById("googleMap"), mapOptions);
+
+        // 부산항 마커 설정
+        var busanMarker = new google.maps.Marker({
+            position: new google.maps.LatLng(35.101951, 129.040273),
+            map: map,
+            title: "Busan Port"
+        });
+
+        // LA 항구 마커 설정
+        var laMarker = new google.maps.Marker({
+            position: new google.maps.LatLng(33.736061, -118.251221), // LA 항구의 좌표
+            map: map,
+            title: "Los Angeles Port"
+        });
+
+        // 배의 현재 위치 마커 설정
+        var shipMarker = new google.maps.Marker({
+            position: new google.maps.LatLng(lat, lng), // 서버에서 받은 배의 현재 위치
+            map: map,
+            title: "Ship Location"
+        });
+
+        // 사용자 정의 InfoWindow 생성 함수
+        function createCustomInfoWindow(content, latLng) {
+            var infoWindowDiv = document.createElement('div');
+            infoWindowDiv.className = 'custom-info-window';
+            infoWindowDiv.innerHTML = content;
+
+            var customInfoWindow = new google.maps.InfoWindow({
+                content: infoWindowDiv,
+                position: latLng
+            });
+
+            return customInfoWindow;
+        }
+
+        // 부산항 마커 클릭 이벤트
+        busanMarker.addListener('click', function () {
+            var content = `<div class="info-window"><h3>부산항</h3><p>출발</p></div>`;
+            var customWindow = createCustomInfoWindow(content, busanMarker.getPosition());
+            customWindow.open(map);
+        });
+        // LA 항구 마커 클릭 이벤트
+        laMarker.addListener('click', function () {
+            var content = `<div class="info-window"><h3>LA 항구</h3><p>도착예정시간 : 2024-11-06 14:00</p></div>`;
+            var customWindow = createCustomInfoWindow(content, laMarker.getPosition());
+            customWindow.open(map);
+        });
+
+        // 배 위치 마커 클릭 이벤트
+        shipMarker.addListener('click', function () {
+            // 예시 데이터 (여기에 실시간 데이터 삽입 가능
+            var content = `<div class="info-window"><h3>배의 위치</h3>
+                    <p>출발시간: ${now}</p>
+                    <p>습도: ${humidity}</p>
+                    <p>파고: ${sealevel}</p>
+                    <p>대기압: ${pressure}</p>
+                    <p>기온: ${temp}</p>
+                    <p>설명: ${des}</p>
+                    <p>풍속: ${windspeed}</p>
+                    <p>돌풍: ${windgust}</p>
+                    </div>`;
+            var customWindow = createCustomInfoWindow(content, shipMarker.getPosition());
+            customWindow.open(map);
+        });
+
+
+
+        // 부산항에서 LA 항구까지의 해양 경로를 선으로 그리기
+        var seaRouteCoordinates = [
+            { lat: 35.101951, lng: 129.040273 }, // 부산항
+            { lat: 36.664590, lng: 132.131872 }, // 일본 남쪽 해안 근처
+            { lat: 41.718567, lng: 136.768102 }, // 일본 서쪽 해안 근처
+            { lat: 46.039422, lng: 140.986852 }, // 태평양 중간 경로
+            { lat: 45.626066, lng: 143.689489 },
+            { lat: 47.854199, lng: 157.576208 }, // 배의 현재 위치 포함
+            { lat: 33.736061, lng: -118.251221 } // LA 항구
+        ];
+
+        var seaRoute = new google.maps.Polyline({
+            path: seaRouteCoordinates,
+            geodesic: true,
+            strokeColor: "#0000FF",
+            strokeOpacity: 1.0,
+            strokeWeight: 2
+        });
+
+        seaRoute.setMap(map);
+    }
+
+    // 클릭 이벤트 리스너 추가
+    document.getElementById('real').addEventListener('click', function () {
+        // AJAX 요청 보내기
+        $.ajax({
+            url: '/cargo/tracking', // 서버의 엔드포인트 URL
+            method: 'GET',
+            data: { signal: 'click' }, // 서버로 보낼 데이터
+            success: function (response) {
+                // 서버에서 받은 데이터는 위도 및 경도 정보가 포함되어야 함
+                var lat = response.latitude; // 서버 응답에서 위도 값
+                var lng = response.longitude; // 서버 응답에서 경도 값
+                var now = response.now;
+                console.log(lat);
+                // OpenWeatherMap API 호출
+                $.ajax({
+                    url: `https://api.openweathermap.org/data/2.5/weather`,
+                    method: 'GET',
+                    data: {
+                        lat: lat,
+                        lon: lng,
+                        lang: 'kr',
+                        appid: '1ad49a68f0a33231bdda8d5f265f80a8', // 환경 변수 대신 직접 API 키 사용
+                        units: 'metric'
+                    },
+                    success: function (weatherResponse) {
+                        // 날씨 정보 처리
+                        console.log(weatherResponse); // 날씨 정보 출력
+
+                        // 여기서 날씨 정보를 원하는 방식으로 처리할 수 있습니다.
+                        // 예를 들어, 날씨 정보를 표시할 수 있는 추가 UI 요소를 만들 수 있습니다.
+                        var humidity = weatherResponse.main.humidity; // 날씨 응답에서 습도
+                        var sealevel = weatherResponse.main.sea_level; // 해수면 대기압
+                        var pressure = weatherResponse.main.pressure; // 대기압
+                        var temp = weatherResponse.main.temp;
+                        var des = weatherResponse.weather[0].description;
+                        var windspeed = weatherResponse.wind.speed;
+                        var windgust = weatherResponse.wind.gust;
+
+                        // 여기서 조건을 걸어서 어느정도가 높은지 낮은지 알게하는 기법사용
+                        if (humidity <= 30) {
+                            humidity = '낮음( ' + humidity + '%)';
+                        } else if (humidity <= 70) {
+                            humidity = '중간( ' + humidity + '%)';
+                        } else {
+                            humidity = '높음( ' + humidity + '%)';
+                        };
+
+                        if (pressure < 1000) {
+                            pressure = '저기압( ' + pressure + 'hpa)';
+                        } else if (pressure <= 1020) {
+                            pressure = '중간( ' + pressure + 'hpa)';
+                        } else {
+                            pressure = '고기압( ' + pressure + '%)';
+                        };
+
+                        if (sealevel < 1000) {
+                            sealevel = '불안정한 기상( ' + sealevel + 'hpa)';
+                        } else if (sealevel <= 1020) {
+                            sealevel = '중간( ' + sealevel + 'hpa)';
+                        } else {
+                            sealevel = '안정적인 기상( ' + sealevel + 'hpa)';
+                        };
+                        temp = temp + ' °C';
+
+                        if (windspeed <= 5) {
+                            windspeed = '느림( ' + windspeed + 'm/s)';
+                        } else if (sealevel <= 15) {
+                            windspeed = '중간( ' + windspeed + 'm/s)';
+                        } else {
+                            windspeed = '빠름( ' + windspeed + 'm/s)';
+                        };
+
+                        if (windgust <= 10) {
+                            windgust = '느림 ( ' + windgust + 'm/s)';
+                        } else if (windgust <= 20) {
+                            windgust = '중간 ( ' + windgust + 'm/s)';
+                        } else {
+                            windgust = '빠른 ( ' + windgust + 'm/s)';
+                        };
+
+                        des = '날씨: ' + des;
+
+
+                        //-----------------------------------------------------------------------
+
+                        myMap(lat, lng, now, humidity, pressure, sealevel, temp, des, windspeed, windgust) // myMap 함수를 호출하여 지도 표시
+                        document.getElementById('googleMap').style.display = 'block'; // 지도를 보여줌
+                    },
+                    error: function (xhr, status, error) {
+                        console.error('날씨 API 요청 실패:', error);
+                    }
+                });
+            },
+            error: function (xhr, status, error) {
+                console.error('AJAX 요청 실패:', error);
+            }
+        });
+    });
+    window.onload = initMap;
+</script>
+
+<!-- jQuery 추가 -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Google Maps API 추가 -->
+<script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZpG4SkL7SL0cY6iXlzIoUHT1-M3a5oA4&callback=myMap"></script>
+
+
+</body>
+
+</html>

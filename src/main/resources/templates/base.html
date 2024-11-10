@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Base</title>
+
+    <!-- Favicon -->
+    <link th:href="@{/img/favicon.ico}" rel="icon">
+    <!-- fontawesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+    <!-- Google Web Fonts -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        th:href="@{'https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Roboto:wght@500;700&display=swap'}"
+        rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link th:href="@{'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css'}" rel="stylesheet">
+    <link th:href="@{/css/bootstrap-icons.css}" rel="stylesheet">
+    <!-- Libraries Stylesheet -->
+    <link th:href="@{/lib/animate/animate.min.css}" rel="stylesheet">
+    <link th:href="@{/lib/owlcarousel/assets/owl.carousel.min.css}" rel="stylesheet">
+    <!-- Customized Bootstrap Stylesheet -->
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <!-- Template Stylesheet -->
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+    <!-- 사용자정의 Stylesheet -->
+    <link rel="stylesheet" th:href="@{/css/chatbot.css}">
+
+    <style>
+        /* footer 지도 크기 */
+        #company-map {
+            width: 100%;
+        }
+
+        /* 한글폰트 */
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
+    </style>
+</head>
+
+<body>
+    <div th:replace="~{fragments/header :: headerFragment}" id="header"></div>
+    <div id="main">
+        <th:block layout:fragment="content"></th:block>
+    </div>
+    <div th:replace="~{fragments/footer :: footerFragment}" id="footer"></div>
+    <div th:replace="~{fragments/chatbot :: chatbotFragment}" id="chatbot"></div>
+    <script th:src="@{/js/chatbot.js}"></script>
+
+    <!-- JavaScript Libraries -->
+    <script th:src="@{'https://code.jquery.com/jquery-3.4.1.min.js'}"></script>
+    <script th:src="@{'https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js'}"></script>
+    <script th:src="@{/lib/wow/wow.min.js}"></script>
+    <script th:src="@{/lib/easing/easing.min.js}"></script>
+    <script th:src="@{/lib/waypoints/waypoints.min.js}"></script>
+    <script th:src="@{/lib/owlcarousel/owl.carousel.min.js}"></script>
+    <script th:src="@{/lib/counterup/counterup.min.js}"></script>
+
+    <!-- Template Javascript -->
+    <script th:src="@{/js/main.js}"></script>
+</body>
+
+</html>

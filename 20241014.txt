@@ -1,0 +1,18 @@
+application.properties 추가 
+=>
+# 메일 설정
+spring.mail.host=smtp.gmail.com
+spring.mail.port=587
+spring.mail.username=leerexman01@gmail.com
+spring.mail.password=lumm srte xkut ajum
+spring.mail.properties.mail.smtp.debug=true
+spring.mail.properties.mail.smtp.connectiontimeout=1000
+spring.mail.properties.mail.starttls.enable=true
+spring.mail.properties.mail.smtp.auth=true
+
+
+ddl.sql 추가(build.gradle 옆에 확인)
+
+** 추가적으로 안된다면 yml파일 삭제
+
+** conflict 뜨면 연락

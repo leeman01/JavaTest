@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{base}" layout:fragment="content">
+
+<head>
+    <title>myexport</title>
+</head>
+
+<body>
+    <!-- Service Start -->
+    <div class="container-xxl py-5">
+        <div class="container py-5">
+            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="text-secondary text-uppercase">나의 수출목록</h6>
+                <h1 class="mb-5">무역초보도 간편하게 수행하는 수출 프로세스</h1>
+            </div>
+            <!-- 테이블 헤드 -->
+            <div class="row g-4 wow fadeInUp py-2" data-wow-delay="0.3s">
+                <div class="col-md-6 col-lg-2 text-center">
+                    <h5>바이어</h5>
+                </div>
+                <div class="col-md-6 col-lg-2 text-center">
+                    <h5>이행단계</h5>
+                </div>
+                <div class="col-md-6 col-lg-2 text-center">
+                    <h5>이행기한</h5>
+                </div>
+                <div class="col-md-6 col-lg-2 text-center">
+                    <h5>거래조건</h5>
+                </div>
+                <div class="col-md-6 col-lg-2 text-center">
+                    <h5>거래규모</h5>
+                </div>
+                <div class="col-md-6 col-lg-2 text-center">
+                    <h5>상세보기</h5>
+                </div>
+            </div>
+            <!-- 테이블 바디 -->
+            <div th:each="myexport : ${myexportList}" class="row g-4 wow fadeInUp py-1" data-wow-delay="0.3s">
+                <div th:text="${myexport.buyerCompanyName}" class="col-md-6 col-lg-2 text-center">
+                    <p>Kappa Corporation</p>
+                </div>
+                <div th:text="${myexport.progressName}" class="col-md-6 col-lg-2 text-center">
+                    <p>선적전</p>
+                </div>
+                <div th:text="${'~ ' + myexport.deadline}" class="col-md-6 col-lg-2 text-center">
+                    <p>~ 2024.11.15</p>
+                </div>
+                <div th:text="${myexport.incoterm}" class="col-md-6 col-lg-2 text-center">
+                    <p>FOB</p>
+                </div>
+                <div th:text="${'$ ' + myexport.totalAmount}" class="col-md-6 col-lg-2 text-center">
+                    <p>$ 150,000</p>
+                </div>
+                <div class="col-md-6 col-lg-2 text-center">
+                    <!-- <a th:href="@{/mypage/myexport/detail/{incoterm}(incoterm=${user.export.incoterm})}"></a> -->
+                    <a th:href="@{/mypage/myexport/detail?exportId={myexportId}(myexportId=${myexport.exportId})}"
+                        class="btn btn-primary">확인</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Service End -->
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title th:text="${title}">chatbot</title>
+</head>
+
+<body>
+  <chatbot th:fragment="chatbotFragment">
+    <img id="chatbot-icon" th:src="@{/images/chatbot.gif}" alt="jangbogo">
+    <div id="chatbot-container" class="collapsed bg-light py-4 flex">
+      <button id="close-button" class="btn-close" aria-label="Close"></button>
+      <div id="chat-header" class="text-center">
+        <h3>청해지니 챗봇</h3>
+      </div>
+
+      <div id="chat-body" class="container py-3">
+        <ul id="chat-log"></ul>
+      </div>
+
+      <div id="chat-input" class="container py-2">
+        <textarea id="user-input" class="form-control" placeholder="메시지를 입력하세요." rows="3"></textarea>
+        <button id="send-button" type="button" class="btn btn-secondary">전송</button>
+      </div>
+
+    </div>
+  </chatbot>
+
+</body>
+
+</html>

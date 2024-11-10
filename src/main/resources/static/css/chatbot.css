@@ -1,0 +1,102 @@
+/* 챗봇 아이콘 숨김 */
+.hidden {
+  display: none;
+}
+
+#chatbot-icon {
+  position: fixed;
+  width: 120px;
+  height: 120px;
+  bottom: 20px; /* 화면 아래쪽에서 20px 위 */
+  right: 20px;  /* 화면 오른쪽에서 20px 왼쪽 */
+}
+
+
+/* 챗봇 컨테이너 스타일 */
+#chatbot-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    height: 70%;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease-in-out;
+    z-index: 999; /* 다른 요소 위에 표시되도록 z-index 설정 */
+  }
+
+  /* 초기 상태 */
+  .collapsed {
+    display: None;
+  }
+  
+  /* 확장된 상태 (Expanded) */
+  .expanded {
+    width: 300px;
+    height: auto;
+    border-radius: 10px;
+    text-align: left;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  #close-button {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    z-index: 1; /* 다른 요소 위에 표시되도록 z-index 설정 */
+  }
+
+  #chat-input {
+    
+    position: absolute;
+    bottom: 0;
+    z-index: 0.999;
+  }
+
+  #send-button {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    z-index: 1;
+    width: 8%;
+  }
+
+  #user-input {
+    z-index: 1;
+  }
+  
+  
+  /* 채팅 내용 */
+  #chat-body {
+    height: 80%;
+    overflow-y: auto;
+  }
+  
+  
+  /* 사용자 메시지, 챗봇 메시지 스타일 (예시) */
+  #chat-log li {
+    list-style: none;
+    margin-bottom: 10px; /* 메시지 간 간격 조절 */
+    margin-left: 20px;
+    margin-right: 20px;
+
+  }
+
+  .user-message {
+
+    left: 3%;
+    padding: 10px;
+    border-radius: 5px;
+    color: black;
+    font-weight: bolder;
+  }
+  
+  .bot-message {
+
+    right: 3%;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: antiquewhite;
+    color: black;
+  }

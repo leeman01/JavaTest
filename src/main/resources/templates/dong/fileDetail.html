@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{base}" layout:fragment="content">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>해상운임 견적 의뢰서</title>
+    <style>
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background: #f4f7f8;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+
+        th,
+        td {
+            padding: 15px;
+            border: 1px solid #e0e0e0;
+        }
+
+        th {
+            background: #2c3e50;
+            color: #fff;
+            font-weight: 500;
+        }
+
+        td input[type="text"],
+        td input[type="email"],
+        td input[type="date"],
+        td input[type="number"],
+        td select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background: #f9f9f9;
+        }
+
+        td input[type="text"]:read-only,
+        td input[type="email"]:read-only,
+        td input[type="date"]:read-only,
+        td input[type="number"]:read-only,
+        td select:read-only {
+            background-color: #e9ecef;
+        }
+
+        input[type="button"] {
+            background-color: #2c3e50;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="button"]:hover {
+            background-color: #34495e;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .footer a {
+            text-decoration: none;
+        }
+
+        .footer input[type="button"] {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>해상운임 견적 의뢰서</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <td rowspan="3"><strong>발신자:</strong><br><input type="text" name="companyName"
+                        th:value="${company.name}" required readonly></td>
+            </tr>
+
+            <tr>
+                <td><strong>발신일:</strong><br><input type="date" name="date" th:value="${date}" required></td>
+
+            </tr>
+
+            <tr>
+                <td><strong>이메일:</strong><br><input type="email" name="email" th:value="${user.email}" readonly></td>
+            </tr>
+
+            <tr>
+                <td><strong>화물정보:</strong><br>화물명:<input type="text" name="cargoName" th:value="${cargo.name}" required>
+                    <br>개수:<input type="number" name="cargoQuantity" th:value="${cargo.quantity}" required><br>화물중량
+                    (kg):
+                    <input type="number" name="cargoWeight" th:value="${cargo.weight}" required readonly><br>화물높이:
+                    <input type="number" name="cargoHeight" th:value="${cargo.height}" required readonly><br>화물 너비:
+                    <input type="number" name="cargoWidth" th:value="${cargo.width}" required readonly>
+                </td>
+
+                <td><strong>선적지/양하지:</strong><br><input type="text" name="loadingPlace"
+                        th:value="${export.placeOfLoading}" required readonly>/<input type="text" name="unloadingPlace"
+                        th:value="${export.placeOfUnloading}" required readonly></td>
+            </tr>
+
+            <tr>
+                <td><strong>컨테이너 정보:</strong><br>위험화물:<select name="isDangerous" required>
+                        <option value="0" th:selected="${cargo.isDangerous==0}">일반화물</option>
+                        <option value="1" th:selected="${cargo.isDangerous}">위험화물</option>
+                    </select><br>컨테이너 종류: <input type="text" name="containerType" th:value="${cargo.containerType}"
+                        required></td>
+
+                <td><strong>회사 주소:</strong><br><input type="text" name="companyAddress" th:value="${company.address}"
+                        required readonly></td>
+            </tr>
+
+            <tr>
+                <td colspan="2"><strong>요청 운송날짜:</strong><input type="date" name="contractDate"
+                        th:value="${export.contractDate}" required></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="footer">
+        <a th:href="@{/dong/fileWrite(exportId=${export.id},userId=${export.userId})}">
+            <input type="button" value="파일작성하기" class="btn btn-primary w-100 py-3">
+        </a>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org" xmlns:sec="http://thymeleaf.org/extras/spring-security"
+    xmlns:layout="~{base}" layout:decorate="~{base}" layout:fragment="content">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<body>
+    <div class="page-container">
+        <div class="logo">
+            <!-- <a th:href="@{/}">
+                <img th:src="@{/images/logo.png}" alt="logo">
+            </a> -->
+            <h2>회원가입</h2>
+        </div>
+
+        <div class="content">
+            <form th:action="@{/user/join}" method="POST" id="joinForm">
+                <ul>
+                    <li>
+                        <i class="fa-solid fa-fingerprint"></i>
+                        <input type="text" name="username" id="userId" placeholder="ID 입력">
+                        <div id="confirmId" class="error-message"></div>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-key"></i>
+                        <input type="password" name="password" id="userPwd" placeholder="password 입력">
+                        <div id="confirmPwd" class="error-message"></div>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-shield"></i>
+                        <input type="text" id="userPwdCheck" placeholder="password 확인">
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-users"></i>
+                        <input type="text" name="lastName" id="userName" placeholder="이름입력">
+                        <div id="usernameCheck" class="error-message"></div>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-envelope"></i>
+                        <input type="email" name="email" id="email" placeholder="이메일입력">
+                        <div id="emailCheck" class="error-message"></div>
+                    </li>
+                </ul>
+                <div class="btns">
+                    <input type="submit" id="submitBtn" value="회원가입" class="btn btn-primary">
+                    <input type="reset" id="resettBtn" value="초기화" class="btn btn-light">
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://kit.fontawesome.com/def97ee41b.js" crossorigin="anonymous"></script>
+</body>
+
+</html>

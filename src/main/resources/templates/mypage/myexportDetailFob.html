@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{mypage/myexportDetail}" layout:fragment="customized">
+
+<head>
+    <title>myexportDetailFOB</title>
+</head>
+
+<body>
+    <!-- About Start -->
+    <div class="container-fluid overflow-hidden py-3">
+        <div class="container py-3">
+            <div class="row g-4 text-center">
+                <!-- 실제로는 각 거래조건별로 구현되어야 할 내용이 다르므로 상속으로 구현하기 -->
+                <!-- <div th:replace="~{fragments/header :: headerFragment}" id="header"></div> -->
+                <div class="col-lg-12 about-text wow fadeInUp" data-wow-delay="0.3s">
+                    <h6 class="text-secondary text-uppercase mb-3">수출계약별 맞춤형 서비스</h6>
+                    <h1 class="mb-5"><span class="text-primary">FOB</span>거래조건에 따른 추가 서비스 이용하기</h1>
+                    <p class="mb-5">FOB란 블라블라 Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sint itaque
+                        temporibus deleniti, vero iure, voluptas autem, sed dolore laudantium tempore possimus culpa.
+                        Temporibus deleniti nobis commodi deserunt, aliquid autem illo! </p>
+                    <div class="row g-4 mb-5">
+                        <div class="col-sm-6 wow fadeIn" data-wow-delay="0.5s">
+                            <i class="fa fa-globe fa-3x text-primary mb-3"></i>
+                            <h5>바이어 연락 및 서류 인도</h5>
+                            <p class="m-0">단 한번의 클릭으로 바이어에게 자동으로 배송현황을 공유하고 서류를 인도하세요</p>
+                        </div>
+                        <div class="col-sm-6 wow fadeIn" data-wow-delay="0.7s">
+                            <i class="fa fa-shipping-fast fa-3x text-primary mb-3"></i>
+                            <h5>해상운송 추적 서비스</h5>
+                            <p class="m-0">수출화물의 현재 위치, 기상조건, 선적지 도착 예정일을 확인하세요.</p>
+                            <a th:href="@{/mypage/myexport/cargoDetail}"><input type="button" value="현재 내화물 확인하기"></a>
+                        </div>
+                    </div>
+                    <a href="" class="btn btn-primary py-3 px-5">Explore More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- About End -->
+</body>
+
+</html>

@@ -1,0 +1,86 @@
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{base}" layout:fragment="content">
+
+<head>
+    <title>mymarketingDetail</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Chart.js 라이브러리 -->
+</head>
+
+<body>
+    <!-- Detail Start -->
+    <section id="marketing-detail" class="container mt-5">
+        <div class="row">
+            <div class="col-md-6">
+                <img th:src="@{/product/download(id=${product.id})}" alt="상품 이미지" class="img-fluid">
+            </div>
+            <div class="col-md-6">
+                <h1 th:text="${product.productName}"></h1>
+                <p th:text="'가격: ' + ${product.productPrice} + '원'"></p>
+                <p th:text="'설명: ' + ${product.productDescription}"></p>
+                <p th:text="'등록일: ' + ${#temporals.format(product.productDate, 'yyyy-MM-dd')}"></p>
+                <div>
+                    <p>일일 조회수: <span th:text="${product.dailyViews}"></span></p>
+                    <p>누적 조회수: <span th:text="${product.totalViews}"></span></p>
+                    <input type="hidden" id="views" th:value="${product.totalViews}">
+                </div>
+            </div>
+        </div>
+
+        <!-- 누적 조회수 그래프 -->
+        <div class="mt-5">
+            <h3>누적 조회수</h3>
+            <canvas id="totalViewChart" max-width="600" height="100"></canvas>
+        </div>
+
+        <div class="action-buttons text-center mt-4">
+            <form th:action="@{/product/edit/{id}(id=${product.id})}" method="get" class="d-inline-block">
+                <button type="submit" class="btn btn-warning">수정</button>
+            </form>
+
+            <form th:action="@{/product/delete/{id}(id=${product.id})}" method="post" class="d-inline-block">
+                <button type="submit" class="btn btn-danger" onclick="return confirm('정말 삭제하시겠습니까?')">삭제</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- 그래프 그리기 -->
+    <script th:inline="javascript">
+        const totalViewList = /*[[${totalViewList}]]*/[[${ totalViewList }]] || [];
+
+        if (totalViewList.length > 0) {
+            const labels = totalViewList.map(item => item.week_range);  // X축 라벨: 주차 범위
+            const data = totalViewList.map(item => item.total_views_sum);  // Y축 데이터: 조회수 합계
+
+            // 누적 조회수 그래프 그리기
+            const ctx = document.getElementById('totalViewChart').getContext('2d');
+            const totalViewChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,  // 주차 범위
+                    datasets: [{
+                        label: '누적 조회수',
+                        data: data,  // 조회수 합계
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                        fill: false,
+                        tension: 0.1
+                    }]
+                },
+                options: {
+                    // responsive: true, // 반응형 크기 조정
+                    // maintainAspectRatio: false, // 비율 유지 여부
+                    devicePixelRatio: 2, // 해상도 배율 (기본값은 1)
+                    scales: {
+                        y: { beginAtZero: true },
+                        x: { title: { display: true, text: '주차' } }
+                    }
+                }
+            });
+        }
+    </script>
+    <!-- Detail End -->
+</body>
+
+
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+    <header th:fragment="headerFragment">
+        <!-- Spinner Start -->
+        <div id="spinner"
+            class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-grow text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <!-- Spinner End -->
+
+
+        <!-- Navbar Start -->
+        <nav
+            class="navbar navbar-expand-lg bg-white navbar-light shadow border-top border-5 border-primary sticky-top p-0">
+            <a th:href="@{/}" class="navbar-brand bg-primary d-flex align-items-center px-4 px-lg-5">
+                <img th:src="@{/images/logo1.png}" alt="청해지니 로고" style="height: 70px; width: auto; margin-right: 20px;">
+                <h2 class="mb-2 text-white">청해지니</h2>
+            </a>
+            <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse"
+                data-bs-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav ms-auto p-4 p-lg-0">
+                    <a th:href="@{/}" class="nav-item nav-link active">Home</a>
+                    <a th:href="@{/product/promotion}" class="nav-item nav-link">홍보플랫폼서비스</a>
+                    <a th:href="@{/export/intro}" class="nav-item nav-link">수출자동화서비스</a>
+                    <a th:href="@{/companyInfo}" class="nav-item nav-link">회사소개</a>
+                    <div class="nav-item dropdown">
+                        <a th:href="@{/mypage/intro}" class="nav-link dropdown-toggle" data-bs-toggle="">마이페이지</a>
+                        <div class="dropdown-menu fade-up m-0">
+                            <a th:href="@{#}" class="dropdown-item">회원정보관리</a>
+                            <a th:href="@{/mypage/mymarketing/list}" class="dropdown-item">홍보게시글관리</a>
+                            <a th:href="@{/mypage/myexport/list}" class="dropdown-item">수출계약관리</a>
+                            <!-- <a href="team.html" class="dropdown-item">Our Team</a>
+                        <a href="testimonial.html" class="dropdown-item">Testimonial</a>
+                        <a href="404.html" class="dropdown-item">404 Page</a> -->
+                        </div>
+                    </div>
+                    <div class="nav-item dropdown">
+                        <a th:href="@{#}" class="nav-link dropdown-toggle" data-bs-toggle="">회원가입/로그인</a>
+                        <div class="dropdown-menu fade-up m-0">
+                            <a class="dropdown-item" th:if="${#authorization.expression('isAnonymous()')}"
+                                th:href="@{/user/join}">회원가입</a>
+                            <a class="dropdown-item" th:if="${#authorization.expression('isAnonymous()')}"
+                                th:href="@{/user/login}">로그인</a>
+                            <a class="dropdown-item" th:if="${#authorization.expression('isAuthenticated()')}"
+                                th:href="@{/user/logout}">
+                                로그아웃
+                            </a>
+
+                        </div>
+
+                    </div>
+                </div>
+                <h4 class="m-0 pe-lg-5 d-none d-lg-block"><i class="fa fa-headphones text-primary me-3"></i>031 1234
+                    5678</h4>
+            </div>
+        </nav>
+        <!-- Navbar End -->
+    </header>
+</body>
+
+</html>

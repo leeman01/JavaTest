@@ -1,0 +1,141 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{base}" layout:fragment="content">
+
+<head>
+    <title>myexportDetail</title>
+    <style>
+        span.input-group-text,
+        input.form-control {
+            text-align: center;
+        }
+    </style>
+    <link rel="stylesheet" th:href="@{/css/progressbar.css}">
+    <script th:src="@{/js/progressbar.js}" defer></script>
+    <!-- <link rel="stylesheet" href="../../static/css/progressbar.css">
+    <script src="../../static/js/progressbar.js" defer></script> -->
+</head>
+
+<body>
+
+    <div th:replace="~{/mypage/myexportDetailProgressBar :: progress-bar}"></div>
+    <div id="data-container" th:data-process="${myexportDetail.process}"></div>
+    <!-- Service Start -->
+    <div class="container-xxl py-2">
+        <div class="container py-2">
+            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h3 class="text-secondary text-uppercase">상세내용</h3>
+            </div>
+            <div class="bg-light text-center px-5 py-2 wow fadeIn" data-wow-delay="0.5s"
+                style="visibility: visible; animation-delay: 0.5s; animation-name: fadeIn">
+                <form>
+                    <div class="row g-4">
+                        <div class="input-group">
+                            <span class="input-group-text" id="buyerCompanyNameLabel">바이어</span>
+                            <input id="buyerCompanyNameLabel" type="text" class="form-control"
+                                aria-label="buyerCompanyNameLabel" aria-describedby="buyerCompanyNameLabel"
+                                th:value="${myexportDetail.buyerCompanyName}" disabled>
+                            <span class="input-group-text" id="buyerEmailLabel">바이어 Email</span>
+                            <input id="buyerEmail" type="text" class="form-control" aria-label="buyerEmailLabel"
+                                aria-describedby="buyerEmailLabel" th:value="${myexportDetail.buyerEmail}" disabled>
+                            <span class="input-group-text" id="incotermLabel">거래조건</span>
+                            <input id="incoterm" type="text" class="form-control" aria-label="incotermLabel"
+                                aria-describedby="incotermLabel" th:value="${myexportDetail.incoterm}" disabled>
+                        </div>
+                    </div>
+                    <div class="row g-4">
+                        <div class="input-group">
+                            <span class="input-group-text" id="expDclrNoLabel">수출신고번호</span>
+                            <input id="expDclrNo" type="text" class="form-control" aria-label="expDclrNoLabel"
+                                aria-describedby="expDclrNoLabel" th:value="${myexportDetail.expDclrNo}" disabled>
+                            <span class="input-group-text" id="acptDtLabel">수출신고일자</span>
+                            <input id="acptDt" type="text" class="form-control" aria-label="acptDtLabel"
+                                aria-describedby="acptDtLabel" th:value="${myexportDetail.acptDt}" disabled>
+                            <span class="input-group-text" id="loadDtyTmImLabel">적재의무기한</span>
+                            <input id="loadDtyTmIm" type="text" class="form-control" aria-label="loadDtyTmImLabel"
+                                aria-describedby="loadDtyTmImLabel" th:value="${myexportDetail.loadDtyTmIm}" disabled>
+                            <span class="input-group-text" id="ldpInscTrgtYnLabel">적재지검사</span>
+                            <input id="ldpInscTrgtYn" type="text" class="form-control" aria-label="ldpInscTrgtYnLabel"
+                                aria-describedby="ldpInscTrgtYnLabel" th:value="${myexportDetail.ldpInscTrgtYn}" checked
+                                disabled>
+                        </div>
+                    </div>
+                    <div class="row g-4">
+                        <div class="input-group">
+                            <span class="input-group-text" id="blNoLabel">B/L 번호</span>
+                            <input id="blNo" type="text" class="form-control" aria-label="blNoLabel"
+                                aria-describedby="blNoLabel" th:value="${myexportDetail.blNo}" disabled>
+                            <span class="input-group-text" id="shpmCmplYnLabel">선적여부</span>
+                            <input id="shpmCmplYn" type="text" class="form-control" aria-label="shpmCmplYnLabel"
+                                aria-describedby="shpmCmplYnLabel" th:value="${myexportDetail.shpmCmplYn}" disabled>
+                        </div>
+                    </div>
+                    <div class="row g-4">
+                        <div class="input-group">
+                            <span class="input-group-text" id="sanmLabel">선박편명</span>
+                            <input id="sanm" type="text" class="form-control" aria-label="sanmLabel"
+                                aria-describedby="sanmLabel" th:value="${myexportDetail.sanm}" disabled>
+                            <span class="input-group-text" id="tkofDtLabel">출항일자</span>
+                            <input id="tkofDt" type="text" class="form-control" aria-label="tkofDtLabel"
+                                aria-describedby="tkofDtLabel" th:value="${myexportDetail.tkofDt}" checked disabled>
+                        </div>
+                    </div>
+                    <div class="row g-4">
+                        <div class="input-group">
+                            <span class="input-group-text" id="csclWghtLabel">통관중량</span>
+                            <input id="csclWght" type="text" class="form-control" aria-label="csclWghtLabel"
+                                aria-describedby="csclWghtLabel" th:value="${myexportDetail.csclWght}" disabled>
+                            <span class="input-group-text" id="csclPckUtLabel">통관포장단위</span>
+                            <input id="csclPckUt" type="text" class="form-control" aria-label="csclPckUtLabel"
+                                aria-describedby="csclPckUtLabel" th:value="${myexportDetail.csclPckUt}" disabled>
+                            <span class="input-group-text" id="csclPckGcntLabel">통관포장개수</span>
+                            <input id="csclPckGcnt" type="text" class="form-control" aria-label="csclPckGcntLabel"
+                                aria-describedby="csclPckGcntLabel" th:value="${myexportDetail.csclPckGcnt}" disabled>
+                        </div>
+                    </div>
+                    <div class="row g-4">
+                        <div class="input-group">
+                            <span class="input-group-text" id="shpmWghtLabel">선적중량</span>
+                            <input id="shpmWght" type="text" class="form-control" aria-label="shpmWghtLabel"
+                                aria-describedby="shpmWghtLabel" th:value="${myexportDetail.shpmWght}" disabled>
+                            <span class="input-group-text" id="shpmPckUtLabel">선적포장단위</span>
+                            <input id="shpmPckUt" type="text" class="form-control" aria-label="shpmPckUtLabel"
+                                aria-describedby="shpmPckUtLabel" th:value="${myexportDetail.shpmPckUt}" disabled>
+                            <span class="input-group-text" id="shpmPckGcntLabel">선적포장개수</span>
+                            <input id="shpmPckGcnt" type="text" class="form-control" aria-label="shpmPckGcntLabel"
+                                aria-describedby="shpmPckGcntLabel" th:value="${myexportDetail.shpmPckGcnt}" disabled>
+                        </div>
+                    </div>
+                    <div class="row g-4">
+                        <div class="input-group">
+                            <span class="input-group-text" id="itemNameLabel">상품명</span>
+                            <input id="itemName" type="text" class="form-control" aria-label="itemNameLabel"
+                                aria-describedby="itemNameLabel" th:value="${myexportDetail.itemName}" disabled>
+                            <span class="input-group-text" id="hsCodeLabel">HS코드</span>
+                            <input id="hsCode" type="text" class="form-control" aria-label="hsCodeLabel"
+                                aria-describedby="hsCodeLabel" th:value="${myexportDetail.hsCode}" disabled>
+                            <span class="input-group-text" id="totalQuantityLabel">총수량</span>
+                            <input id="totalQuantity" type="text" class="form-control" aria-label="totalQuantityLabel"
+                                aria-describedby="totalQuantityLabel" th:value="${myexportDetail.totalQuantity}"
+                                disabled>
+                            <span class="input-group-text" id="pricePerUnitLabel">단위가격</span>
+                            <input id="pricePerUnit" type="text" class="form-control" aria-label="pricePerUnitLabel"
+                                aria-describedby="pricePerUnitLabel" th:value="${myexportDetail.pricePerUnit}" disabled>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- PDF 다운로드 버튼 추가 -->
+            <div class="text-center mt-4"><br>
+                <a th:href="@{/download/kor}" class="btn btn-primary mx-2">수출신고필증(한) 다운로드</a>
+                <a th:href="@{/download/eng}" class="btn btn-primary mx-2">수출신고필증(영) 다운로드</a>
+            </div>
+            <br>
+        </div>
+    </div>
+    <!-- Service End -->
+    <!-- 맞춤형 서비스 -->
+    <div th:replace="~{/mypage/myexportDetailCustomService :: custom-service}"></div>
+</body>
+
+</html>

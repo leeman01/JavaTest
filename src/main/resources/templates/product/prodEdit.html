@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{base}" layout:fragment="content">
+
+<head>
+    <title>상품 수정</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<body>
+    <section class="container mt-5">
+        <h1>상품 수정</h1>
+        <form th:action="@{/product/update}" method="post" enctype="multipart/form-data" class="row g-3">
+
+            <!-- 기존 상품 ID -->
+            <input type="hidden" name="id" th:value="${product.id}" />
+
+            <!-- 상품명 수정 -->
+            <div class="col-md-6">
+                <label for="productName" class="form-label">상품명</label>
+                <input type="text" class="form-control" id="productName" name="productName"
+                    th:value="${product.productName}">
+            </div>
+
+            <!-- 상품 가격 수정 -->
+            <div class="col-md-6">
+                <label for="price" class="form-label">가격</label>
+                <input type="text" class="form-control" id="price" name="productPrice"
+                    th:value="${product.productPrice}" oninput="formatPrice(this)">
+            </div>
+
+            <!-- 상품 설명 수정 -->
+            <div class="col-md-12">
+                <label for="description" class="form-label">상품 설명</label>
+                <textarea class="form-control" id="description" name="productDescription" rows="4"
+                    th:text="${product.productDescription}"></textarea>
+            </div>
+
+            <!-- 기존 이미지를 표시 -->
+            <div class="col-md-12">
+                <label for="currentImage" class="form-label">현재 이미지</label>
+
+                <div>
+                    <img th:src="@{/product/download(id=${product.id})}" alt="현재 이미지" style="max-width: 200px;">
+                </div>
+
+            </div>
+
+            <!-- 새 이미지 업로드 -->
+            <div class="col-md-12">
+                <label for="imageInput" class="form-label">이미지 변경 (선택 사항)</label>
+                <input type="file" id="imageInput" name="productImageFile" class="form-control w-auto" accept="image/*">
+            </div>
+
+            <!-- 회사 정보 수정 -->
+            <div class="col-md-3">
+                <label for="companyName" class="form-label">기업명</label>
+                <input type="text" class="form-control" id="companyName" name="companyName"
+                    th:value="${product.companyName}">
+            </div>
+
+            <!-- 설립연도 수정 -->
+            <div class="col-md-6">
+                <label for="foundedYear" class="form-label">설립연도</label>
+                <input type="number" class="form-control" id="foundedYear" name="foundedYear" min="1000" max="9999"
+                    th:value="${product.foundedYear}">
+            </div>
+
+            <!-- 사업 유형 수정 -->
+            <div class="col-md-3">
+                <label for="businessType" class="form-label">사업 유형</label>
+                <input type="text" class="form-control" id="businessType" name="businessType"
+                    th:value="${product.businessType}">
+            </div>
+
+            <!-- 국가 수정 -->
+            <div class="col-md-3">
+                <label for="country" class="form-label">국가</label>
+                <input type="text" class="form-control" id="country" name="country" th:value="${product.country}">
+            </div>
+
+            <!-- prodEdit.html에서 조회수 관련 필드는 표시하지 않고 hidden 필드로 유지 -->
+            <input type="hidden" name="dailyViews" th:value="${product.dailyViews}">
+            <input type="hidden" name="totalViews" th:value="${product.totalViews}">
+
+            <!-- 수정 버튼 -->
+            <div class="col-12 text-center">
+                <button type="submit" class="btn btn-primary">수정</button>
+            </div>
+        </form>
+    </section>
+
+    <script>
+        // 가격에 자동 쉼표 삽입
+        function formatPrice(input) {
+            const value = input.value.replace(/,/g, ''); // 기존 쉼표 제거
+            if (!isNaN(value)) {
+                input.value = parseInt(value).toLocaleString(); // 숫자로 변환 후 쉼표 추가
+            }
+        }
+
+        // 이미지 미리보기 기능
+        function previewImages() {
+            const imageContainer = document.getElementById('imagePreview');
+            const files = document.getElementById('imageInput').files;
+            imageContainer.innerHTML = ''; // 이전 미리보기 초기화
+
+            Array.from(files).forEach(file => {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    const img = document.createElement('img');
+                    img.src = e.target.result;
+                    img.classList.add('img-thumbnail');
+                    img.style.maxWidth = '100px';
+                    img.style.margin = '10px';
+                    imageContainer.appendChild(img);
+                };
+                reader.readAsDataURL(file);
+            });
+        }
+
+        // 이벤트 리스너 설정
+        window.onload = function () {
+            document.getElementById('price').addEventListener('input', function () {
+                formatPrice(this);
+            });
+            document.getElementById('imageInput').addEventListener('change', previewImages);
+        };
+    </script>
+</body>
+
+</html>

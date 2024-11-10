@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{base}" layout:fragment="content">
+
+<head>
+    <title>mypageIndex</title>
+</head>
+
+<body>
+    <!-- Fact Start -->
+    <div class="container-xxl py-5">
+        <div class="container py-5">
+            <div class="row g-5">
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <h6 class="text-secondary text-uppercase mb-3">My Page</h6>
+                    <h1 class="mb-5">청해지니만의 맞춤형 서비스</h1>
+                    <p class="mb-5">홍보글 조회수 통계, 바이어 컨택, 통관 자동화, 배송 확인 등 청해지니와 함께 간편한 수출 프로세스를 구축하세요.</p>
+                    <div class="d-flex align-items-center">
+                        <i class="fa fa-headphones fa-2x flex-shrink-0 bg-primary p-3 text-white"></i>
+                        <div class="ps-4">
+                            <h6>전화 문의</h6>
+                            <h3 class="text-primary m-0">010 0000 0000</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="row g-4 align-items-center">
+                        <div class="col-sm-6">
+                            <a th:href="@{#}">
+                                <div class="bg-primary p-4 mb-4 wow fadeIn" data-wow-delay="0.3s">
+                                    <i class="fa fa-user fa-2x text-white mb-3"></i>
+                                    <h2 class="text-white mb-2">회원정보</h2>
+                                    <p class="text-white mb-0">관리</p>
+                                </div>
+                            </a>
+                            <a th:href="@{/mypage/myexport/list}">
+                                <div class="bg-secondary p-4 wow fadeIn" data-wow-delay="0.5s">
+                                    <i class="fa fa-ship fa-2x text-white mb-3"></i>
+                                    <h2 class="text-white mb-2">수출계약</h2>
+                                    <p class="text-white mb-0">관리</p>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <a th:href="@{/mypage/mymarketing/list}">
+                                <div class="bg-success p-4 wow fadeIn" data-wow-delay="0.7s">
+                                    <i class="fa fa-gift fa-2x text-white mb-3"></i>
+                                    <h2 class="text-white mb-2">홍보상품</h2>
+                                    <p class="text-white mb-0">관리</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Fact End -->
+</body>
+
+</html>
